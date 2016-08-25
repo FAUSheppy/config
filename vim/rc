@@ -1,0 +1,102 @@
+"tabs & spaces
+set tabstop=4
+set softtabstop=4
+set expandtab
+
+"GUI
+set number
+set showcmd
+set cursorline
+set wildmenu
+nnoremap li `[v`]
+"select last inserted
+
+"highlighting
+filetype indent on
+set showmatch
+"colorscheme solarized
+syntax enable
+
+"optimazation
+set lazyredraw
+
+"append & insert
+"Enter will go to next line, shift enter will break current line and create new one
+"O will insert line above and place curser there, o will do same below
+"Shift-i will start inserting at the begin of the line, i will start before curser
+"Shift-t end of line or t just behind curser (tail)
+"f does exactly the same but closer to shift, easier to use maybe
+nnoremap t a
+nnoremap T A
+nnoremap f a
+nnoremap f A
+
+"search
+set incsearch
+set hlsearch
+nnoremap Ctrl-l :nohlsearch
+
+"movement
+"move by visual line
+nnoremap w g<Up>
+nnoremap s g<Down>
+nnoremap a <Left>
+nnoremap d <Right>
+"move by \n or \r\n
+nnoremap W <Up>
+nnoremap S <Down>
+nnoremap A <Left>
+nnoremap D <Right>
+"move to line at bottom/top of current screen
+nnoremap g  H
+nnoremap G  L
+"gg will go to start of file, GG to end of file and M will actually jump to mid of screen
+
+
+"move by word (dervied from Egoshooters where you can lean right or left usually with q and e)
+nnoremap q b
+"words to left (3q would be 3 words left)
+nnoremap Q B
+"words left, with all non-alphanumeric shit as sperators (i.e. '-')
+"e and E same as above for right side
+
+"textmanipulation
+"delete (d is taken by wasd, c is close to d)
+nnoremap c d
+"delte selected
+nnoremap cc dd
+"delte line
+nnoremap cl dd
+"dene (cc works too)
+nnoremap ce dw
+"delete next word
+"copy/paste (y is the vim default, Ctrl-c is for many GUI programs and windows)
+nnoremap yr y$
+"yank (copy) renemaining line behind curser
+nnoremap Ctrl-c y
+"yank (copy) selected, equivalent to y
+
+"marocs
+nnoremap r q
+nnoremap R qq
+nnoremap rr qq
+
+"modifier keys
+let mapleader=","
+nnoremap l  $
+"l is no the selector for line
+
+"general use
+inoremap jk <esc>
+nnoremap U CTRL-r
+"u is normal undo
+
+"inoremap <esc> <nop>  
+
+"open specific files
+"nnoremap <leader>vrc :vsp $MYVIMRC<CR>
+
+"session management
+nnoremap <leader>s :mksession<CR> 
+"save session, resume with vim -S
+
