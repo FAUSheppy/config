@@ -1,0 +1,52 @@
+STSIZE=2000; SAVEHIST=2000; HISTFILE=~/.zsh/history #historylaenge
+CMD_START=$'%F{green}--->%f '
+PS1=$'%F{yellow}%m%f%F{red}:%f%F{cyan}%~%f\n'$CMD_START #promt
+
+#coloring stderr
+#coproc while read line;do print '\e[91m'${(q)line}'\e[0m' > /dev/tty;done
+#exec 2>&p
+exec 2>>( while IFS='' read X; do print "\e[91m${X}\e[0m" > /dev/tty; done & )
+
+#seperation string between commands
+setopt promptsubst
+PS1=%F{green}$'${(r:$COLUMNS::\u2500:)}'%f$PS1
+
+zstyle ':completion:*:default' list-prompt '%p'
+zmodload zsh/complist #bessere listen
+autoload -Uz compinit; compinit #completioni
+setopt noclobber #keine datein ueberscheiben mit >
+alias mv='mv -i'
+alias cp='cp -i'
+setopt appendhistory; setopt incappendhistory # history immer sofort
+setopt histignoredups #keine duplikate
+setopt histignorespace #keine dinge mit leerzeichen in history
+zstyle ':completion:*' use-cache yes; zstyle ':completion:*' cache-path #~/.zsh/cache (~/.zsh muss existieren)
+#autoload -Uz colors; colors # farben in prompts und completioni
+setopt nolistambiguous # sofort alle Möglichkeiten anzeigen
+setopt completeinword # in Wörtern completen, braucht der _prefix completer
+zstyle ':completion:::::' completer  _expand _complete _prefix _ignored _approximate # _expand expandiert dinge wie $FOO<Tab>, _complete ist
+#das normale completion, _prefix ignoriert alles nach dem Cursor (für complete_in_word) _ignored ignoriered gewisse matches, ist mit
+#_approximate wichtig, damit nicht falsche dinge completet werden, _approximate sucht nach ähnlichen Dingen
+zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SUFFIX) / 3 )) )' # maximal alle 3 zeichen ein fehler
+zstyle ':completion:*:(^approximate):*' matcher-list 'm:{a-z}={A-Z}' # Kleinschreibung automatisch zu Großschreibung korrigieren.
+zstyle ':completion:*:expand:*' keep-prefix yes #halt praefix behalten, HOME nicht zu cip/home blablabla expandierekn
+zstyle ':completion:*' list-suffixes yes # completet a/b/c<tab> zu abc/bcd/coo
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS} # dircolors für completion
+bindkey '^R' history-incremental-pattern-search-backward
+alias -g E='2>&1'
+alias -g N='>/dev/null'
+alias -g EN='2>/dev/null'
+alias -g L='2>&1 | less'
+alias -g G='| grep'
+alias -g S='| sort'
+alias -g ...='../..'
+alias ..='cd ..'
+alias telegram='~/ciptmp/Zeug/Telegram/tg/bin/telegram-cli -k tg-server.pub'
+alias comp='https://est_ik15ydit@faui2hg.cs.fau.de/mcc/exercises/WS15/est_ik15ydit'
+alias w="php /proj/ciptmp/av37umic/scripts/woist.php show" 
+alias ww="php /proj/ciptmp/av37umic/scripts/woist.php all" 
+alias wa="php /proj/ciptmp/av37umic/scripts/woist.php add" 
+alias wd="php /proj/ciptmp/av37umic/scripts/woist.php del" 
+alias wl="php /proj/ciptmp/av37umic/scripts/woist.php list"
+
+alias zshconf="vim ~/.zshrc"
