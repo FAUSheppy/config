@@ -16,6 +16,7 @@ filetype indent on
 set showmatch
 "colorscheme solarized
 syntax enable
+colorscheme evening
 
 "optimazation
 set lazyredraw
