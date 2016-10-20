@@ -1,0 +1,5 @@
+alias "w"="php /proj/ciptmp/av37umic/scripts/woist.php show"
+alias "ww"="php /proj/ciptmp/av37umic/scripts/woist.php all"
+alias "wa"="php /proj/ciptmp/av37umic/scripts/woist.php add"
+alias "wd"="php /proj/ciptmp/av37umic/scripts/woist.php del"
+alias "wl"="php /proj/ciptmp/av37umic/scripts/woist.php list"
