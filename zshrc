@@ -52,6 +52,8 @@ alias wd="php /proj/ciptmp/av37umic/scripts/woist.php del"
 alias wl="php /proj/ciptmp/av37umic/scripts/woist.php list"
 alias irc="ssh ircbox.cs.fau.de -t 'command; tmux a'"
 
+#direct to config
+alias hlconf="vim ~/.config/herbstluftwm/autostart"
 alias zshconf="vim ~/.zshrc"
 
 #aliases migrated from bashrc
