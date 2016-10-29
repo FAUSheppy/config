@@ -70,6 +70,7 @@ nnoremap cc dd
 nnoremap cl dd
 "dene (cc works too)
 nnoremap ce dw
+nnoremap cq cb
 "delete next word
 "copy/paste (y is the vim default, Ctrl-c is for many GUI programs and windows)
 nnoremap yr y$
@@ -104,7 +105,7 @@ nnoremap <leader>s :mksession<CR>
 "highlighting for .dia
 if 1 == 1
     syntax match nodeID "N.*:"
-    syntax match leaveID "[A-MO-Z].*:"
+    syntax match leaveID "[A-MO-Z]\+.*:"
 
     syntax match annotation "[%@].*"
 
@@ -115,7 +116,33 @@ if 1 == 1
     hi def link nodeID Structure
     hi def link leaveID Tag
     hi def link annotation Function
-    hi def link regie String
-    hi def link text Visual  
+    hi def link regie Operator
+    hi def link text String
     hi def link badcode ErrorMsg
+
+    hi def link branch TODO
 endif
+"highlight branch in .dia <C-O> is go back to insertmode
+inoremap <F5> <C-O>:call HL_branch()<CR>
+nnoremap <F5> :call HL_branch()<CR>
+
+function HL_branch()
+let line=getline('.')
+"why does this not work with \+ like above???
+if line =~ "\[A-Z].*:"
+python << endpython
+import vim
+l = vim.current.line
+llist = l.split(":")
+i = 0
+for tmp in llist[0]:
+    if tmp <= 'Z' and tmp >= 'A':
+        i += 1
+    else:
+        break
+l = llist[0][i:]
+vim.command("let l='%s'"% l)
+endpython
+echom l
+endif
+endfunction
