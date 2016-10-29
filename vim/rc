@@ -101,3 +101,21 @@ nnoremap U CTRL-r
 nnoremap <leader>s :mksession<CR> 
 "save session, resume with vim -S
 
+"highlighting for .dia
+if 1 == 1
+    syntax match nodeID "N.*:"
+    syntax match leaveID "[A-MO-Z].*:"
+
+    syntax match annotation "[%@].*"
+
+    syntax match badcode "\\.*"
+    syntax match regie "\*[^"]*\*"
+    syntax match text "\"[^*]*\""
+
+    hi def link nodeID Structure
+    hi def link leaveID Tag
+    hi def link annotation Function
+    hi def link regie String
+    hi def link text Visual  
+    hi def link badcode ErrorMsg
+endif
