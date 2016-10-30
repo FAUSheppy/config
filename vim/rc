@@ -39,7 +39,7 @@ nnoremap Ctrl-l :nohlsearch
 
 "movement
 "move by visual line
-nnoremap w g<Up>
+nnoremap w g<Up>:call HL_branch():@/
 nnoremap s g<Down>
 nnoremap a <Left>
 nnoremap d <Right>
@@ -91,6 +91,7 @@ nnoremap l  $
 "general use
 inoremap jk <esc>
 nnoremap U CTRL-r
+nnoremap <F4> :nohlsearch<CR>
 "u is normal undo
 
 "inoremap <esc> <nop>  
@@ -123,13 +124,13 @@ if 1 == 1
     hi def link branch TODO
 endif
 "highlight branch in .dia <C-O> is go back to insertmode
-inoremap <F5> <C-O>:call HL_branch()<CR>
-nnoremap <F5> :call HL_branch()<CR>
+inoremap <F5> <C-O>:execute HL_branch()<CR>
+nnoremap <F5> :execute HL_branch()<CR>
 
 function HL_branch()
 let line=getline('.')
-"why does this not work with \+ like above???
-if line =~ "\[A-Z].*:"
+"backslash muss escaped werden um + zu escapen in func
+if line =~ "\[A-Z]\\+.*:"
 python << endpython
 import vim
 l = vim.current.line
@@ -141,8 +142,9 @@ for tmp in llist[0]:
     else:
         break
 l = llist[0][i:]
-vim.command("let l='%s'"% l)
+#escaped \ for py AND vim
+vim.command('let tmp=":execute \'normal gg/[A-Z]\\\\+%s.*:\\<cr>\'"'% l)
 endpython
-echom l
+return tmp
 endif
 endfunction
