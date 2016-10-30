@@ -91,7 +91,7 @@ nnoremap l  $
 "general use
 inoremap jk <esc>
 nnoremap U CTRL-r
-nnoremap <F4> :nohlsearch<CR>
+nnoremap <F8> :nohlsearch<CR>
 "u is normal undo
 
 "inoremap <esc> <nop>  
@@ -104,7 +104,7 @@ nnoremap <leader>s :mksession<CR>
 "save session, resume with vim -S
 
 "highlighting for .dia
-if 1 == 1
+if @% =~ ".*.dia"
     syntax match nodeID "N.*:"
     syntax match leaveID "[A-MO-Z]\+.*:"
 
