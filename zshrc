@@ -5,8 +5,7 @@ PS1=$'%F{yellow}%m%f%F{red}:%f%F{cyan}%~%f\n'$CMD_START #promt
 #coloring stderr, causes problems in output odering
 #exec 2>>( while IFS='' read X; do print "\e[91m${X}\e[0m" > /dev/tty; done & )
 #better by rudi_s
-LD_PRELOAD='/home/cip/2013/ik15ydit/.config/libcoloredstderr.so'
-COLORED_STDERR_FDS=2,
+LD_PRELOAD='/home/ik15ydit/.config'COLORED_STDERR_FDS=2,
 export LD_PRELOAD COLORED_STDERR_FDS
 
 #seperation string between commands
