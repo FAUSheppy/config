@@ -9,6 +9,9 @@ LD_PRELOAD='/home/cip/2013/ik15ydit/.config/libcoloredstderr.so'
 COLORED_STDERR_FDS=2,
 export LD_PRELOAD COLORED_STDERR_FDS
 
+#markingbird
+export PYTHONPATH=/local/python3-typing
+
 #seperation string between commands
 setopt promptsubst
 PS1=%F{green}$'${(r:$COLUMNS::\u2500:)}'%f$PS1
