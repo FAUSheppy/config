@@ -5,7 +5,8 @@ PS1=$'%F{yellow}%m%f%F{red}:%f%F{cyan}%~%f\n'$CMD_START #promt
 #coloring stderr, causes problems in output odering
 #exec 2>>( while IFS='' read X; do print "\e[91m${X}\e[0m" > /dev/tty; done & )
 #better by rudi_s
-LD_PRELOAD='/home/ik15ydit/.config'COLORED_STDERR_FDS=2,
+LD_PRELOAD='/home/ik15ydit/.config/libcoloredstderr.so'
+COLORED_STDERR_FDS=2,
 export LD_PRELOAD COLORED_STDERR_FDS
 
 #seperation string between commands
@@ -62,6 +63,8 @@ alias logins='nc localhost 1339 | grep -B1'
 alias rudipub='cd /home/cip/2010/he29heri/pub/'
 alias cltex="rm *.log *.aux *.fdb_latexmk *.fls"
 alias wordcount="find . -type f -exec cat {} + | wc -w"
+alias la="ls -la"
+alias ll="ls -ll"
 
 #pipealiases
 alias -g D='| dot -Tpng >'
