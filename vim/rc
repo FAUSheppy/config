@@ -39,7 +39,7 @@ nnoremap Ctrl-l :nohlsearch
 
 "movement
 "move by visual line
-nnoremap w g<Up>:call HL_branch():@/
+nnoremap w g<Up>
 nnoremap s g<Down>
 nnoremap a <Left>
 nnoremap d <Right>
@@ -126,6 +126,9 @@ endif
 "highlight branch in .dia <C-O> is go back to insertmode
 inoremap <F5> <C-O>:execute HL_branch()<CR>
 nnoremap <F5> :execute HL_branch()<CR>
+
+nnoremap w g<Up>:execute HL_branch()<CR>
+nnoremap s g<Down>:execute HL_branch()<CR>
 
 function HL_branch()
 let line=getline('.')
