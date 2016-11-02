@@ -1,0 +1,3 @@
+Rxvt.*.background: #000000
+Rxvt.*.foreground: #EEEEEE
+Rxvt.*.scrollBar: off
