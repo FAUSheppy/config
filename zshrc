@@ -54,10 +54,14 @@ alias wa="php /proj/ciptmp/av37umic/scripts/woist.php add"
 alias wd="php /proj/ciptmp/av37umic/scripts/woist.php del" 
 alias wl="php /proj/ciptmp/av37umic/scripts/woist.php list"
 alias irc="ssh ircbox.cs.fau.de -t 'command; tmux a'"
+alias -g uni="faui06c.cs.fau.de"
 
 #direct to config
 alias hlconf="vim ~/.config/herbstluftwm/autostart"
 alias zshconf="vim ~/.zshrc"
+
+#ambigious aliases
+alias dual="xrandr --output DVI-I-2 --right-of DVI-I-1"
 
 #aliases migrated from bashrc
 alias spc='gcc -std=c99 -pedantic -Wall -Werror -D_XOPEN_SOURCE=700 -o'
@@ -68,6 +72,7 @@ alias cltex="rm *.log *.aux *.fdb_latexmk *.fls"
 alias wordcount="find . -type f -exec cat {} + | wc -w"
 alias la="ls -la"
 alias ll="ls -ll"
+alias cipkey="ssh-add ~/.ssh/ciplogin"
 
 #pipealiases
 alias -g D='| dot -Tpng >'

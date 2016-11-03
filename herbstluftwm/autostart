@@ -13,6 +13,10 @@ xsetroot -solid '#5A8E3A'
 # remove all existing keybindings
 hc keyunbind --all
 
+#look for additional monitors
+#/usr/bin/xrandr --output DVI-I-2 --right-of DVI-I-1
+ /bin/sh -c "hc detect_monitors"
+
 # keybindings
 # if you have a super key you will be much happier with Mod set to Mod4
 #Mod=Mod1    # Use alt as the main modifier
@@ -27,7 +31,7 @@ hc keybind $Mod-q close
 #spawn shit
 hc keybind $Mod-Return spawn urxvt 
 hc keybind $Mod-l spawn xlock
-hc keybind $Mod-i spawn chromium
+hc keybind $Mod-i spawn iceweasel
 hc keybind $Mod-p spawn pavucontrol
 hc keybind $Mod-Shift-l spawn libreoffice
 
