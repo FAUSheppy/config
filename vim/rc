@@ -120,20 +120,19 @@ if @% =~ ".*.dia"
     hi def link regie Operator
     hi def link text String
     hi def link badcode ErrorMsg
-
     hi def link branch TODO
-endif
-"highlight branch in .dia <C-O> is go back to insertmode
-inoremap <F5> <C-O>:execute HL_branch()<CR>
-nnoremap <F5> :execute HL_branch()<CR>
+    
+    "highlight branch in .dia <C-O> is go back to insertmode
+    inoremap <F5> <C-O>ma<C-O>:execute HL_branch()<CR><C-O>:set hlsearch<CR><C-O>`a
+    nnoremap <F5> ma :execute HL_branch()<CR>:set hlsearch<CR>`a
+    nnoremap w g<Up>ma :execute HL_branch()<CR>:set hlsearch<CR> `a
+    nnoremap s g<Down>ma :execute HL_branch()<CR>:set hlsearch<CR> `a
 
-nnoremap w g<Up>:execute HL_branch()<CR>
-nnoremap s g<Down>:execute HL_branch()<CR>
-
-function HL_branch()
-let line=getline('.')
-"backslash muss escaped werden um + zu escapen in func
-if line =~ "\[A-Z]\\+.*:"
+    "function for highlighting
+    function HL_branch()
+        let line=getline('.')
+        "backslash muss escaped werden um + zu escapen in func
+        if line =~ "\[A-Z]\\+.*:"
 python << endpython
 import vim
 l = vim.current.line
@@ -146,9 +145,9 @@ for tmp in llist[0]:
         break
 l = llist[0][i:]
 #escaped \ for py AND vim
-vim.command('let tmp=":execute \'normal /[A-Z]\\\\+%s.*:\\<cr>``\'"'% l)
+vim.command("let @/='[A-Z]\+%s.*:'"% l)
 endpython
-return tmp
+        endif
+        return "echo ''"
+    endfunction
 endif
-return "echo ''"
-endfunction
