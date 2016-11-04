@@ -1,3 +1,5 @@
+*.so
+*_old
 Florian_Hackenberger/
 Luminance/
 QtProject.conf
@@ -6,6 +8,7 @@ Thunar/
 Trolltech.conf
 abiword/
 akonadi/
+audacious/
 autostart/
 blender/
 chromium
