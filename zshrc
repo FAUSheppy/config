@@ -62,6 +62,7 @@ alias zshconf="vim ~/.zshrc"
 
 #ambigious aliases
 alias dual="xrandr --output DVI-I-2 --right-of DVI-I-1"
+alias shutown="/sbin/poweroff"
 
 #aliases migrated from bashrc
 alias spc='gcc -std=c99 -pedantic -Wall -Werror -D_XOPEN_SOURCE=700 -o'

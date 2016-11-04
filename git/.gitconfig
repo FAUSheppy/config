@@ -1,3 +1,5 @@
 [user]
 	email = yannik.schmidt@fau.de
 	name = Sheppy
+[push]
+	default = simple
