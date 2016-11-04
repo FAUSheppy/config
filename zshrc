@@ -38,6 +38,8 @@ zstyle ':completion:*:expand:*' keep-prefix yes #halt praefix behalten, HOME nic
 zstyle ':completion:*' list-suffixes yes # completet a/b/c<tab> zu abc/bcd/coo
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS} # dircolors für completion
 bindkey '^R' history-incremental-pattern-search-backward
+
+#pipe
 alias -g E='2>&1'
 alias -g N='>/dev/null'
 alias -g EN='2>/dev/null'
@@ -46,19 +48,32 @@ alias -g G='| grep'
 alias -g S='| sort'
 alias -g ...='../..'
 alias ..='cd ..'
-alias telegram='~/ciptmp/Zeug/Telegram/tg/bin/telegram-cli -k tg-server.pub'
-alias comp='https://est_ik15ydit@faui2hg.cs.fau.de/mcc/exercises/WS15/est_ik15ydit'
+
+#general shortcuts
+alias psearch="apt-cache search"
+alias i3lock="i3lock --image=~/.config/i3lock/i3lock_background.png"
+alias xlock="i3lock"
+#alias telegram='~/ciptmp/Zeug/Telegram/tg/bin/telegram-cli -k tg-server.pub'
+
+#converting
+alias -g jpg2png="echo 'use convert [file_in.jpg] [file_out.png]'" 
+
+#cipstalk
 alias w="php /proj/ciptmp/av37umic/scripts/woist.php show" 
 alias ww="php /proj/ciptmp/av37umic/scripts/woist.php all" 
 alias wa="php /proj/ciptmp/av37umic/scripts/woist.php add" 
 alias wd="php /proj/ciptmp/av37umic/scripts/woist.php del" 
 alias wl="php /proj/ciptmp/av37umic/scripts/woist.php list"
+
+#uni
 alias irc="ssh ircbox.cs.fau.de -t 'command; tmux a'"
 alias -g uni="faui06c.cs.fau.de"
+alias cipkey="ssh-add ~/.ssh/ciplogin"
 
 #direct to config
 alias hlconf="vim ~/.config/herbstluftwm/autostart"
 alias zshconf="vim ~/.zshrc"
+alias vimconf="vim ~/.vimrc"
 
 #ambigious aliases
 alias dual="xrandr --output DVI-I-2 --right-of DVI-I-1"
@@ -71,9 +86,11 @@ alias logins='nc localhost 1339 | grep -B1'
 alias rudipub='cd /home/cip/2010/he29heri/pub/'
 alias cltex="rm *.log *.aux *.fdb_latexmk *.fls"
 alias wordcount="find . -type f -exec cat {} + | wc -w"
-alias la="ls -la"
-alias ll="ls -ll"
-alias cipkey="ssh-add ~/.ssh/ciplogin"
+
+#ls and la
+LS_COLORS=$LS_COLORS:'di=0;35:'; export LS_COLORS
+alias la="ls -la --color=auto"
+alias ll="ls -ll --color=auto"
 
 #pipealiases
 alias -g D='| dot -Tpng >'
