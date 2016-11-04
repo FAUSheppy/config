@@ -146,11 +146,10 @@ for tmp in llist[0]:
         break
 l = llist[0][i:]
 #escaped \ for py AND vim
-#vim.command('let tmp=":execute \'normal /[A-Z]\\\\+%s.*:\\<cr>``\'"'% l)
 vim.command("let @/='[A-Z]\+%s.*:'"% l)
 endpython
-"return tmp
 endif
 "return "echo ''"
 endfunction
+"end outer if
 endif
