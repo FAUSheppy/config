@@ -59,11 +59,11 @@ alias xlock="i3lock"
 alias -g jpg2png="echo 'use convert [file_in.jpg] [file_out.png]'" 
 
 #cipstalk
-alias w="php /proj/ciptmp/av37umic/scripts/woist.php show" 
-alias ww="php /proj/ciptmp/av37umic/scripts/woist.php all" 
-alias wa="php /proj/ciptmp/av37umic/scripts/woist.php add" 
-alias wd="php /proj/ciptmp/av37umic/scripts/woist.php del" 
-alias wl="php /proj/ciptmp/av37umic/scripts/woist.php list"
+alias w="ssh faui00n.cs.fau.de php /proj/ciptmp/av37umic/scripts/woist.php show" 
+alias ww="ssh faui00n.cs.fau.de php /proj/ciptmp/av37umic/scripts/woist.php all" 
+alias wa="ssh faui00n.cs.fau.de php /proj/ciptmp/av37umic/scripts/woist.php add" 
+alias wd="ssh faui00n.cs.fau.de php /proj/ciptmp/av37umic/scripts/woist.php del" 
+alias wl="ssh faui00n.cs.fau.de php /proj/ciptmp/av37umic/scripts/woist.php list"
 
 #uni
 alias irc="ssh ircbox.cs.fau.de -t 'command; tmux a'"
