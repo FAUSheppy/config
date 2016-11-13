@@ -51,9 +51,13 @@ alias ..='cd ..'
 
 #general shortcuts
 alias psearch="apt-cache search"
-alias i3lock="i3lock --image=~/.config/i3lock/i3lock_background.png"
-alias xlock="i3lock"
+alias hlock="i3lock -i /home/ik15ydit/.config/i3lock/i3lock_background.png -t"
+alias internet-check='ping 8.8.8.8'
 #alias telegram='~/ciptmp/Zeug/Telegram/tg/bin/telegram-cli -k tg-server.pub'
+
+#ignore errormessages that are useless anyway
+alias gedit="gedit 2>/dev/null"
+alias kpaint="kolourpaint 2>/dev/null"
 
 #converting
 alias -g jpg2png="echo 'use convert [file_in.jpg] [file_out.png]'" 
@@ -74,10 +78,16 @@ alias cipkey="ssh-add ~/.ssh/ciplogin"
 alias hlconf="vim ~/.config/herbstluftwm/autostart"
 alias zshconf="vim ~/.zshrc"
 alias vimconf="vim ~/.vimrc"
+alias sshconf="vim ~/.ssh/config"
 
 #ambigious aliases
 alias dual="xrandr --output DVI-I-2 --right-of DVI-I-1"
+alias hlmove="herbstclient move"
 alias shutown="/sbin/poweroff"
+
+#AuD and java
+alias javac-all-test4='javac -cp .:/usr/share/java/junit4.jar *.java'
+alias java-test4='java -cp .:/usr/share/java/junit4.jar'
 
 #aliases migrated from bashrc
 alias spc='gcc -std=c99 -pedantic -Wall -Werror -D_XOPEN_SOURCE=700 -o'
