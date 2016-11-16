@@ -31,10 +31,11 @@ hc keybind $Mod-q close
 
 #spawn shit
 hc keybind $Mod-Return spawn urxvt 
-hc keybind $Mod-l spawn xlock
+hc keybind $Mod-l spawn bash -c "i3lock -i /home/ik15ydit/.config/i3lock/bg.png"
 hc keybind $Mod-i spawn chromium 
 hc keybind $Mod-p spawn pavucontrol
 hc keybind $Mod-Shift-l spawn libreoffice
+hc keybind $Mod-t spawn icedove
 
 # basic movement
 # focusing clients
@@ -164,7 +165,6 @@ hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on
 hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
 hc rule --instance=chromium-browser --ewmhrequests=off
-
 
 # unlock, just to be sure
 hc unlock
