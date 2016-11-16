@@ -120,20 +120,19 @@ if @% =~ ".*.dia"
     hi def link regie Operator
     hi def link text String
     hi def link badcode ErrorMsg
-
     hi def link branch TODO
-
-    "highlight branch in .dia <C-O> is go bacmato insertmode
+    
+    "highlight branch in .dia <C-O> is go back to insertmode
     inoremap <F5> <C-O>ma<C-O>:execute HL_branch()<CR><C-O>:set hlsearch<CR><C-O>`a
     nnoremap <F5> ma :execute HL_branch()<CR>:set hlsearch<CR>`a
-
     nnoremap w g<Up>ma :execute HL_branch()<CR>:set hlsearch<CR> `a
     nnoremap s g<Down>ma :execute HL_branch()<CR>:set hlsearch<CR> `a
 
-function HL_branch()
-let line=getline('.')
-"backslash muss escaped werden um + zu escapen in func
-if line =~ "\[A-Z]\\+.*:"
+    "function for highlighting
+    function HL_branch()
+        let line=getline('.')
+        "backslash muss escaped werden um + zu escapen in func
+        if line =~ "\[A-Z]\\+.*:"
 python << endpython
 import vim
 l = vim.current.line
@@ -148,8 +147,7 @@ l = llist[0][i:]
 #escaped \ for py AND vim
 vim.command("let @/='[A-Z]\+%s.*:'"% l)
 endpython
-endif
-"return "echo ''"
-endfunction
-"end outer if
+        endif
+        return "echo ''"
+    endfunction
 endif
