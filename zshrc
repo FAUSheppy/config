@@ -51,9 +51,9 @@ alias ..='cd ..'
 
 #general shortcuts
 alias psearch="apt-cache search"
-alias i3lock="i3lock --image=~/.config/i3lock/i3lock_background.png"
-alias xlock="i3lock"
+alias i3lock="i3lock --image=/home/ik15ydit/.config/i3lock/bg.png"
 #alias telegram='~/ciptmp/Zeug/Telegram/tg/bin/telegram-cli -k tg-server.pub'
+alias x='startx'
 
 #converting
 alias -g jpg2png="echo 'use convert [file_in.jpg] [file_out.png]'" 
@@ -78,6 +78,7 @@ alias vimconf="vim ~/.vimrc"
 #ambigious aliases
 alias dual="xrandr --output DVI-I-2 --right-of DVI-I-1"
 alias shutown="/sbin/poweroff"
+alias pcolor='for i in {0..255} ; do printf "\x1b[38;5;${i}mcolour${i} "; if [[ $(((($i+3)/6)*6)) -eq $(($i+3)) ]]; then echo; fi; done'
 
 #aliases migrated from bashrc
 alias spc='gcc -std=c99 -pedantic -Wall -Werror -D_XOPEN_SOURCE=700 -o'
