@@ -1,1 +1,3 @@
-/usr/bin/xrandr --output DVI-I-2 --right-of DVI-I-1
+#!/bin/bash
+xrdb /home/ik15ydit/.Xresources
+exec herbstluftwm
