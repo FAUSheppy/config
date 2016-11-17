@@ -117,7 +117,13 @@ hc pad $monitor $panel_height
         echo -n "$separator"
         echo -n "^bg()^fg() ${windowtitle//^/^^}"
         # small adjustments
-        pwr="Power $(acpi -b | sed -r 's/.* ([0-9]*%).*/\1/')"
+
+        #powersupply
+        pwr="STATIC POWERSUPPLY"
+        if [ $HOSTNAME ~= laptop ] || [$HOSTNAME ~= medion ] ; then
+                pwr="Power $(acpi -b) | sed -r 's/.* ([0-9]*%).*/\1/')"
+        fi
+
         right="^fg(#ff0000) $pwr $separator^bg() $date $separator"
         right_text_only=$(echo -n "$right" | sed 's.\^[^(]*([^)]*)..g')
         # get width of right aligned text.. and add some space..
