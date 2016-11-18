@@ -62,17 +62,6 @@ hc keybind $Mod-Shift-s     shift down
 hc keybind $Mod-Shift-w     shift up
 hc keybind $Mod-Shift-d     shift right
 
-#move across workspaces
-hc keybind $Mod-Shift-1    move 1
-hc keybind $Mod-Shift-2    move 2
-hc keybind $Mod-Shift-3    move 3
-hc keybind $Mod-Shift-4    move 4
-hc keybind $Mod-Shift-5    move 5
-hc keybind $Mod-Shift-6    move 6
-hc keybind $Mod-Shift-7    move 7
-hc keybind $Mod-Shift-8    move 8
-hc keybind $Mod-Shift-9    move 9
-
 # splitting frames
 # create an empty frame at the specified direction
 hc keybind $Mod-h       split   bottom  0.5
@@ -130,12 +119,16 @@ hc keybind $Mod-c cycle
 #hc keybind $Mod-i jumpto urgent
 
 #pulseaudio
-hc keybind XF86AudioRaiseVolume spawn /bin/sh -c  'pactl set-sink-volume @DEFAULT_SINK@ +8%' #increase sound volume
-hc keybind $Mod-u spawn /bin/sh -c  'pactl set-sink-volume @DEFAULT_SINK@ +8%' 
-hc keybind XF86AudioLowerVolume spawn /bin/sh -c  'pactl set-sink-volume @DEFAULT_SINK@ -- -8%' #decrease sound volume
-hc keybind $Mod-Shift-u spawn /bin/sh -c  'pactl set-sink-volume @DEFAULT_SINK@ -- -8%' 
-hc keybind XF86AudioMute spawn /bin/sh -c  'pactl set-sink-mute @DEFAULT_SINK@ toggle'  #toggle mute
-hc keybind $Mod-m spawn /bin/sh -c  'pactl set-sink-mute @DEFAULT_SINK@ toggle' 
+hc keybind XF86AudioRaiseVolume spawn /bin/sh -c 'pactl set-sink-volume @DEFAULT_SINK@ +8%' #increase sound volume
+hc keybind $Mod-u spawn /bin/sh -c 'pactl set-sink-volume @DEFAULT_SINK@ +8%' 
+hc keybind XF86AudioLowerVolume spawn /bin/sh -c 'pactl set-sink-volume @DEFAULT_SINK@ -- -8%' #decrease sound volume
+hc keybind $Mod-Shift-u spawn /bin/sh -c 'pactl set-sink-volume @DEFAULT_SINK@ -- -8%' 
+hc keybind XF86AudioMute spawn /bin/sh -c 'pactl set-sink-mute @DEFAULT_SINK@ toggle'  #toggle mute
+hc keybind $Mod-m spawn /bin/sh -c 'pactl set-sink-mute @DEFAULT_SINK@ toggle' 
+
+#brightness
+hc keybind XF86MonBrightnessUp spawn /bin/bash -c 'tee /sys/class/backlight/intel_backlight/brightness <<< "$(expr $(cat /sys/class/backlight/intel_backlight/brightness) + 5)"' 
+hc keybind XF86MonBrightnessDown spawn /bin/bash -c 'tee /sys/class/backlight/intel_backlight/brightness <<< "$(expr $(cat /sys/class/backlight/intel_backlight/brightness) - 5)"'
 
 
 # theme
