@@ -120,8 +120,8 @@ hc pad $monitor $panel_height
 
         #powersupply
         pwr="STATIC POWERSUPPLY"
-        if [ $HOSTNAME ~= laptop ] || [$HOSTNAME ~= medion ] ; then
-                pwr="Power $(acpi -b) | sed -r 's/.* ([0-9]*%).*/\1/')"
+        if [ $HOSTNAME == atlantislaptop ] || [$HOSTNAME == atlantismedion ] ; then
+                pwr="$(acpi -b | sed -r 's/Battery [0-9]+: //')"
         fi
 
         right="^fg(#ff0000) $pwr $separator^bg() $date $separator"
