@@ -90,7 +90,6 @@ nnoremap l  $
 
 "general use
 inoremap jk <esc>
-nnoremap U CTRL-r
 nnoremap <F8> :nohlsearch<CR>
 "u is normal undo
 
