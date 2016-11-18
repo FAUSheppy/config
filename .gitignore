@@ -1,3 +1,6 @@
+*.so
+*_old
+.nfs*
 Florian_Hackenberger/
 Luminance/
 QtProject.conf
@@ -6,6 +9,8 @@ Thunar/
 Trolltech.conf
 abiword/
 akonadi/
+anjuta/
+audacious/
 autostart/
 blender/
 chromium
@@ -36,6 +41,7 @@ pcmanfm/
 ristretto/
 roxterm.sourceforge.net/
 spring
+tubus/
 user-dirs.dirs
 user-dirs.locale
 vlc/

@@ -10,18 +10,21 @@ hc emit_hook reload
 
 xsetroot -solid '#5A8E3A'
 
-# remove all existing keybindings
+# reset
 hc keyunbind --all
 
-#look for additional monitors
-#/usr/bin/xrandr --output DVI-I-2 --right-of DVI-I-1
- /bin/sh -c "hc detect_monitors"
-
-# keybindings
-# if you have a super key you will be much happier with Mod set to Mod4
-#Mod=Mod1    # Use alt as the main modifier
+#variables
 Mod=Mod4     # Use the super key as the main modifier
 
+#look for additional monitors
+hc detect_monitors
+/usr/bin/xrandr --output DVI-I-2 --right-of DVI-I-1
+
+#start xautolock 
+xautolock -time 15 -locker /home/ik15ydit/.config/i3lock/piclock.sh &
+#xautolock
+
+# keybindings
 #client handling
 hc keybind $Mod-Shift-q quit
 hc keybind $Mod-Shift-p spawn /sbin/poweroff
@@ -31,8 +34,9 @@ hc keybind $Mod-q close
 
 #spawn shit
 hc keybind $Mod-Return spawn urxvt 
-hc keybind $Mod-l spawn bash -c "i3lock -i /home/ik15ydit/.config/i3lock/bg.png"
+hc keybind $Mod-Shift-Return spawn xterm /bin/bash
 hc keybind $Mod-i spawn chromium 
+hc keybind $Mod-l spawn i3lock -i ~/.config/i3lock/i3lock_background.png -t
 hc keybind $Mod-p spawn pavucontrol
 hc keybind $Mod-Shift-l spawn libreoffice
 hc keybind $Mod-t spawn icedove
@@ -57,6 +61,17 @@ hc keybind $Mod-Shift-a     shift left
 hc keybind $Mod-Shift-s     shift down
 hc keybind $Mod-Shift-w     shift up
 hc keybind $Mod-Shift-d     shift right
+
+#move across workspaces
+hc keybind $Mod-Shift-1    move 1
+hc keybind $Mod-Shift-2    move 2
+hc keybind $Mod-Shift-3    move 3
+hc keybind $Mod-Shift-4    move 4
+hc keybind $Mod-Shift-5    move 5
+hc keybind $Mod-Shift-6    move 6
+hc keybind $Mod-Shift-7    move 7
+hc keybind $Mod-Shift-8    move 8
+hc keybind $Mod-Shift-9    move 9
 
 # splitting frames
 # create an empty frame at the specified direction
