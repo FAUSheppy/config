@@ -107,6 +107,7 @@ alias wordcount="find . -type f -exec cat {} + | wc -w"
 LS_COLORS=$LS_COLORS:'di=0;35:'; export LS_COLORS
 alias la="ls -la --color=auto"
 alias ll="ls -ll --color=auto"
+alias ls="ls --color=auto"
 
 #pipealiases
 alias -g D='| dot -Tpng >'
