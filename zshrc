@@ -57,6 +57,7 @@ alias x='startx'
 
 #converting
 alias -g jpg2png="echo 'use convert [file_in.jpg] [file_out.png]'" 
+#alias txt2pdf="cat $1 | iconv -c -f utf-8 -t ISO-8859-1 | enscript -o document.ps; ps2pdf document.ps $2"
 
 #cipstalk
 alias w="ssh faui00n.cs.fau.de php /proj/ciptmp/av37umic/scripts/woist.php show" 
@@ -69,6 +70,8 @@ alias wl="ssh faui00n.cs.fau.de php /proj/ciptmp/av37umic/scripts/woist.php list
 alias irc="ssh ircbox.cs.fau.de -t 'command; tmux a'"
 alias -g uni="faui06c.cs.fau.de"
 alias cipkey="ssh-add ~/.ssh/ciplogin"
+alias mountcip="sshfs ik15ydit@faui00n.cs.fau.de:/home/cip/2013/ik15ydit/ $HOME/cip/" 
+alias umountcip="fusermount -u $HOME/cip/"
 
 #direct to config
 alias hlconf="vim ~/.config/herbstluftwm/autostart"
@@ -79,6 +82,7 @@ alias vimconf="vim ~/.vimrc"
 alias dual="xrandr --output DVI-I-2 --right-of DVI-I-1"
 alias shutown="/sbin/poweroff"
 alias pcolor='for i in {0..255} ; do printf "\x1b[38;5;${i}mcolour${i} "; if [[ $(((($i+3)/6)*6)) -eq $(($i+3)) ]]; then echo; fi; done'
+alias backlightctl="tee /sys/class/backlight/intel_backlight/brightness <<< $1"
 
 #aliases migrated from bashrc
 alias spc='gcc -std=c99 -pedantic -Wall -Werror -D_XOPEN_SOURCE=700 -o'
