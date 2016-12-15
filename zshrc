@@ -57,18 +57,18 @@ alias cp='cp -i'
 alias ..='cd ..'
 
 ## LOCKS ##
-if [[ $HOST ~= atlantis* ]]; then
+if [[ $HOST =~ atlantis* ]]; then
     alias i3lock="i3lock --image=/home/ik15ydit/.config/i3lock/bg.png"
     alias hlock="i3lock --image=/home/ik15ydit/.config/i3lock/bg.png -t"
 else
-    alias transparent_xlock="xlock --mode geometry --size 1x1"
+    alias transparent_xlock="xlock -mode blank -geometry 1x1"
 fi
 
 ## PACKAGE MANAGEMENT ##
 alias psearch="apt-cache search"
 
 ## GENERAL SHORTCUTS ##
-if [[ $HOST ~= atlantis* ]]; then
+if [[ $HOST =~ atlantis* ]]; then
     alias gedit="gedit 2&>/dev/null &"
     alias kpaint="kolourpaint 2&>/dev/null &"
     alias telegram='ssh uni -t "/proj/ciptmp/ik15ydit/Zeug/Telegram/tg/bin/telegram-cli -k tg-server.pub"'
@@ -79,15 +79,17 @@ else
 fi
 
 ## CONVERTING (cip has better defaults) ##
-if [[ $HOST ~= atlantis* ]]; then
+if [[ $HOST =~ atlantis* ]]; then
     alias -g jpg2png="echo 'use convert [file_in.jpg] [file_out.png]'" 
 fi
 
 ## MARKINGBIRD ##
 export PYTHONPATH=/local/python3-typing
+if [[ $HOST =~ faui.* ]]; then
+    alias mabird="/proj/ik15ydit/reps/MarkingBird/MarkingBird.py"
 
 ## PATHS ##
-if [[ $HOST ~= faui* ]]; then
+if [[ $HOST =~ faui* ]]; then
     export JAVA_HOME="/local/java-1.8"
 fi
 
@@ -106,12 +108,12 @@ alias vimconf="vim ~/.vimrc"
 alias sshconf="vim ~/.ssh/config"
 
 
-if [[ $HOST ~= atlantis* ]]; then
+if [[ $HOST =~ atlantis.* ]]; then
     alias dual="xrandr --output DVI-I-2 --right-of DVI-I-1"
     alias shutown="/sbin/poweroff"
 fi
 
-if [[ $HOST ~= atlantislaptop ]]; then
+if [[ $HOST == "atlantislaptop" ]]; then
     alias backlightctl="tee /sys/class/backlight/intel_backlight/brightness <<< $1"
 fi
 
@@ -141,7 +143,7 @@ function key(){
 }
 
 ### GENE-SHIT ###
-if [[ $HOST ~= atlantislaptop ]]; then
+if [[ $HOST == "atlantislaptop" ]]; then
     GENE_BASE="/home/ik15ydit/bcarbeit/new_try"
     GENE_ROOT="/home/ik15ydit/bcarbeit/new_try/gene-setup"
     INSTALL_DIR=$GENE_ROOT/local/bin
@@ -153,6 +155,6 @@ if [[ $HOST ~= atlantislaptop ]]; then
 fi
 
 ### DISABLE MESSAGES ###
-if [[ $HOST ~= faui* ]]; then
+if [[ $HOST =~ faui.* ]]; then
     mesg n
 fi
