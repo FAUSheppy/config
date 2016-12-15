@@ -1,21 +1,20 @@
+#### ZSH-INTERNAL ####
+### History ###
 STSIZE=2000; SAVEHIST=2000; HISTFILE=~/.zsh/history #historylaenge
-CMD_START=$'%F{green}--->%f '
-PS1=$'%F{yellow}%m%f%F{red}:%f%F{cyan}%~%f\n'$CMD_START #promt
 
-#coloring stderr, causes problems in output odering
-#exec 2>>( while IFS='' read X; do print "\e[91m${X}\e[0m" > /dev/tty; done & )
-#better by rudi_s
+### COLOR STDERR ###
+#legacy, this causes problems in output odering exec 2>>( while IFS='' read X; do print "\e[91m${X}\e[0m" > /dev/tty; done & )
 LD_PRELOAD="$HOME/.config/libcoloredstderr.so"
 COLORED_STDERR_FDS=2,
 export LD_PRELOAD COLORED_STDERR_FDS
 
-#markingbird
-export PYTHONPATH=/local/python3-typing
-
-#seperation string between commands
+### PROMT ###
 setopt promptsubst
+CMD_START=$'%F{green}--->%f '
+PS1=$'%F{yellow}%m%f%F{red}:%f%F{cyan}%~%f\n'$CMD_START #promt
 PS1=%F{green}$'${(r:$COLUMNS::\u2500:)}'%f$PS1
 
+### OTHER ###
 zstyle ':completion:*:default' list-prompt '%p'
 zmodload zsh/complist #bessere listen
 autoload -Uz compinit; compinit #completioni
@@ -40,7 +39,8 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS} # dircolors für completio
 zstyle ':completion:*' menu select
 bindkey '^R' history-incremental-pattern-search-backward
 
-#pipe
+#### ZSH ALIASES ####
+## PIPES ##
 alias -g E='2>&1'
 alias -g N='>/dev/null'
 alias -g EN='2>/dev/null'
@@ -48,23 +48,43 @@ alias -g L='2>&1 | less'
 alias -g G='| grep'
 alias -g S='| sort'
 alias -g ...='../..'
+alias -g D='| dot -Tpng >'
 alias ..='cd ..'
 
-#general shortcuts
+## LOCKS ##
+if [[ $HOST ~= atlantis* ]]; then
+    alias i3lock="i3lock --image=/home/ik15ydit/.config/i3lock/bg.png"
+    alias hlock="i3lock --image=/home/ik15ydit/.config/i3lock/bg.png -t"
+else
+    alias transparent_xlock="xlock --mode geometry --size 1x1"
+
+## PACKAGE MANAGEMENT ##
 alias psearch="apt-cache search"
-alias i3lock="i3lock --image=/home/ik15ydit/.config/i3lock/bg.png"
-alias hlock="i3lock --image=/home/ik15ydit/.config/i3lock/bg.png -t"
-alias telegram='ssh uni -t "/proj/ciptmp/ik15ydit/Zeug/Telegram/tg/bin/telegram-cli -k tg-server.pub"'
-alias x='startx'
 
-#ignore errormessages that are useless anyway
-alias gedit="gedit 2>/dev/null"
-alias kpaint="kolourpaint 2>/dev/null"
+## GENERAL SHORTCUTS ##
+if [[ $HOST ~= atlantis* ]]; then
+    alias gedit="gedit 2&>/dev/null &"
+    alias kpaint="kolourpaint 2&>/dev/null &"
+    alias telegram='ssh uni -t "/proj/ciptmp/ik15ydit/Zeug/Telegram/tg/bin/telegram-cli -k tg-server.pub"'
+    alias x='startx'
+else
+    alias pcolor='for i in {0..255} ; do printf "\x1b[38;5;${i}mcolour${i} "; if [[ $(((($i+3)/6)*6)) -eq $(($i+3)) ]]; then echo; fi; done'
+    alias telegram='/proj/ciptmp/ik15ydit/Zeug/Telegram/tg/bin/telegram-cli -k tg-server.pub'
 
-#converting
-alias -g jpg2png="echo 'use convert [file_in.jpg] [file_out.png]'" 
+## CONVERTING (cip has better defaults) ##
+if [[ $HOST ~= atlantis* ]]; then
+    alias -g jpg2png="echo 'use convert [file_in.jpg] [file_out.png]'" 
+fi
 
-#uni
+## MARKINGBIRD ##
+export PYTHONPATH=/local/python3-typing
+
+## PATHS ##
+if [[ $HOST ~= faui* ]]; then
+    export JAVA_HOME="/local/java-1.8"
+fi
+
+## CONNECT UNI ##
 alias irc="ssh ircbox.cs.fau.de -t 'command; tmux a'"
 alias -g uni="faui06c.cs.fau.de"
 alias cipkey="ssh-add ~/.ssh/ciplogin"
@@ -72,20 +92,23 @@ alias cipra="xpra start ssh:ik15ydit@faui00n.cs.fau.de:100 --start-child urxvt"
 alias mountcip="sshfs ik15ydit@faui00n.cs.fau.de:/ -o idmap=user $HOME/cip/root/" 
 alias umountcip="fusermount -u $HOME/cip/root/"
 
-#direct to config
+## DIRECT TO CONFIG ##
 alias hlconf="vim ~/.config/herbstluftwm/autostart"
 alias zshconf="vim ~/.zshrc"
 alias vimconf="vim ~/.vimrc"
 alias sshconf="vim ~/.ssh/config"
 
-#ambigious aliases
-alias dual="xrandr --output DVI-I-2 --right-of DVI-I-1"
-alias hlmove="herbstclient move"
-alias shutown="/sbin/poweroff"
-alias pcolor='for i in {0..255} ; do printf "\x1b[38;5;${i}mcolour${i} "; if [[ $(((($i+3)/6)*6)) -eq $(($i+3)) ]]; then echo; fi; done'
-alias backlightctl="tee /sys/class/backlight/intel_backlight/brightness <<< $1"
 
-#AuD and java
+if [[ $HOST ~= atlantis* ]]; then
+    alias dual="xrandr --output DVI-I-2 --right-of DVI-I-1"
+    alias shutown="/sbin/poweroff"
+fi
+
+if [[ $HOST ~= atlantislaptop ]]; then
+    alias backlightctl="tee /sys/class/backlight/intel_backlight/brightness <<< $1"
+fi
+
+## JAVA ##
 alias javac-all-test4='javac -cp .:/usr/share/java/junit4.jar *.java'
 alias java-test4='java -cp .:/usr/share/java/junit4.jar'
 
@@ -97,30 +120,31 @@ alias rudipub='cd /home/cip/2010/he29heri/pub/'
 alias cltex="rm *.log *.aux *.fdb_latexmk *.fls"
 alias wordcount="find . -type f -exec cat {} + | wc -w"
 
-#ls and la
+## LS ##
 LS_COLORS=$LS_COLORS:'di=0;35:'; export LS_COLORS
 alias la="ls -la --color=auto"
 alias ll="ls -ll --color=auto"
 alias ls="ls --color=auto"
 
-#pipealiases
-alias -g D='| dot -Tpng >'
-
+## SSH-KEYS ##
 gitssh=~/.ssh/gitrsa
 function key(){
         eval `ssh-agent`
         ssh-add $gitssh
 }
-#export JAVA_HOME="/local/java-1.8"
 
-#gene setup
-GENE_BASE="/home/ik15ydit/bcarbeit/new_try"
-GENE_ROOT="/home/ik15ydit/bcarbeit/new_try/gene-setup"
-INSTALL_DIR=$GENE_ROOT/local/bin
-#rm -r $INSTALL_DIR/lib/platin/gems/ 2&> /dev/null >  /dev/null
-#$GENE_ROOT/setup-platin.sh -i $INSTALL_DIR 2&> /dev/null > /dev/null &
-#export PATH=$GENE_BASE/local/bin:$PATH
-alias -g patmos-clang="/home/ik15ydit/bcarbeit/new_try/gene-setup/local/bin/patmos-clang"
-alias -g patmos-gene="/home/ik15ydit/bcarbeit/new_try/gene-setup/local/bin/patmos-gene"
-#no write spam
-mesg n
+### GENE-SHIT ###
+if [[ $HOST ~= atlantislaptop ]]; then
+    GENE_BASE="/home/ik15ydit/bcarbeit/new_try"
+    GENE_ROOT="/home/ik15ydit/bcarbeit/new_try/gene-setup"
+    INSTALL_DIR=$GENE_ROOT/local/bin
+    #rm -r $INSTALL_DIR/lib/platin/gems/ 2&> /dev/null >  /dev/null
+    #$GENE_ROOT/setup-platin.sh -i $INSTALL_DIR 2&> /dev/null > /dev/null &
+    #export PATH=$GENE_BASE/local/bin:$PATH
+    alias -g patmos-clang="/home/ik15ydit/bcarbeit/new_try/gene-setup/local/bin/patmos-clang"
+    alias -g patmos-gene="/home/ik15ydit/bcarbeit/new_try/gene-setup/local/bin/patmos-gene"
+fi
+
+### DISABLE MESSAGES ###
+if [[ $HOST ~= faui* ]]; then
+    mesg n
