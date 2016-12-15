@@ -36,7 +36,7 @@ hc keybind $Mod-q close
 hc keybind $Mod-Return spawn urxvt 
 hc keybind $Mod-Shift-Return spawn xterm /bin/bash
 hc keybind $Mod-i spawn chromium 
-hc keybind $Mod-l spawn i3lock -i ~/.config/i3lock/i3lock_background.png -t
+hc keybind $Mod-l spawn i3lock -i ~/.config/i3lock/bg.png -t
 hc keybind $Mod-p spawn pavucontrol
 hc keybind $Mod-Shift-l spawn libreoffice
 hc keybind $Mod-t spawn icedove
