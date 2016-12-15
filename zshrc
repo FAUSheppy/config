@@ -32,11 +32,12 @@ setopt completeinword # in Wörtern completen, braucht der _prefix completer
 zstyle ':completion:::::' completer  _expand _complete _prefix _ignored _approximate # _expand expandiert dinge wie $FOO<Tab>, _complete ist
 #das normale completion, _prefix ignoriert alles nach dem Cursor (für complete_in_word) _ignored ignoriered gewisse matches, ist mit
 #_approximate wichtig, damit nicht falsche dinge completet werden, _approximate sucht nach ähnlichen Dingen
-zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SUFFIX) / 3 )) )' # maximal alle 3 zeichen ein fehler
+zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SUFFIX) / 5 )) )' # maximal alle 3 zeichen ein fehler
 zstyle ':completion:*:(^approximate):*' matcher-list 'm:{a-z}={A-Z}' # Kleinschreibung automatisch zu Großschreibung korrigieren.
 zstyle ':completion:*:expand:*' keep-prefix yes #halt praefix behalten, HOME nicht zu cip/home blablabla expandierekn
 zstyle ':completion:*' list-suffixes yes # completet a/b/c<tab> zu abc/bcd/coo
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS} # dircolors für completion
+zstyle ':completion:*' menu select
 bindkey '^R' history-incremental-pattern-search-backward
 
 #pipe
@@ -53,7 +54,7 @@ alias ..='cd ..'
 alias psearch="apt-cache search"
 alias i3lock="i3lock --image=/home/ik15ydit/.config/i3lock/bg.png"
 alias hlock="i3lock --image=/home/ik15ydit/.config/i3lock/bg.png -t"
-#alias telegram='~/ciptmp/Zeug/Telegram/tg/bin/telegram-cli -k tg-server.pub'
+alias telegram='ssh uni -t "/proj/ciptmp/ik15ydit/Zeug/Telegram/tg/bin/telegram-cli -k tg-server.pub"'
 alias x='startx'
 
 #ignore errormessages that are useless anyway
@@ -62,21 +63,14 @@ alias kpaint="kolourpaint 2>/dev/null"
 
 #converting
 alias -g jpg2png="echo 'use convert [file_in.jpg] [file_out.png]'" 
-#alias txt2pdf="cat $1 | iconv -c -f utf-8 -t ISO-8859-1 | enscript -o document.ps; ps2pdf document.ps $2"
-
-#cipstalk
-alias w="ssh faui00n.cs.fau.de php /proj/ciptmp/av37umic/scripts/woist.php show" 
-alias ww="ssh faui00n.cs.fau.de php /proj/ciptmp/av37umic/scripts/woist.php all" 
-alias wa="ssh faui00n.cs.fau.de php /proj/ciptmp/av37umic/scripts/woist.php add" 
-alias wd="ssh faui00n.cs.fau.de php /proj/ciptmp/av37umic/scripts/woist.php del" 
-alias wl="ssh faui00n.cs.fau.de php /proj/ciptmp/av37umic/scripts/woist.php list"
 
 #uni
 alias irc="ssh ircbox.cs.fau.de -t 'command; tmux a'"
 alias -g uni="faui06c.cs.fau.de"
 alias cipkey="ssh-add ~/.ssh/ciplogin"
-alias mountcip="sshfs ik15ydit@faui00n.cs.fau.de:/home/cip/2013/ik15ydit/ $HOME/cip/" 
-alias umountcip="fusermount -u $HOME/cip/"
+alias cipra="xpra start ssh:ik15ydit@faui00n.cs.fau.de:100 --start-child urxvt"
+alias mountcip="sshfs ik15ydit@faui00n.cs.fau.de:/ -o idmap=user $HOME/cip/root/" 
+alias umountcip="fusermount -u $HOME/cip/root/"
 
 #direct to config
 alias hlconf="vim ~/.config/herbstluftwm/autostart"
@@ -119,5 +113,14 @@ function key(){
 }
 #export JAVA_HOME="/local/java-1.8"
 
+#gene setup
+GENE_BASE="/home/ik15ydit/bcarbeit/new_try"
+GENE_ROOT="/home/ik15ydit/bcarbeit/new_try/gene-setup"
+INSTALL_DIR=$GENE_ROOT/local/bin
+#rm -r $INSTALL_DIR/lib/platin/gems/ 2&> /dev/null >  /dev/null
+#$GENE_ROOT/setup-platin.sh -i $INSTALL_DIR 2&> /dev/null > /dev/null &
+#export PATH=$GENE_BASE/local/bin:$PATH
+alias -g patmos-clang="/home/ik15ydit/bcarbeit/new_try/gene-setup/local/bin/patmos-clang"
+alias -g patmos-gene="/home/ik15ydit/bcarbeit/new_try/gene-setup/local/bin/patmos-gene"
 #no write spam
 mesg n
