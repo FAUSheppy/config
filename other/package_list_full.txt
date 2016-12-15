@@ -72,3 +72,4 @@ wicd-curses     #good simple networkmanager
 xorg            #needed for nearly all windowmangers
 xpra            #open graphical window on remote pc
 zsh             #much better shell than bash
+geparted        #partitionmanagement
