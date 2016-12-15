@@ -14,6 +14,7 @@ dzen2           #used for herbsluftclient panel
 eclipse         #java programming enviroment
 enscript        #used for pdf/ps stuff
 evince          #pdf viewer
+exiftool        #metadate information
 exfat-fuse      #mount exfat devices as user
 exfat-utils     #more options for exfat
 feh             #simple pictureviewer
@@ -22,6 +23,7 @@ gcc-4.9-base    #C-Compiler
 gcc-arm-none-eabi   #cross compiler used for gene (bcarbeit)
 gcp             #copy with statusbar
 gedit           #graphical texteditor
+geparted        #partitionmanagement
 git             #version controll system
 grep            #search for keywords
 gzip            #compress
@@ -33,6 +35,7 @@ icedove         #email client
 iceweasel       #firefox browser
 ifupdown        #networkinterface managment
 imagemagick     #convert images
+inkscape        #pdfeditor/vectorbased drawing
 iputils-ping    #tracerout and ping
 iw              #information about network interfaces
 katarakt        #simple and performant pdfviewer
@@ -41,6 +44,7 @@ less            #simple textview
 libreoffice     #documenteditor like open office
 nano            #very simple to use consol-texteditor
 ncdu            #harddriveussage overview
+mpv             #video/music player
 openjdk-8-jdk   #java
 openssh-client  #ssh
 pandoc          #used for pdf conversion
@@ -72,4 +76,3 @@ wicd-curses     #good simple networkmanager
 xorg            #needed for nearly all windowmangers
 xpra            #open graphical window on remote pc
 zsh             #much better shell than bash
-geparted        #partitionmanagement
