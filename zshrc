@@ -12,7 +12,7 @@ export LD_PRELOAD COLORED_STDERR_FDS
 
 ### PROMT ###
 MAIN_PROMT_COLOR="green"
-if [[ $USER == "root" ]]
+if [[ $USER == "root" ]]; then
     MAIN_PROMT_COLOR="red"
 fi
 setopt promptsubst
