@@ -1,6 +1,7 @@
 *.so
 *_old
 .nfs*
+*.log
 
 Florian_Hackenberger/
 Luminance/
