@@ -1,6 +1,7 @@
 *.so
 *_old
 .nfs*
+
 Florian_Hackenberger/
 Luminance/
 QtProject.conf
@@ -13,6 +14,7 @@ anjuta/
 audacious/
 autostart/
 blender/
+brightness
 chromium
 dconf/
 dwb/
@@ -36,15 +38,18 @@ mc/
 menus/
 mimeapps.list
 nautilus/
+pulse/
 pavucontrol.ini
 pcmanfm/
 ristretto/
 roxterm.sourceforge.net/
+SEGGER/
 spring
 tubus/
 user-dirs.dirs
 user-dirs.locale
 vlc/
 xarchiver/
+yelp/
 xfce4/
 xm1/
