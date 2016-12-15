@@ -11,8 +11,12 @@ COLORED_STDERR_FDS=2,
 export LD_PRELOAD COLORED_STDERR_FDS
 
 ### PROMT ###
+MAIN_PROMT_COLOR="green"
+if [[ $USER == "root" ]]
+    MAIN_PROMT_COLOR="red"
+fi
 setopt promptsubst
-CMD_START=$'%F{green}--->%f '
+CMD_START=$'%F{MAIN_PROMT_COLOR}--->%f '
 PS1=$'%F{yellow}%m%f%F{red}:%f%F{cyan}%~%f\n'$CMD_START #promt
 PS1=%F{green}$'${(r:$COLUMNS::\u2500:)}'%f$PS1
 
@@ -147,6 +151,9 @@ function key(){
         eval `ssh-agent`
         ssh-add $gitssh
 }
+
+## ROOT ##
+alias udev_reload="udevadm control --reload-rules && udevadm trigger" #reload all udevrules on the fly
 
 ### GENE-SHIT ###
 if [[ $HOST == "atlantislaptop" ]]; then
