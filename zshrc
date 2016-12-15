@@ -85,8 +85,9 @@ fi
 
 ## MARKINGBIRD ##
 export PYTHONPATH=/local/python3-typing
-if [[ $HOST =~ faui.* ]]; then
+if [[ $HOST == faui* ]]; then
     alias mabird="/proj/ik15ydit/reps/MarkingBird/MarkingBird.py"
+fi
 
 ## PATHS ##
 if [[ $HOST =~ faui* ]]; then
@@ -107,12 +108,18 @@ alias zshconf="vim ~/.zshrc"
 alias vimconf="vim ~/.vimrc"
 alias sshconf="vim ~/.ssh/config"
 
+## CIP SHORTCUTS ##
+if [[ $HOST =~ faui* ]]; then
+    alias mpstubs="cd /proj/ciptmp/ik15ydit/reps/mpstubs/"
+    alias reps="cd /proj/ciptmp/ik15ydit/reps/"
+    alias rudipub='cd /home/cip/2010/he29heri/pub/'
+fi
 
-if [[ $HOST =~ atlantis.* ]]; then
+## DIPLAY CONTROL ##
+if [[ $HOST =~ atlantis* ]]; then
     alias dual="xrandr --output DVI-I-2 --right-of DVI-I-1"
     alias shutown="/sbin/poweroff"
 fi
-
 if [[ $HOST == "atlantislaptop" ]]; then
     alias backlightctl="tee /sys/class/backlight/intel_backlight/brightness <<< $1"
 fi
@@ -121,11 +128,10 @@ fi
 alias javac-all-test4='javac -cp .:/usr/share/java/junit4.jar *.java'
 alias java-test4='java -cp .:/usr/share/java/junit4.jar'
 
-#aliases migrated from bashrc
+## /zsh/random ##
 alias spc='gcc -std=c99 -pedantic -Wall -Werror -D_XOPEN_SOURCE=700 -o'
 alias woist='ssh ircbox nc localhost 1339 | grep -B1 " in .zshrci'
 alias logins='nc localhost 1339 | grep -B1'
-alias rudipub='cd /home/cip/2010/he29heri/pub/'
 alias cltex="rm *.log *.aux *.fdb_latexmk *.fls"
 alias wordcount="find . -type f -exec cat {} + | wc -w"
 
@@ -155,6 +161,6 @@ if [[ $HOST == "atlantislaptop" ]]; then
 fi
 
 ### DISABLE MESSAGES ###
-if [[ $HOST =~ faui.* ]]; then
+if [[ $HOST =~ faui* ]]; then
     mesg n
 fi
