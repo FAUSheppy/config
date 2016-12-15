@@ -1,6 +1,8 @@
 #### ZSH-INTERNAL ####
-### History ###
-STSIZE=2000; SAVEHIST=2000; HISTFILE=~/.zsh/history #historylaenge
+### HISTORY ###
+STSIZE=2000
+SAVEHIST=2000
+HISTFILE=~/.config/zshhistory.log
 
 ### COLOR STDERR ###
 #legacy, this causes problems in output odering exec 2>>( while IFS='' read X; do print "\e[91m${X}\e[0m" > /dev/tty; done & )
@@ -14,20 +16,9 @@ CMD_START=$'%F{green}--->%f '
 PS1=$'%F{yellow}%m%f%F{red}:%f%F{cyan}%~%f\n'$CMD_START #promt
 PS1=%F{green}$'${(r:$COLUMNS::\u2500:)}'%f$PS1
 
-### OTHER ###
+### STYLE ###
 zstyle ':completion:*:default' list-prompt '%p'
-zmodload zsh/complist #bessere listen
-autoload -Uz compinit; compinit #completioni
-setopt noclobber #keine datein ueberscheiben mit >
-alias mv='mv -i'
-alias cp='cp -i'
-setopt appendhistory; setopt incappendhistory # history immer sofort
-setopt histignoredups #keine duplikate
-setopt histignorespace #keine dinge mit leerzeichen in history
 zstyle ':completion:*' use-cache yes; zstyle ':completion:*' cache-path #~/.zsh/cache (~/.zsh muss existieren)
-#autoload -Uz colors; colors # farben in prompts und completioni
-setopt nolistambiguous # sofort alle Möglichkeiten anzeigen
-setopt completeinword # in Wörtern completen, braucht der _prefix completer
 zstyle ':completion:::::' completer  _expand _complete _prefix _ignored _approximate # _expand expandiert dinge wie $FOO<Tab>, _complete ist
 #das normale completion, _prefix ignoriert alles nach dem Cursor (für complete_in_word) _ignored ignoriered gewisse matches, ist mit
 #_approximate wichtig, damit nicht falsche dinge completet werden, _approximate sucht nach ähnlichen Dingen
@@ -37,10 +28,22 @@ zstyle ':completion:*:expand:*' keep-prefix yes #halt praefix behalten, HOME nic
 zstyle ':completion:*' list-suffixes yes # completet a/b/c<tab> zu abc/bcd/coo
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS} # dircolors für completion
 zstyle ':completion:*' menu select
+
+### OPTIONS ###
+setopt noclobber #keine datein ueberscheiben mit >
+setopt appendhistory; setopt incappendhistory # history immer sofort
+setopt histignoredups #keine duplikate
+setopt histignorespace #keine dinge mit leerzeichen in history
+setopt nolistambiguous # sofort alle Möglichkeiten anzeigen
+setopt completeinword # in Wörtern completen, braucht der _prefix completer
+
+### GENERAL ###
 bindkey '^R' history-incremental-pattern-search-backward
+zmodload zsh/complist #bessere listen
+autoload -Uz compinit; compinit #completioni
 
 #### ZSH ALIASES ####
-## PIPES ##
+## BASIC ##
 alias -g E='2>&1'
 alias -g N='>/dev/null'
 alias -g EN='2>/dev/null'
@@ -49,6 +52,8 @@ alias -g G='| grep'
 alias -g S='| sort'
 alias -g ...='../..'
 alias -g D='| dot -Tpng >'
+alias mv='mv -i'
+alias cp='cp -i'
 alias ..='cd ..'
 
 ## LOCKS ##
@@ -57,6 +62,7 @@ if [[ $HOST ~= atlantis* ]]; then
     alias hlock="i3lock --image=/home/ik15ydit/.config/i3lock/bg.png -t"
 else
     alias transparent_xlock="xlock --mode geometry --size 1x1"
+fi
 
 ## PACKAGE MANAGEMENT ##
 alias psearch="apt-cache search"
@@ -70,6 +76,7 @@ if [[ $HOST ~= atlantis* ]]; then
 else
     alias pcolor='for i in {0..255} ; do printf "\x1b[38;5;${i}mcolour${i} "; if [[ $(((($i+3)/6)*6)) -eq $(($i+3)) ]]; then echo; fi; done'
     alias telegram='/proj/ciptmp/ik15ydit/Zeug/Telegram/tg/bin/telegram-cli -k tg-server.pub'
+fi
 
 ## CONVERTING (cip has better defaults) ##
 if [[ $HOST ~= atlantis* ]]; then
@@ -148,3 +155,4 @@ fi
 ### DISABLE MESSAGES ###
 if [[ $HOST ~= faui* ]]; then
     mesg n
+fi
