@@ -16,18 +16,19 @@ hc keyunbind --all
 #variables
 Mod=Mod4     # Use the super key as the main modifier
 
-#look for additional monitors
-hc detect_monitors
-/usr/bin/xrandr --output DVI-I-2 --right-of DVI-I-1
-
-#start xautolock 
-xautolock -time 15 -locker /home/ik15ydit/.config/i3lock/piclock.sh &
-#xautolock
+### Atlantis PC-specific setup ###
+if [[ $HOST == "atlantispc" ]]; then
+    hc detect_monitors
+    /usr/bin/xrandr --output DVI-I-2 --right-of DVI-I-1
+    xautolock -time 15 -locker /home/ik15ydit/.config/i3lock/piclock.sh &
+fi
 
 # keybindings
 #client handling
 hc keybind $Mod-Shift-q quit
-hc keybind $Mod-Shift-p spawn /sbin/poweroff
+if [[ $HOST =~ atlantis.* ]]; then
+    hc keybind $Mod-Shift-p spawn /sbin/poweroff
+fi
 hc keybind $Mod-Shift-r reload
 hc keybind $Mod-q close
 
@@ -36,7 +37,9 @@ hc keybind $Mod-q close
 hc keybind $Mod-Return spawn urxvt 
 hc keybind $Mod-Shift-Return spawn xterm /bin/bash
 hc keybind $Mod-i spawn chromium 
-hc keybind $Mod-l spawn i3lock -i ~/.config/i3lock/bg.png -t
+if [[ $HOST =~ atlantis.* ]]; then
+    hc keybind $Mod-l spawn i3lock -i ~/.config/i3lock/bg.png -t
+fi
 hc keybind $Mod-p spawn pavucontrol
 hc keybind $Mod-Shift-l spawn libreoffice
 hc keybind $Mod-t spawn icedove
