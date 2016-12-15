@@ -12,13 +12,15 @@ export LD_PRELOAD COLORED_STDERR_FDS
 
 ### PROMT ###
 MAIN_PROMT_COLOR="green"
+USER_COLOR="yellow"
 if [[ $USER == "root" ]]; then
+    USER_COLOR="red"
     MAIN_PROMT_COLOR="red"
 fi
 setopt promptsubst
-CMD_START=$'%F{MAIN_PROMT_COLOR}--->%f '
-PS1=$'%F{yellow}%m%f%F{red}:%f%F{cyan}%~%f\n'$CMD_START #promt
-PS1=%F{green}$'${(r:$COLUMNS::\u2500:)}'%f$PS1
+CMD_START=$'%F{$MAIN_PROMT_COLOR}--->%f '
+PS1=$'%F{$USER_COLOR}%m%f%F{red}:%f%F{cyan}%~%f\n'$CMD_START #promt
+PS1=%F{$MAIN_PROMT_COLOR}$'${(r:$COLUMNS::\u2500:)}'%f$PS1
 
 ### STYLE ###
 zstyle ':completion:*:default' list-prompt '%p'
