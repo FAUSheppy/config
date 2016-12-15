@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 
 # this is a simple config for herbstluftwm
 
@@ -18,13 +18,13 @@ Mod=Mod4     # Use the super key as the main modifier
 
 ######### MACHINE SPECIFIC SETUP #########
 ### Atlantis PC-specific setup ###
-if [ $HOST=="atlantispc" ]; then
+if [[ "$HOST" == "atlantispc" ]]; then
     hc detect_monitors
     /usr/bin/xrandr --output DVI-I-2 --right-of DVI-I-1
     xautolock -time 15 -locker /home/ik15ydit/.config/i3lock/piclock.sh &
 fi
 ### Atlantislaptop specific setup ###
-if [ $HOST=="atlantislaptop" ]; then
+if [[ "$HOST" == "atlantislaptop" ]]; then
     hc keybind XF86MonBrightnessUp spawn /bin/bash -c 'tee /sys/class/backlight/intel_backlight/brightness <<< "$(expr $(cat /sys/class/backlight/intel_backlight/brightness) + 5)"' 
     hc keybind XF86MonBrightnessDown spawn /bin/bash -c 'tee /sys/class/backlight/intel_backlight/brightness <<< "$(expr $(cat /sys/class/backlight/intel_backlight/brightness) - 5)"'
 fi
@@ -33,7 +33,7 @@ fi
 # keybindings
 #client handling
 hc keybind $Mod-Shift-q quit
-if [ $HOST=~atlantis* ]; then
+if [[ $HOST =~ atlantis* ]]; then
     hc keybind $Mod-Shift-p spawn /sbin/poweroff
 fi
 hc keybind $Mod-Shift-r reload
@@ -44,7 +44,7 @@ hc keybind $Mod-q close
 hc keybind $Mod-Return spawn urxvt 
 hc keybind $Mod-Shift-Return spawn xterm /bin/bash
 hc keybind $Mod-i spawn chromium 
-if [ $HOST=~atlantis* ]; then
+if [[ $HOST =~ atlantis* ]]; then
     hc keybind $Mod-l spawn i3lock -i ~/.config/i3lock/bg.png -t
 else
     hc keybind $Mod-l spawn xlock
@@ -93,18 +93,32 @@ hc keybind $Mod-Control-Up      resize up +$resizestep
 hc keybind $Mod-Control-Right   resize right +$resizestep
 
 # tags
-tag_names=( {1..9} )
-tag_keys=( {1..9} 0 )
-
-hc rename default "${tag_names[0]}" || true
-for i in ${!tag_names[@]} ; do
-    hc add "${tag_names[$i]}"
-    key="${tag_keys[$i]}"
-    if ! [ -z "$key" ] ; then
-        hc keybind "$Mod-$key" use_index "$i"
-        hc keybind "$Mod-Shift-$key" move_index "$i"
-    fi
-done
+hc add "2"
+hc add "3"
+hc add "4"
+hc add "5"
+hc add "6"
+hc add "7"
+hc add "8"
+hc add "9"
+hc keybind $Mod-"1"             use_index 1
+hc keybind $Mod-Shift-1         move_index 1
+hc keybind $Mod-2               use_index 2
+hc keybind $Mod-Shift-2         move_index 2
+hc keybind $Mod-3               use_index 3
+hc keybind $Mod-Shift-3         move_index 3
+hc keybind $Mod-4               use_index 4
+hc keybind $Mod-Shift-4         move_index 4
+hc keybind $Mod-5               use_index 5
+hc keybind $Mod-Shift-5         move_index 5
+hc keybind $Mod-6               use_index 6
+hc keybind $Mod-Shift-6         move_index 6
+hc keybind $Mod-7               use_index 7
+hc keybind $Mod-Shift-7         move_index 7
+hc keybind $Mod-8               use_index 8
+hc keybind $Mod-Shift-8         move_index 8
+hc keybind $Mod-9               use_index 9
+hc keybind $Mod-Shift-9         move_index 9
 
 # cycle through tags
 hc keybind $Mod-period use_index +1 --skip-visible
