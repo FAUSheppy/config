@@ -86,7 +86,7 @@ fi
 ## MARKINGBIRD ##
 export PYTHONPATH=/local/python3-typing
 if [[ $HOST == faui* ]]; then
-    alias mabird="/proj/ik15ydit/reps/MarkingBird/MarkingBird.py"
+    alias mabird="/proj/ciptmp/ik15ydit/reps/MarkingBird/MarkingBird.py"
 fi
 
 ## PATHS ##
