@@ -46,6 +46,8 @@ hc keybind $Mod-Shift-Return spawn xterm /bin/bash
 hc keybind $Mod-i spawn chromium 
 if [[ $HOST =~ atlantis* ]]; then
     hc keybind $Mod-l spawn i3lock -i ~/.config/i3lock/bg.png -t
+else
+    hc keybind $Mod-l spawn xlock
 fi
 hc keybind $Mod-p spawn pavucontrol
 hc keybind $Mod-Shift-l spawn libreoffice
