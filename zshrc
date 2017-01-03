@@ -75,7 +75,7 @@ alias psearch="apt-cache search"
 
 ## GENERAL SHORTCUTS ##
 if [[ $HOST =~ atlantis* ]]; then
-    alias gedit="gedit 2&>/dev/null &"
+    #alias gedit="gedit 2&>/dev/null &"
     alias kpaint="kolourpaint 2&>/dev/null &"
     alias telegram='ssh uni -t "/proj/ciptmp/ik15ydit/Zeug/Telegram/tg/bin/telegram-cli -k tg-server.pub"'
     alias x='startx'
@@ -83,6 +83,7 @@ else
     alias pcolor='for i in {0..255} ; do printf "\x1b[38;5;${i}mcolour${i} "; if [[ $(((($i+3)/6)*6)) -eq $(($i+3)) ]]; then echo; fi; done'
     alias telegram='/proj/ciptmp/ik15ydit/Zeug/Telegram/tg/bin/telegram-cli -k tg-server.pub'
 fi
+alias "ipconf"="ip addr show"
 
 ## CONVERTING (cip has better defaults) ##
 if [[ $HOST =~ atlantis* ]]; then
@@ -173,3 +174,4 @@ fi
 if [[ $HOST =~ faui* ]]; then
     mesg n
 fi
+alias mpc-curses='ncmpc --host 10.100.4.22'

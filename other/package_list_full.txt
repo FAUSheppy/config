@@ -21,6 +21,7 @@ feh             #simple pictureviewer
 findutils       #find things
 gcc-4.9-base    #C-Compiler
 gcc-arm-none-eabi   #cross compiler used for gene (bcarbeit)
+g++             #C++ compiler
 gcp             #copy with statusbar
 gedit           #graphical texteditor
 geparted        #partitionmanagement
@@ -60,6 +61,7 @@ rxvt-unicode-256color #terminal-emulator
 sed             #regex stream manipulation (used for hl-panel)
 sleuthkit       #forensik utilities
 sshfs           #mount harddrives over ssh
+strace          #track behaviour or processes
 sudo            #execute as root
 tar             #compressing/unpacking
 tesseract-ocr   #optical character/text recognition
@@ -73,6 +75,8 @@ vim-nox         #good consol texeditor with script support
 wget            #download urls
 whois           #lookup ips etc of DNS adresses
 wicd-curses     #good simple networkmanager
+wine            #windows emuator
+winetricks      #windows emulator utilities
 xorg            #needed for nearly all windowmangers
 xpra            #open graphical window on remote pc
 zsh             #much better shell than bash
