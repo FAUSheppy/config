@@ -1,82 +1,82 @@
-acpi            #check battery
-apt             #advanced installer
-aptitude        #advanced installer
-arping          #find all devices in network
-autoconf        #used for building LD_PRELOAD
-bison           #used for gene (bachelorarbeit)
-build-essential #make
-chromium        #internet
-colordiff       #colored diff
-coreutils       #many usefull tools
-cron            #execute tasks automaticly at certain times
-cscope          #find shit in big repros
-dzen2           #used for herbsluftclient panel
-eclipse         #java programming enviroment
-enscript        #used for pdf/ps stuff
-evince          #pdf viewer
-exiftool        #metadate information
-exfat-fuse      #mount exfat devices as user
-exfat-utils     #more options for exfat
-feh             #simple pictureviewer
-findutils       #find things
-gcc-4.9-base    #C-Compiler
-gcc-arm-none-eabi   #cross compiler used for gene (bcarbeit)
-g++             #C++ compiler
-gcp             #copy with statusbar
-gedit           #graphical texteditor
-geparted        #partitionmanagement
-git             #version controll system
-grep            #search for keywords
-gzip            #compress
-herbstluftwm    #windowmanager
-hgsubversion    #(shitty) version control system needed for aud
-htop            #taskmanager
-i3lock          #screenlock
-icedove         #email client
-iceweasel       #firefox browser
-ifupdown        #networkinterface managment
-imagemagick     #convert images
-inkscape        #pdfeditor/vectorbased drawing
-iputils-ping    #tracerout and ping
-iw              #information about network interfaces
-katarakt        #simple and performant pdfviewer
-kolourpaint4    #simple pictureeditor
-less            #simple textview
-libreoffice     #documenteditor like open office
-nano            #very simple to use consol-texteditor
-ncdu            #harddriveussage overview
-mpv             #video/music player
-openjdk-8-jdk   #java
-openssh-client  #ssh
-pandoc          #used for pdf conversion
-pavucontrol     #sound control
-pdf-presenter-console   #simple pdfviewer usefull for presentations
-poppler-utils   #extract images from pdfs
-pulseaudio      #sound
-python          #python
-python-pdfminer #needed for markingbird
-python-pip      #install python modules
-qemu-kvm        #virtual machine
-rxvt-unicode-256color #terminal-emulator
-sed             #regex stream manipulation (used for hl-panel)
-sleuthkit       #forensik utilities
-sshfs           #mount harddrives over ssh
-strace          #track behaviour or processes
-sudo            #execute as root
-tar             #compressing/unpacking
-tesseract-ocr   #optical character/text recognition
-texlive-full    #tex (Achtung groß)
-tig             #git history
-tmux            #terminal multiplexer (multiple terminals within one)
-traceroute      #tracert/check route to host
-tree            #show filesystemtree
-usbutils        #usefullshit for usbdevices
-vim-nox         #good consol texeditor with script support
-wget            #download urls
-whois           #lookup ips etc of DNS adresses
-wicd-curses     #good simple networkmanager
-wine            #windows emuator
-winetricks      #windows emulator utilities
-xorg            #needed for nearly all windowmangers
-xpra            #open graphical window on remote pc
-zsh             #much better shell than bash
+acpi            ;check battery
+apt             ;advanced installer
+aptitude        ;advanced installer
+arping          ;find all devices in network
+autoconf        ;used for building LD_PRELOAD
+bison           ;used for gene (bachelorarbeit)
+build-essential ;make
+chromium        ;internet
+colordiff       ;colored diff
+coreutils       ;many usefull tools
+cron            ;execute tasks automaticly at certain times
+cscope          ;find shit in big repros
+dzen2           ;used for herbsluftclient panel
+eclipse         ;java programming enviroment
+enscript        ;used for pdf/ps stuff
+evince          ;pdf viewer
+exiftool        ;metadate information
+exfat-fuse      ;mount exfat devices as user
+exfat-utils     ;more options for exfat
+feh             ;simple pictureviewer
+findutils       ;find things
+gcc-4.9-base    ;C-Compiler
+gcc-arm-none-eabi   ;cross compiler used for gene (bcarbeit)
+g++             ;C++ compiler
+gcp             ;copy with statusbar
+gedit           ;graphical texteditor
+geparted        ;partitionmanagement
+git             ;version controll system
+grep            ;search for keywords
+gzip            ;compress
+herbstluftwm    ;windowmanager
+hgsubversion    ;(shitty) version control system needed for aud
+htop            ;taskmanager
+i3lock          ;screenlock
+icedove         ;email client
+iceweasel       ;firefox browser
+ifupdown        ;networkinterface managment
+imagemagick     ;convert images
+inkscape        ;pdfeditor/vectorbased drawing
+iputils-ping    ;tracerout and ping
+iw              ;information about network interfaces
+katarakt        ;simple and performant pdfviewer
+kolourpaint4    ;simple pictureeditor
+less            ;simple textview
+libreoffice     ;documenteditor like open office
+nano            ;very simple to use consol-texteditor
+ncdu            ;harddriveussage overview
+mpv             ;video/music player
+openjdk-8-jdk   ;java
+openssh-client  ;ssh
+pandoc          ;used for pdf conversion
+pavucontrol     ;sound control
+pdf-presenter-console   ;simple pdfviewer usefull for presentations
+poppler-utils   ;extract images from pdfs
+pulseaudio      ;sound
+python          ;python
+python-pdfminer ;needed for markingbird
+python-pip      ;install python modules
+qemu-kvm        ;virtual machine
+rxvt-unicode-256color ;terminal-emulator
+sed             ;regex stream manipulation (used for hl-panel)
+sleuthkit       ;forensik utilities
+sshfs           ;mount harddrives over ssh
+strace          ;track behaviour or processes
+sudo            ;execute as root
+tar             ;compressing/unpacking
+tesseract-ocr   ;optical character/text recognition
+texlive-full    ;tex (Achtung groß)
+tig             ;git history
+tmux            ;terminal multiplexer (multiple terminals within one)
+traceroute      ;tracert/check route to host
+tree            ;show filesystemtree
+usbutils        ;usefullshit for usbdevices
+vim-nox         ;good consol texeditor with script support
+wget            ;download urls
+whois           ;lookup ips etc of DNS adresses
+wicd-curses     ;good simple networkmanager
+wine            ;windows emuator
+winetricks      ;windows emulator utilities
+xorg            ;needed for nearly all windowmangers
+xpra            ;open graphical window on remote pc
+zsh             ;much better shell than bash
