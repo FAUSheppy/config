@@ -34,6 +34,7 @@ herbstluftwm/restartpanels.sh
 htop/
 inkscape/
 libfm/
+libvirt/
 libreoffice
 mc/
 menus/
@@ -45,10 +46,13 @@ pcmanfm/
 ristretto/
 roxterm.sourceforge.net/
 SEGGER/
+sonata/
 spring
 tubus/
 user-dirs.dirs
 user-dirs.locale
+VirtualBox/
+virt-viewer/
 vlc/
 xarchiver/
 yelp/
