@@ -48,6 +48,9 @@ bindkey '^R' history-incremental-pattern-search-backward
 zmodload zsh/complist #bessere listen
 autoload -Uz compinit; compinit #completioni
 
+### UMASK ###
+umask 077
+
 #### ZSH ALIASES ####
 ## BASIC ##
 alias -g E='2>&1'
@@ -140,6 +143,8 @@ alias woist='ssh ircbox nc localhost 1339 | grep -B1 " in .zshrci'
 alias logins='nc localhost 1339 | grep -B1'
 alias cltex="rm *.log *.aux *.fdb_latexmk *.fls"
 alias wordcount="find . -type f -exec cat {} + | wc -w"
+alias bv="urxvt -e vim $1"
+alias v="vim $1"
 
 ## LS ##
 LS_COLORS=$LS_COLORS:'di=0;35:'; export LS_COLORS
