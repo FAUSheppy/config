@@ -10,6 +10,7 @@ colordiff       ;#colored diff
 coreutils       ;#many usefull tools
 cron            ;#execute tasks automaticly at certain times
 cscope          ;#find shit in big repros
+dunst           ;#notification deamon for notify-send
 dzen2           ;#used for herbsluftclient panel
 eclipse         ;#java programming enviroment
 enscript        ;#used for pdf/ps stuff
@@ -43,8 +44,9 @@ katarakt        ;#simple and performant pdfviewer
 kolourpaint4    ;#simple pictureeditor
 less            ;#simple textview
 libreoffice     ;#documenteditor like open office
+lm-sensors      ;#CPU/GraKa (temperatur) sensors
 nano            ;#very simple to use consol-texteditor
-ncdu            ;#harddriveussage overview
+ncdu            ;#harddrive ussage overview
 mpv             ;#video/music player
 openjdk-8-jdk   ;#java
 openssh-client  ;#ssh
@@ -66,6 +68,7 @@ sudo            ;#execute as root
 tar             ;#compressing/unpacking
 tesseract-ocr   ;#optical character/text recognition
 texlive-full    ;#tex (Achtung groß)
+texmaker        ;#tex gui
 tig             ;#git history
 tmux            ;#terminal multiplexer (multiple terminals within one)
 traceroute      ;#tracert/check route to host
