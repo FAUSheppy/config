@@ -57,6 +57,7 @@ fi
 hc keybind $Mod-p spawn pavucontrol
 hc keybind $Mod-Shift-l spawn libreoffice
 hc keybind $Mod-t spawn icedove
+hc keybind $Mod-Shift-i spawn urxvt -e ssh ik15ydit@ircbox.cs.fau.de -t 'tmux a -d'
 
 # basic movement
 # focusing clients
