@@ -93,9 +93,11 @@ else
 fi
 alias "ipconf"="ip addr show"
 
-## CONVERTING (cip has better defaults) ##
+## General ##
 if [[ $HOST =~ atlantis* ]]; then
     alias -g jpg2png="echo 'use convert [file_in.jpg] [file_out.png]'" 
+    alias mpc-curses='ncmpc --host 10.100.4.22'
+    alias wgplayer='ncmpc --host 10.100.4.22'
 fi
 
 ## MARKINGBIRD ##
@@ -184,4 +186,3 @@ fi
 if [[ $HOST =~ faui* ]]; then
     mesg n
 fi
-alias mpc-curses='ncmpc --host 10.100.4.22'
