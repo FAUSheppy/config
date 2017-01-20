@@ -65,6 +65,9 @@ alias mv='mv -i'
 alias cp='cp -i'
 alias ..='cd ..'
 
+## Anti-LD-Preload Chromium Wrapper ##
+alias chromium="export TMP_PRELD=$LD_PRELOAD && /bin/bash -c 'unset LD_PRELOAD && chromium' && export LD_PRELOAD=$TMP_PRELD"
+
 ## LOCKS ##
 if [[ $HOST =~ atlantis* ]]; then
     alias i3lock="i3lock --image=/home/ik15ydit/.config/i3lock/bg.png"
