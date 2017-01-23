@@ -120,6 +120,7 @@ alias sshconf="vim ~/.ssh/config"
 
 ## CIP SHORTCUTS ##
 if [[ $HOST =~ faui* ]]; then
+    alias iceweasel="bash -c 'cp -f --recursive .mozilla/firefox/d9m0msa0.test /var/tmp && chmod 700 --recursive /var/tmp/d9m0msa0.test/ && iceweasel --profile /var/tmp/d9m0msa0.test && rm -rf /var/tmp/d9m0msa0.test'"
     alias mpstubs="cd /proj/ciptmp/ik15ydit/reps/mpstubs/"
     alias reps="cd /proj/ciptmp/ik15ydit/reps/"
     alias rudipub='cd /home/cip/2010/he29heri/pub/'
@@ -152,6 +153,7 @@ LS_COLORS=$LS_COLORS:'di=0;35:'; export LS_COLORS
 alias la="ls -la --color=auto"
 alias ll="ls -ll --color=auto"
 alias ls="ls --color=auto"
+alias l="ls -lh --color=auto"
 
 ## SSH-KEYS ##
 gitssh=~/.ssh/gitrsa

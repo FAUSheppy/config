@@ -43,7 +43,7 @@ hc keybind $Mod-q close
 #spawn shit
 hc keybind $Mod-Return spawn urxvt 
 hc keybind $Mod-Shift-Return spawn xterm /bin/bash
-hc keybind $Mod-i spawn iceweasel 
+hc keybind $Mod-i spawn iceweasel
 if [[ $HOST =~ atlantis* ]]; then
     hc keybind $Mod-l spawn i3lock -i ~/.config/i3lock/bg.png -t
 else
