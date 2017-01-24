@@ -65,6 +65,9 @@ alias mv='mv -i'
 alias cp='cp -i'
 alias ..='cd ..'
 
+## Anti-LD-Preload Chromium Wrapper ##
+alias chromium="export TMP_PRELD=$LD_PRELOAD && /bin/bash -c 'unset LD_PRELOAD && chromium' && export LD_PRELOAD=$TMP_PRELD"
+
 ## LOCKS ##
 if [[ $HOST =~ atlantis* ]]; then
     alias i3lock="i3lock --image=/home/ik15ydit/.config/i3lock/bg.png"
@@ -81,6 +84,8 @@ if [[ $HOST =~ atlantis* ]]; then
     #alias gedit="gedit 2&>/dev/null &"
     alias kpaint="kolourpaint 2&>/dev/null &"
     alias telegram='ssh uni -t "/proj/ciptmp/ik15ydit/Zeug/Telegram/tg/bin/telegram-cli -k tg-server.pub"'
+    alias telegram-plain='ssh uni -t "/proj/ciptmp/ik15ydit/Zeug/Telegram/tg/bin/telegram-cli --disable-colors --disable-readline -k tg-server.pub"'
+
     alias x='startx'
 else
     alias pcolor='for i in {0..255} ; do printf "\x1b[38;5;${i}mcolour${i} "; if [[ $(((($i+3)/6)*6)) -eq $(($i+3)) ]]; then echo; fi; done'
@@ -88,10 +93,23 @@ else
 fi
 alias "ipconf"="ip addr show"
 
-## CONVERTING (cip has better defaults) ##
+## General ##
 if [[ $HOST =~ atlantis* ]]; then
     alias -g jpg2png="echo 'use convert [file_in.jpg] [file_out.png]'" 
+    alias mpc-curses='ncmpc --host 10.100.4.22'
+    alias wgplayer='ncmpc --host 10.100.4.22'
 fi
+
+## Pathing ##
+CIP_MOUNTPOINT = "$HOME/moutpoints/cip"
+FS_PREFIX=""
+CIPTMP="/proj/ciptmp/$USER"
+if [[ $HOST =~ atlantis* ]]; then
+        FS_PREFIX=$CIP_MOUNTPOINT
+fi
+alias ct="cd $FS_PREFIX$CIPTMP"
+alias mpstubs="cd $FS_PREFIX$CIPTMP/reps/mpstubs/"
+alias tutoren="cd $FS_PREFIX$CIPTMP/reps/tutorenShare"
 
 ## MARKINGBIRD ##
 export PYTHONPATH=/local/python3-typing
@@ -109,8 +127,8 @@ alias irc="ssh ircbox.cs.fau.de -t 'command; tmux a'"
 alias -g uni="faui06c.cs.fau.de"
 alias cipkey="ssh-add ~/.ssh/ciplogin"
 alias cipra="xpra start ssh:ik15ydit@faui00n.cs.fau.de:100 --start-child urxvt"
-alias mountcip="sshfs ik15ydit@faui00n.cs.fau.de:/ -o idmap=user $HOME/cip/root/" 
-alias umountcip="fusermount -u $HOME/cip/root/"
+alias mountcip="sshfs ik15ydit@faui00n.cs.fau.de:/ -o idmap=user $CIP_MOUNTPOINT"
+alias umountcip="fusermount -u $CIP_MOUNTPOINT"
 
 ## DIRECT TO CONFIG ##
 alias hlconf="vim ~/.config/herbstluftwm/autostart"
@@ -150,8 +168,8 @@ alias v="vim $1"
 
 ## LS ##
 LS_COLORS=$LS_COLORS:'di=0;35:'; export LS_COLORS
-alias la="ls -la --color=auto"
-alias ll="ls -ll --color=auto"
+alias la="ls -lAh --color=auto"
+alias ll="ls -llh --color=auto"
 alias ls="ls --color=auto"
 alias l="ls -lh --color=auto"
 
@@ -181,4 +199,3 @@ fi
 if [[ $HOST =~ faui* ]]; then
     mesg n
 fi
-alias mpc-curses='ncmpc --host 10.100.4.22'

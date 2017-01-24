@@ -12,6 +12,8 @@ xsetroot -solid '#5A8E3A'
 
 # reset
 hc keyunbind --all
+pkill dunst
+pkill xautolock
 
 #variables
 Mod=Mod4     # Use the super key as the main modifier
@@ -27,6 +29,9 @@ fi
 if [[ "$HOST" == "atlantislaptop" ]]; then
     hc keybind XF86MonBrightnessUp spawn /bin/bash -c 'tee /sys/class/backlight/intel_backlight/brightness <<< "$(expr $(cat /sys/class/backlight/intel_backlight/brightness) + 5)"' 
     hc keybind XF86MonBrightnessDown spawn /bin/bash -c 'tee /sys/class/backlight/intel_backlight/brightness <<< "$(expr $(cat /sys/class/backlight/intel_backlight/brightness) - 5)"'
+    xautolock -time 15 -locker /home/ik15ydit/.config/i3lock/piclock.sh &
+    /usr/bin/dunst & 
+    hc keybind $Mod-o spawn /bin/bash -c "systemctl hibernate"
 fi
 
 ######### GENERAL SETUP #########
@@ -43,7 +48,7 @@ hc keybind $Mod-q close
 #spawn shit
 hc keybind $Mod-Return spawn urxvt 
 hc keybind $Mod-Shift-Return spawn xterm /bin/bash
-hc keybind $Mod-i spawn iceweasel
+hc keybind $Mod-i spawn urxvt -e nohup zsh -c "chromium &" #need to reliably use the zshconf chromium
 if [[ $HOST =~ atlantis* ]]; then
     hc keybind $Mod-l spawn i3lock -i ~/.config/i3lock/bg.png -t
 else
