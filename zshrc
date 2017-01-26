@@ -101,7 +101,7 @@ if [[ $HOST =~ atlantis* ]]; then
 fi
 
 ## Pathing ##
-CIP_MOUNTPOINT="$HOME/moutpoints/cip"
+CIP_MOUNTPOINT="$HOME/moutpoints/cip_root"
 FS_PREFIX=""
 CIPTMP="/proj/ciptmp/$USER"
 if [[ $HOST =~ atlantis* ]]; then
