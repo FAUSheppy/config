@@ -143,6 +143,11 @@ if [[ $HOST =~ faui* ]]; then
     alias reps="cd /proj/ciptmp/ik15ydit/reps/"
     alias rudipub='cd /home/cip/2010/he29heri/pub/'
 fi
+## MOUNTABLE CIP-SHORTCUTS ##
+if [[ $HOST =~ atlantis* ]]; then
+    alias ciptmp="cd ~/mountpoints/cip_root/proj/ciptmp/ik15ydit/"
+    alias ciphome="cd ~/mountpoints/cip_root/home/cip/2013/ik15ydit/"
+fi
 
 ## DIPLAY CONTROL ##
 if [[ $HOST =~ atlantis* ]]; then
