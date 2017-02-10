@@ -34,6 +34,7 @@ if [[ "$HOST" == "atlantislaptop" ]]; then
     hc keybind $Mod-o spawn /bin/bash -c "systemctl hibernate"
 fi
 
+
 ######### GENERAL SETUP #########
 # keybindings
 #client handling
@@ -58,6 +59,7 @@ hc keybind $Mod-p spawn pavucontrol
 hc keybind $Mod-Shift-l spawn libreoffice
 hc keybind $Mod-t spawn icedove
 hc keybind $Mod-Shift-i spawn urxvt -e ssh ik15ydit@ircbox.cs.fau.de -t 'tmux a -d'
+hc keybind $Mod-Shift-t spawn urxvt -e ssh faui06c -t "/proj/ciptmp/ik15ydit/Zeug/Telegram/tg/bin/telegram-cli -k tg-server.pub"
 
 # basic movement
 # focusing clients
