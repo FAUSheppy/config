@@ -110,6 +110,7 @@ fi
 alias ct="cd $FS_PREFIX$CIPTMP"
 alias mpstubs="cd $FS_PREFIX$CIPTMP/reps/mpstubs/"
 alias tutoren="cd $FS_PREFIX$CIPTMP/reps/tutorenShare"
+alias idb="cd $FS_PREFIX$CIPTMP/Backup/IDB_2017/"
 
 ## MARKINGBIRD ##
 export PYTHONPATH=/local/python3-typing
@@ -142,6 +143,8 @@ if [[ $HOST =~ faui* ]]; then
     alias mpstubs="cd /proj/ciptmp/ik15ydit/reps/mpstubs/"
     alias reps="cd /proj/ciptmp/ik15ydit/reps/"
     alias rudipub='cd /home/cip/2010/he29heri/pub/'
+    alias sudo="echo THIS IS THE CIP NOT YOUT COMPUTER!!!!! >&2"
+    alias su="echo THIS IS THE CIP NOT YOUT COMPUTER!!!!! >&2"
 fi
 ## MOUNTABLE CIP-SHORTCUTS ##
 if [[ $HOST =~ atlantis* ]]; then
