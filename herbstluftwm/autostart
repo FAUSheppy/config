@@ -14,6 +14,7 @@ xsetroot -solid '#5A8E3A'
 hc keyunbind --all
 pkill dunst
 pkill xautolock
+pkill -s 15 hl_pracct_deamon #send SIGTERM for correct termination during write
 
 #variables
 Mod=Mod4     # Use the super key as the main modifier
@@ -36,6 +37,9 @@ fi
 
 
 ######### GENERAL SETUP #########
+### Start Pythonscripts  ###
+~/.config/herbstluftwm/hl_pracct_deamon.py &
+
 # keybindings
 #client handling
 hc keybind $Mod-Shift-q quit
