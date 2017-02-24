@@ -118,21 +118,18 @@ hc pad $monitor $panel_height
         echo -n "^bg()^fg() ${windowtitle//^/^^}"
         # small adjustments
 
-        #powersupply
-        pwr="NO BATTERY"
-        if [ $HOSTNAME == atlantislaptop ] || [$HOSTNAME == atlantismedion ] ; then
-                pwr="$(acpi -b | sed -r 's/Battery [0-9]+: //')"
-        fi
-        pracct=""
-        if [ $HOSTNAME~="faui*" ]; then
-                pracct="$(pr_acct | head -n 1 | sed -r 's/.*: //' | sed -r 's/\x1b\[[0-9]+m//' | sed -r 's/\x1b\[[0-9]+m//')"
-        fi
+        powersupply
+        #pwr="NO BATTERY"
+        #if [ $HOSTNAME == atlantislaptop ] || [$HOSTNAME == atlantismedion ] ; then
+        #        pwr="$(acpi -b | sed -r 's/Battery [0-9]+: //')"
+        #fi
 
-        right="^fg(#32CD32) Druckerguthaben: $pracct Euro^bg() ^fg(#ff0000) $pwr $separator^bg() $date $separator"
+        right="$($HOME/.config/herbstluftwm/panel_content.py) $date" 
+        #right="^fg(#32CD32) Druckerguthaben: -256 Euro^bg() ^fg(#ff0000) $separator^bg() $date $separator"
         right_text_only=$(echo -n "$right" | sed 's.\^[^(]*([^)]*)..g')
         # get width of right aligned text.. and add some space..
         width=$($textwidth "$font" "$right_text_only    ")
-        echo -n "^pa($(($panel_width - $width)))$right"
+        echo -n "^pa($(($panel_width - $width - 20)))$right"
         echo
 
         ### Data handling ###
