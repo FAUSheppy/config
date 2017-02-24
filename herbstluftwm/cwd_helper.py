@@ -6,11 +6,7 @@ import sys
 import os
 import shlex
 import psutil
-
-def error(s):
-        with open("herbstlog",'a') as f:
-                time = str(datetime.datetime.now().time())[:-7] #cut seconds at the end
-                f.write(time + "ERROR" + os.path.basename(__file__) + s)
+from hl_error import error
 
 out = subprocess.check_output(['xdpyinfo']).decode().split('\n')
 
