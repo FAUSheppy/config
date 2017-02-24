@@ -6,9 +6,9 @@ import sys
 import os
 import shlex
 import psutil
-from hl_error import error
+from hl_error import error, shexec
 
-out = subprocess.check_output(['xdpyinfo']).decode().split('\n')
+out = shexec('xdpyinfo').split('\n')
 
 ############ GET FOCUSED WINDOW ID ##############
 window = -1
@@ -25,7 +25,7 @@ if window==-1:
 
 ############ IF URXVT GET PID ###########
 pid = -1
-out = subprocess.check_output(shlex.split('xprop -id '+hex(window))).decode().split('\n')
+out = shexec('xprop -id '+hex(window)).split('\n')
 for l in out:
         if l.startswith('WM_CLASS(STRING)') and 'urxvt' in l:
                 break;
@@ -38,9 +38,10 @@ for l in out:
 if pid==-1:
         error("Failed to get PID")
 
+############ START NEW TERMINAL ############
 process = psutil.Process(pid)
 for p in process.children(): #recursive=false
-        if p.name()=='zsh' or p.name()=='bash':
+        if p.name() in ['zsh','bash']:
                 subprocess.Popen(shlex.split('urxvt -cd ' + p.cwd()))
                 break
 sys.exit()
