@@ -155,10 +155,10 @@ hc keybind $Mod-c cycle
 #hc keybind $Mod-i jumpto urgent
 
 #pulseaudio
-hc keybind XF86AudioRaiseVolume spawn /bin/sh -c 'pactl set-sink-volume @DEFAULT_SINK@ +3%' #increase sound volume
-hc keybind $Mod-u spawn /bin/sh -c 'pactl set-sink-volume @DEFAULT_SINK@ +3%' 
-hc keybind XF86AudioLowerVolume spawn /bin/sh -c 'pactl set-sink-volume @DEFAULT_SINK@ -- -3%' #decrease sound volume
-hc keybind $Mod-Shift-u spawn /bin/sh -c 'pactl set-sink-volume @DEFAULT_SINK@ -- -3%' 
+hc keybind XF86AudioRaiseVolume spawn /bin/sh -c 'pactl set-sink-volume @DEFAULT_SINK@ +5%' #increase sound volume
+hc keybind $Mod-u spawn /bin/sh -c 'pactl set-sink-volume @DEFAULT_SINK@ +5%' 
+hc keybind XF86AudioLowerVolume spawn /bin/sh -c 'pactl set-sink-volume @DEFAULT_SINK@ -5%' #decrease sound volume
+hc keybind $Mod-Shift-u spawn /bin/sh -c 'pactl set-sink-volume @DEFAULT_SINK@ -5%' 
 hc keybind XF86AudioMute spawn /bin/sh -c 'pactl set-sink-mute @DEFAULT_SINK@ toggle && pactl set-sink-volume @DEFAULT_SINK@ 100%'  #toggle mute
 hc keybind $Mod-m spawn /bin/sh -c 'pactl set-sink-mute @DEFAULT_SINK@ toggle' 
 
