@@ -2,8 +2,6 @@
 
 import hl_utils
 
-final = ""
-date = ""
 sep = " | "
 
 RED = 0xff0000
@@ -74,4 +72,14 @@ def battery():
         else:
                 return ""
 
+def irc():
+                try:
+                        fname = hl_utils.hlpath("irc.log")
+                        tmp = "error"
+                        with open(fname) as f:
+                                pass
+                        #handle pipe
+                        return color_panel(PM,RED)
+                except(IOError):
+                        return ""
 print(guthaben(),battery())
