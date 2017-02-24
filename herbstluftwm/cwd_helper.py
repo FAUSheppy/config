@@ -6,7 +6,7 @@ import sys
 import os
 import shlex
 import psutil
-from hl_error import error, shexec
+from hl_utils import error, shexec
 
 out = shexec('xdpyinfo').split('\n')
 

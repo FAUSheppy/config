@@ -2,7 +2,7 @@
 import os
 import sys
 import time
-from hl_error import error, is_cip, shexec, color_remove
+from hl_utils import error, is_cip, shexec, color_remove
 
 #Druckerguthaben
 if is_cip():
