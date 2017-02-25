@@ -87,6 +87,8 @@ def irc():
                                 return ""
                         msg =  " ".join(tmp[-1].split(" ")[2:])[:50]
                         user = tmp[-1].split(" ")[1][:15]
+                        if not "%push" in msg:
+                                return ""
                         ret_string = "MSG FROM: "+user+"-> "+msg.rstrip('\n')+" -  [ "+str(len(tmp))+" total ]"
                         return color_panel(ret_string,RED)
                 except(IOError):
