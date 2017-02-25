@@ -66,7 +66,8 @@ def guthaben():
 def battery():
         if hl_utils.is_laptop():
                 try:
-                        return color_panel(hl_utils.shexec("acpi -b | sed -r 's/Battery [0-9]+: //"),RED)
+                        bat = hl_utils.shexec("acpi -b | sed -r 's/Battery [0-9]+: //")
+                        return color_panel(bat,get_color(int(bar.rstrip('%')),0,100))
                 except(ValueError):
                         return color_panel("acpi or sed not in path",RED)
         else:
