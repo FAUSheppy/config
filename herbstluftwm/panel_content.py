@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import hl_utils
+import string
 
 sep = " | "
 
@@ -74,13 +75,20 @@ def battery():
                 return ""
 
 def irc():
+        if hl_utils.is_cip():
+                ret_string = "IRC ERROR"
                 try:
                         fname = hl_utils.hlpath("irc.log")
-                        tmp = "error"
+                        tmp = []
                         with open(fname) as f:
-                                pass
-                        #handle pipe
-                        return color_panel(PM,RED)
+                                for l in f:
+                                        tmp+=[l]
+                        if len(tmp) == 0:
+                                return ""
+                        msg =  " ".join(tmp[-1].split(" ")[2:])[:50]
+                        user = tmp[-1].split(" ")[1][:15]
+                        ret_string = "MSG FROM: "+user+"-> "+msg.rstrip('\n')+" -  [ "+str(len(tmp))+" total ]"
+                        return color_panel(ret_string,RED)
                 except(IOError):
                         return ""
-print(guthaben(),battery())
+print(irc(),guthaben(),battery())
