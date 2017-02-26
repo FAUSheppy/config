@@ -150,3 +150,6 @@ endpython
         return "echo ''"
     endfunction
 endif
+
+" use x11 primary selection for yanking (yes, "unnamed" is the key for that..)
+set clipboard=unnamed 
