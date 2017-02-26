@@ -90,9 +90,9 @@ def irc():
                         user = tmp[-1].split(" ")[1][:15]
                         if not "%push" in msg:
                                 return ""
-                        pattern = re.compile("(\^+fg[(]+#[0-9]+[)]+)|\n|\r|\t")
-                        msg = re.sub(pattern,msg,"ESC_SEQ")
-                        user = re.sub(pattern,user,"ESC_SEQ")
+                        pattern = re.compile("\^+[fb]g[(]+#[0-9]+[)]+")
+                        msg = re.sub(pattern,"",msg)
+                        user = re.sub(pattern,"",user)
                         ret_string = "MSG FROM: "+user+"-> "+msg.rstrip('\n')+" -  [ "+str(len(tmp))+" total ]"
                         return color_panel(ret_string,RED)
                 except(IOError):
