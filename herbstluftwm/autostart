@@ -65,6 +65,8 @@ hc keybind $Mod-t spawn icedove
 hc keybind $Mod-Shift-i spawn urxvt -e ssh ik15ydit@ircbox.cs.fau.de -t 'tmux a -d'
 hc keybind $Mod-Shift-t spawn urxvt -e ssh faui06c -t "/proj/ciptmp/ik15ydit/Zeug/Telegram/tg/bin/telegram-cli -k tg-server.pub"
 hc keybind $Mod-j spawn /bin/bash -c "rm $HOME/.config/herbstluftwm/irc.log && herbstclient spawn urxvt -e 'exit'"
+hc keybind $Mod-e spawn rofi -combi-mode window,run -show combi -modi combi
+hc keybind $Mod-Shift-e spawn rofi -show run
 
 # basic movement
 # focusing clients
