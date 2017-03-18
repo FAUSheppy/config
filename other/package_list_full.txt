@@ -21,7 +21,6 @@ exfat-utils     ;#more options for exfat
 feh             ;#simple pictureviewer
 findutils       ;#find things
 gcc-4.9-base    ;#C-Compiler
-gcc-arm-none-eabi   ;#cross compiler used for gene (bcarbeit)
 g++             ;#C++ compiler
 gcp             ;#copy with statusbar
 gedit           ;#graphical texteditor
