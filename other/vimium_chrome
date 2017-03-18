@@ -1,0 +1,21 @@
+# Insert your preferred key mappings here.
+map  ww scrollToTop
+map ss scrollToBottom
+
+unmap h
+unmap j
+
+map h scrollPageUp
+map j scrollPageDown
+
+map a scrollLeft
+map d scrollRight
+map s scrollDown
+map w scrollUp
+map q previousTab
+map e nextTab
+map c scrollPageDown
+map y scrollPageUp
+
+map A goBack
+map D goForward
