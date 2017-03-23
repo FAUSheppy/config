@@ -132,7 +132,7 @@ if @% =~ ".*.dia"
         let line=getline('.')
         "backslash muss escaped werden um + zu escapen in func
         if line =~ "\[A-Z]\\+.*:"
-python << endpython
+python3 << endpython
 import vim
 l = vim.current.line
 llist = l.split(":")
