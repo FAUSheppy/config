@@ -56,6 +56,7 @@ def get_color(nr,start,end):
 
 
 def guthaben():
+        guthaben = ''
         if hl_utils.is_cip():
                 tmp = -1
                 with open(hl_utils.hlpath("pracct.log")) as f:
@@ -65,13 +66,15 @@ def guthaben():
                 guthaben = color_panel(guthaben,col)
         return guthaben;
 
+
 def battery():
         if hl_utils.is_laptop():
                 try:
-                        bat = hl_utils.shexec("acpi -b | sed -r 's/Battery [0-9]+: //")
-                        return color_panel(bat,get_color(int(bar.rstrip('%')),0,100))
-                except(ValueError):
-                        return color_panel("acpi or sed not in path",RED)
+                        bat = hl_utils.shexec("acpi -b")
+                        bat = re.compile(r'Battery [0-9]+: ').sub('',bat)
+                        return color_panel(bat.strip('\n'),get_color(int(bat.split('%')[0][-2:].rstrip('%')),0,100))
+                except ValueError as e:
+                        return color_panel(str(e),RED)
         else:
                 return ""
 
@@ -96,5 +99,8 @@ def irc():
                         ret_string = "MSG FROM: "+user+"-> "+msg.rstrip('\n')+" -  [ "+str(len(tmp))+" total ]"
                         return color_panel(ret_string,RED)
                 except(IOError):
-                        return ""
-print(irc(),guthaben(),battery())
+                        pass
+        else:
+                return ''
+
+print(irc(),guthaben(),battery(),sep='')
