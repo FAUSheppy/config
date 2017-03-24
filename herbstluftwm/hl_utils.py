@@ -24,6 +24,6 @@ def is_laptop():
         return "laptop" in u.nodename or "atlantismedion" in u.nodename
 
 def error(s):
-        with open("herbstlog",'a') as f:
+        with open(hlpath("herbstlog"),'a') as f:
                 time = str(datetime.datetime.now().time())[:-7] #cut seconds at the end
-                f.write(time + "ERROR" + os.path.basename(__file__) + s)
+                f.write(time + " ERROR: " + os.path.basename(__file__) + ' ' +s +'\n')

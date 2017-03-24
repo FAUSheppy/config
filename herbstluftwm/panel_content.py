@@ -12,6 +12,7 @@ GREY = 0x909090
 WHITE = 0xefefef
 DEFAULT_FG = 0x476243 
 COLOR_BORDER = 5.0
+BAT_COLOR_OFFSET = 10
 
 def color_panel(s,hex_code,seper=True):
         if type(hex_code)==int:
@@ -24,34 +25,38 @@ def color_panel(s,hex_code,seper=True):
         return "^fg(#" + hex_code + ") " + s + "^bg()"+sep
 
 def get_color(nr,start,end):
-        if end == start or nr > end:
+        if end == start or nr >= end:
                 return hex(GREEN)
         else:
                 r,g,b = 0,0,0
                 interval = 256 + 256
                 custom_interval = abs(start-end)
                 div = float(interval)/float(custom_interval)
-                if div >= interval/3:
-                        error("Interval for coloring too small, using default")
+                if div >= interval:
+                        hl_utils.error("Interval for coloring too small, using default")
                         return WHITE
                 nr = nr*div
                 if custom_interval > interval:
                         custom_interval = interval
-                if nr > 256:
+                if nr >= 256:
                         g = 0xFF
                         r = int(abs(nr - (256+256))) #counts down reverse to nr
+                        #aaah fuck my life
+                        if r == 0x100:
+                                r = 0xFF
                         b = 0
-                elif nr > 0:
-                        g = int(nr - 256)
+                elif nr >= 0:
+                        g = int(nr)
                         r = 0xFF
                         b = 0
                 else:
-                        error("Negative interval value???")
+                        hl_utils.error("Negative interval value???")
+                        return(WHITE)
                 r = r << 16
                 g = g << 8
                 tmp_col = r + g + b 
                 if tmp_col > 0xFFFF00:
-                        error("color value too high")
+                        hl_utils.error("color value too high")
                 return hex(tmp_col)
 
 
@@ -72,7 +77,7 @@ def battery():
                 try:
                         bat = hl_utils.shexec("acpi -b")
                         bat = re.compile(r'Battery [0-9]+: ').sub('',bat)
-                        return color_panel(bat.strip('\n'),get_color(int(bat.split('%')[0][-2:].rstrip('%')),0,100))
+                        return color_panel(bat.strip('\n'),get_color(int(bat.split('%')[0][-2:].rstrip('%'))+BAT_COLOR_OFFSET,0,100))
                 except ValueError as e:
                         return color_panel(str(e),RED)
         else:
