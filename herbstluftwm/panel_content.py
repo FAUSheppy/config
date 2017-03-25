@@ -77,7 +77,15 @@ def battery():
                 try:
                         bat = hl_utils.shexec("acpi -b")
                         bat = re.compile(r'Battery [0-9]+: ').sub('',bat)
-                        return color_panel(bat.strip('\n'),get_color(int(bat.split('%')[0][-2:].rstrip('%'))+BAT_COLOR_OFFSET,0,100))
+                        plain = int(bat.split('%')[0][-2:].rstrip('%'))
+                        
+                        cur_time = [bat.split('%, ')[1].split(' ')[0].split(':')]
+
+                        if plain > 10:
+                                plain += BAT_COLOR_OFFSET
+                        if plain <= 1:
+                                return color_panel(">>>>>>>>>>>>>>>> --------------- WARNING BATTER FAILURE IMMINENT --------------- <<<<<<<<<<<<<",RED)
+                        return color_panel(bat.strip('\n'),get_color(plain,0,100))
                 except ValueError as e:
                         return color_panel(str(e),RED)
         else:
