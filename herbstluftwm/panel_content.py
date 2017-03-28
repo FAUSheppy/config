@@ -76,6 +76,8 @@ def battery():
         if hl_utils.is_laptop():
                 try:
                         bat = hl_utils.shexec("acpi -b")
+                        if bat == '':
+                                return color_panel("BATTERY FAILURE",RED)
                         bat = re.compile(r'Battery [0-9]+: ').sub('',bat)
                         plain = int(bat.split('%')[0][-2:].rstrip('%'))
                         
