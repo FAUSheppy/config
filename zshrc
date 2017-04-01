@@ -88,9 +88,13 @@ if [[ $HOST =~ atlantis* ]]; then
 
     alias x='startx'
 else
-    alias pcolor='for i in {0..255} ; do printf "\x1b[38;5;${i}mcolour${i} "; if [[ $(((($i+3)/6)*6)) -eq $(($i+3)) ]]; then echo; fi; done'
     alias telegram='/proj/ciptmp/ik15ydit/Zeug/Telegram/tg/bin/telegram-cli -k tg-server.pub'
 fi
+alias rehash="source ~/.config/zshrc"
+function qfind {
+            find . -name "$1"
+}
+alias pcolor='for i in {0..255} ; do printf "\x1b[38;5;${i}mcolour${i} "; if [[ $(((($i+3)/6)*6)) -eq $(($i+3)) ]]; then echo; fi; done'
 alias "ipconf"="ip addr show"
 
 ## General ##
