@@ -58,6 +58,8 @@ if [[ $HOST =~ atlantis* ]]; then
     hc keybind $Mod-l spawn i3lock -i ~/.config/i3lock/bg.png -t
 else
     hc keybind $Mod-l spawn xlock
+    hc keybind $Mod-Shift-x spawn xlock -mode blank -geometry 1x1
+    hc keybind $Mod-x spawn xlock -mode blank -geometry 1x1
 fi
 hc keybind $Mod-p spawn pavucontrol
 hc keybind $Mod-Shift-l spawn libreoffice

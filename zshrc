@@ -68,6 +68,13 @@ alias ..='cd ..'
 ## Anti-LD-Preload Chromium Wrapper ##
 alias chromium="export TMP_PRELD=$LD_PRELOAD && /bin/bash -c 'unset LD_PRELOAD && chromium' && export LD_PRELOAD=$TMP_PRELD"
 
+## GIT ##
+alias gstat="git status"
+alias gpull="git pull"
+alias gpush="git push"
+alias gcom="git commit -a"
+alias gadd="git add"
+
 ## LOCKS ##
 if [[ $HOST =~ atlantis* ]]; then
     alias i3lock="i3lock --image=/home/ik15ydit/.config/i3lock/bg.png"
@@ -188,7 +195,9 @@ alias l="ls -lh --color=auto"
 ## SSH-KEYS ##
 gitssh=~/.ssh/gitrsa
 function key(){
-        eval `ssh-agent`
+        if [[ -z $SSH_AUTH_SOCK ]]; then 
+                eval `ssh-agent`
+        fi
         ssh-add $gitssh
 }
 
