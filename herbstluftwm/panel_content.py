@@ -77,15 +77,23 @@ def battery():
                 try:
                         bat = hl_utils.shexec("acpi -b")
                         bat = re.compile(r'Battery [0-9]+: ').sub('',bat)
-                        plain = int(bat.split('%')[0][-2:].rstrip('%'))
+                        plain = int(bat.split('%')[0][-3:].rstrip('%').lstrip(','))
                         
-                        cur_time = [bat.split('%, ')[1].split(' ')[0].split(':')]
+                        #cur_time = [bat.split('%, ')[1].split(' ')[0].split(':')]
 
                         if plain > 10:
                                 plain += BAT_COLOR_OFFSET
-                        if plain <= 1:
+                        
+                        if bat.startswith("Charging"):
+                                return color_panel("Charging",GREEN,seper=False) + color_panel(bat.lstrip("Charging ,").strip('\n'),get_color(plain,0,100))
+                        elif bat.startswith("Full"):
+                                return color_panel("On Supply and fully charged",GREEN)
+                        elif plain <= 1:
                                 return color_panel(">>>>>>>>>>>>>>>> --------------- WARNING BATTER FAILURE IMMINENT --------------- <<<<<<<<<<<<<",RED)
-                        return color_panel(bat.strip('\n'),get_color(plain,0,100))
+                        elif bat.startswith("Discharging"):
+                                return color_panel("Discharging",RED,seper=False) + color_panel(bat.lstrip("Discharging ,").strip('\n'),get_color(plain,0,100))
+                        else:
+                                return color_panel(bat.strip('\n'),get_color(plain,0,100))
                 except ValueError as e:
                         return color_panel(str(e),RED)
         else:
