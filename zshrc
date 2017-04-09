@@ -159,6 +159,7 @@ if [[ $HOST =~ atlantis* ]]; then
 fi
 if [[ $HOST == "atlantislaptop" ]]; then
     alias backlightctl="tee /sys/class/backlight/intel_backlight/brightness <<< $1"
+    alias nodisplayoff='xset s off'
 fi
 
 ## JAVA ##
@@ -190,18 +191,6 @@ function key(){
 
 ## ROOT ##
 alias udev_reload="udevadm control --reload-rules && udevadm trigger" #reload all udevrules on the fly
-
-### GENE-SHIT ###
-if [[ $HOST == "atlantislaptop" ]]; then
-    GENE_BASE="/home/ik15ydit/bcarbeit/new_try"
-    GENE_ROOT="/home/ik15ydit/bcarbeit/new_try/gene-setup"
-    INSTALL_DIR=$GENE_ROOT/local/bin
-    #rm -r $INSTALL_DIR/lib/platin/gems/ 2&> /dev/null >  /dev/null
-    #$GENE_ROOT/setup-platin.sh -i $INSTALL_DIR 2&> /dev/null > /dev/null &
-    #export PATH=$GENE_BASE/local/bin:$PATH
-    alias -g patmos-clang="/home/ik15ydit/bcarbeit/new_try/gene-setup/local/bin/patmos-clang"
-    alias -g patmos-gene="/home/ik15ydit/bcarbeit/new_try/gene-setup/local/bin/patmos-gene"
-fi
 
 ### DISABLE MESSAGES ###
 if [[ $HOST =~ faui* ]]; then
