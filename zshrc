@@ -93,7 +93,7 @@ if [[ $HOST =~ atlantis* ]]; then
     alias telegram='ssh uni -t "/proj/ciptmp/ik15ydit/Zeug/Telegram/tg/bin/telegram-cli -k tg-server.pub"'
     alias telegram-plain='ssh uni -t "/proj/ciptmp/ik15ydit/Zeug/Telegram/tg/bin/telegram-cli --disable-colors --disable-readline -k tg-server.pub"'
 
-    alias x='startx'
+    alias x='exec startx'
 else
     alias telegram='/proj/ciptmp/ik15ydit/Zeug/Telegram/tg/bin/telegram-cli -k tg-server.pub'
 fi
