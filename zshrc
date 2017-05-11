@@ -200,7 +200,7 @@ alias l="ls -lh --color=auto"
 
 ## SSH-KEYS ##
 gitssh=~/.ssh/gitrsa
-ssh-add $gitssh
+alias gitkey="ssh-add $gitssh"
 
 ## ROOT ##
 alias udev_reload="udevadm control --reload-rules && udevadm trigger" #reload all udevrules on the fly
