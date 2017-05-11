@@ -48,6 +48,11 @@ bindkey '^R' history-incremental-pattern-search-backward
 zmodload zsh/complist #bessere listen
 autoload -Uz compinit; compinit #completioni
 
+### SSH-AGENT ###
+if [ -f $HOME/.config/agent_socket ]; then
+    export SSH_AUTH_SOCK=/tmp/ssh-$(cat $HOME/.config/agent_socket)
+fi
+
 ### UMASK ###
 umask 077
 
@@ -195,12 +200,7 @@ alias l="ls -lh --color=auto"
 
 ## SSH-KEYS ##
 gitssh=~/.ssh/gitrsa
-function key(){
-        if [[ -z $SSH_AUTH_SOCK ]]; then 
-                eval `ssh-agent`
-        fi
-        ssh-add $gitssh
-}
+ssh-add $gitssh
 
 ## ROOT ##
 alias udev_reload="udevadm control --reload-rules && udevadm trigger" #reload all udevrules on the fly
