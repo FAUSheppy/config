@@ -101,6 +101,7 @@ if [[ $HOST =~ atlantis* ]]; then
     alias x='exec startx'
 else
     alias telegram='/proj/ciptmp/ik15ydit/Zeug/Telegram/tg/bin/telegram-cli -k tg-server.pub'
+    alias burp=/home/cip/2013/ik15ydit/ciptmp/reps/WebScan/burpsuite/BurpSuiteFree
 fi
 alias rehash="source ~/.config/zshrc"
 function qfind {
@@ -124,9 +125,7 @@ if [[ $HOST =~ atlantis* ]]; then
         FS_PREFIX=$CIP_MOUNTPOINT
 fi
 alias ct="cd $FS_PREFIX$CIPTMP"
-alias mpstubs="cd $FS_PREFIX$CIPTMP/reps/mpstubs/"
 alias tutoren="cd $FS_PREFIX$CIPTMP/reps/tutorenShare"
-alias idb="cd $FS_PREFIX$CIPTMP/Backup/IDB_2017/"
 
 ## MARKINGBIRD ##
 export PYTHONPATH=/local/python3-typing
@@ -190,6 +189,7 @@ alias cltex="rm *.log *.aux *.fdb_latexmk *.fls"
 alias wordcount="find . -type f -exec cat {} + | wc -w"
 alias bv="urxvt -e vim $1"
 alias v="vim $1"
+alias chrome_with_proxy="unset LD_PRELOAD && /usr/bin/chromium --proxy-server="127.0.0.1:8080" --user-data-dir=/proj/ciptmp/ik15ydit/SymlinksLocationsBurpChrome"
 
 ## LS ##
 LS_COLORS=$LS_COLORS:'di=0;35:'; export LS_COLORS
