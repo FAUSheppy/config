@@ -68,6 +68,9 @@ alias ..='cd ..'
 ## Anti-LD-Preload Chromium Wrapper ##
 alias chromium="export TMP_PRELD=$LD_PRELOAD && /bin/bash -c 'unset LD_PRELOAD && chromium' && export LD_PRELOAD=$TMP_PRELD"
 
+## Start thunderbird with correct time-format ##
+alias thunderbird="LC_ALL=en_DK.utf8 && export LC_ALL && thunderbird"
+
 ## GIT ##
 alias gstat="git status"
 alias gpull="git pull"
