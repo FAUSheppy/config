@@ -16,8 +16,8 @@
 # IPv6 syntax: [address]:port
 # For example: 0.0.0.0:9999, [::]:9999
 # IPv6 adresses are configured to only allow IPv6 connections
-hosts = 192.168.178.42:5232
-#osts = 10.21.26.59:5232
+#hosts = 0.0.0.0:5232
+hosts = squarez.fauiwg.de:7000
 
 # Daemon flag
 #daemon = False
@@ -26,16 +26,16 @@ hosts = 192.168.178.42:5232
 #pid =
 
 # SSL flag, enable HTTPS protocol
-ssl = True
+ssl = False
 
 # SSL certificate path
-certificate = /home/ik15ydit/radicale/ssl/server.crt
+certificate = /home/sheppy/radicale/ssl/fauiwg_radicale.cert
 
 # SSL private key
-key = /home/ik15ydit/radicale/ssl/server.key
+key = /home/sheppy/radicale/ssl/fauiwg_radicale.key
 
 # SSL Protocol used. See python's ssl module for available values
-#protocol = PROTOCOL_SSLv23
+protocol = TLSv1.2
 
 # Ciphers available. See python's ssl module for available ciphers
 #ciphers =
@@ -44,13 +44,13 @@ key = /home/ik15ydit/radicale/ssl/server.key
 #dns_lookup = True
 
 # Root URL of Radicale (starting and ending with a slash)
-base_prefix = /
+# base_prefix = /
 
 # Possibility to allow URLs cleaned by a HTTP server, without the base_prefix
 #can_skip_base_prefix = False
 
 # Message displayed in the client when a password is needed
-#realm = Radicale - Password Required
+realm = fauiwg-caldav - Password Required
 
 
 [encoding]
@@ -81,11 +81,11 @@ type = htpasswd
 #custom_handler =
 
 # Htpasswd filename
-htpasswd_filename = /home/ik15ydit/radicale/users
+htpasswd_filename = ~/radicale/htpasswd_users
 
 # Htpasswd encryption method
 # Value: plain | sha1 | ssha | crypt | bcrypt | md5
-htpasswd_encryption = sha1
+htpasswd_encryption = bcrypt
 
 # LDAP server URL, with protocol and port
 #ldap_url = ldap://localhost:389/
@@ -147,7 +147,7 @@ type = owner_only
 #custom_handler =
 
 # File for rights management from_file
-file = ~/.config/radicale/rights
+file = ~/radicale/user_rights
 
 
 [storage]
@@ -164,7 +164,7 @@ type = filesystem
 #custom_handler =
 
 # Folder for storing local collections, created if not present
-filesystem_folder = /home/ik15ydit/radicale/collections
+filesystem_folder = ~/radicale/collections/
 
 # Database URL for SQLAlchemy
 # dialect+driver://user:password@host/dbname[?key=value..]
@@ -179,9 +179,9 @@ filesystem_folder = /home/ik15ydit/radicale/collections
 # If no config is given, simple information is printed on the standard output
 # For more information about the syntax of the configuration file, see:
 # http://docs.python.org/library/logging.config.html
-#config = /etc/radicale/logging
+config = ~/radicale/logging
 # Set the default logging level to debug
-#debug = False
+debug = True
 # Store all environment variables (including those set in the shell)
 #full_environment = False
 
@@ -189,4 +189,4 @@ filesystem_folder = /home/ik15ydit/radicale/collections
 [headers]
 
 # Additional HTTP headers
-#Access-Control-Allow-Origin = *
+# Access-Control-Allow-Origin = *
