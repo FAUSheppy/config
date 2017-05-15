@@ -1,3 +1,9 @@
+#### SET CONDITIONALS ####
+NO_LDPRELOAD=false
+if [[ $HOST == "squarez" ]]; then
+    NO_LDPRELOAD=true
+fi
+
 #### ZSH-INTERNAL ####
 ### HISTORY ###
 STSIZE=2000
@@ -6,13 +12,18 @@ HISTFILE=~/.config/zshhistory.log
 
 ### COLOR STDERR ###
 #legacy, this causes problems in output odering exec 2>>( while IFS='' read X; do print "\e[91m${X}\e[0m" > /dev/tty; done & )
-LD_PRELOAD="$HOME/.config/libcoloredstderr.so"
-COLORED_STDERR_FDS=2,
-export LD_PRELOAD COLORED_STDERR_FDS
+if [[ NO_LDPRELOAD == false ]]; then
+    LD_PRELOAD="$HOME/.config/libcoloredstderr.so"
+    COLORED_STDERR_FDS=2,
+    export LD_PRELOAD COLORED_STDERR_FDS
+fi
 
 ### PROMT ###
 MAIN_PROMT_COLOR="green"
 USER_COLOR="yellow"
+if [[ $HOST == "squarez" ]]; then
+    USER_COLOR="cyan"
+fi
 if [[ $USER == "root" ]]; then
     USER_COLOR="red"
     MAIN_PROMT_COLOR="red"
