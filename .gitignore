@@ -2,7 +2,9 @@
 *_old
 .nfs*
 *.log
+*.swp
 
+tubus/
 Florian_Hackenberger/
 Luminance/
 QtProject.conf
@@ -48,7 +50,24 @@ roxterm.sourceforge.net/
 SEGGER/
 sonata/
 spring
-tubus/
+agent_socket
+akonadi-firstrunrc
+akonadi_akonotes_resource_0rc
+akonadi_contacts_resource_0rc
+akonadi_davgroupware_resource_1rc
+akonadi_ical_resource_0rc
+akonadi_maildir_resource_0rc
+akonadi_newmailnotifier_agentrc
+dunst/
+emaildefaults
+emailidentities
+eventviewsrc
+herbstluftwm/__pycache__/
+korgacrc
+korganizerrc
+nohup.out
+specialmailcollectionsrc
+unity3d/tubus/
 user-dirs.dirs
 user-dirs.locale
 VirtualBox/
