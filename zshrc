@@ -12,7 +12,7 @@ HISTFILE=~/.config/zshhistory.log
 
 ### COLOR STDERR ###
 #legacy, this causes problems in output odering exec 2>>( while IFS='' read X; do print "\e[91m${X}\e[0m" > /dev/tty; done & )
-if [[ NO_LDPRELOAD == false ]]; then
+if [[ $NO_LDPRELOAD == false ]]; then
     LD_PRELOAD="$HOME/.config/libcoloredstderr.so"
     COLORED_STDERR_FDS=2,
     export LD_PRELOAD COLORED_STDERR_FDS
@@ -95,6 +95,7 @@ alias gadd="git add"
 if [[ $HOST =~ atlantis* ]]; then
     alias i3lock="i3lock --image=/home/ik15ydit/.config/i3lock/bg.png"
     alias hlock="i3lock --image=/home/ik15ydit/.config/i3lock/bg.png -t"
+    alias -g sq="sheppy@squarez.fauiwg.de"
 else
     alias transparent_xlock="xlock -mode blank -geometry 1x1"
 fi
@@ -169,8 +170,8 @@ if [[ $HOST =~ faui* ]]; then
     alias mpstubs="cd /proj/ciptmp/ik15ydit/reps/mpstubs/"
     alias reps="cd /proj/ciptmp/ik15ydit/reps/"
     alias rudipub='cd /home/cip/2010/he29heri/pub/'
-    alias sudo="echo THIS IS THE CIP NOT YOUT COMPUTER!!!!! >&2"
-    alias su="echo THIS IS THE CIP NOT YOUT COMPUTER!!!!! >&2"
+    alias sudo="echo THIS IS THE CIP NOT YOUR COMPUTER!!!!! >&2"
+    alias su="echo THIS IS THE CIP NOT YOUR COMPUTER!!!!! >&2"
 fi
 ## MOUNTABLE CIP-SHORTCUTS ##
 if [[ $HOST =~ atlantis* ]]; then
