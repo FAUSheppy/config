@@ -2,3 +2,5 @@ URxvt.*.background: #000000
 URxvt.*.foreground: #EEEEEE
 URxvt.*.scrollBar: off
 URxvt.print-pipe: true
+
+URxvt.perl-ext-common: selection-to-clipboard

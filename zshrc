@@ -1,3 +1,9 @@
+#### SET CONDITIONALS ####
+NO_LDPRELOAD=false
+if [[ $HOST == "squarez" ]]; then
+    NO_LDPRELOAD=true
+fi
+
 #### ZSH-INTERNAL ####
 ### HISTORY ###
 STSIZE=2000
@@ -6,13 +12,18 @@ HISTFILE=~/.config/zshhistory.log
 
 ### COLOR STDERR ###
 #legacy, this causes problems in output odering exec 2>>( while IFS='' read X; do print "\e[91m${X}\e[0m" > /dev/tty; done & )
-LD_PRELOAD="$HOME/.config/libcoloredstderr.so"
-COLORED_STDERR_FDS=2,
-export LD_PRELOAD COLORED_STDERR_FDS
+if [[ $NO_LDPRELOAD == false ]]; then
+    LD_PRELOAD="$HOME/.config/libcoloredstderr.so"
+    COLORED_STDERR_FDS=2,
+    export LD_PRELOAD COLORED_STDERR_FDS
+fi
 
 ### PROMT ###
 MAIN_PROMT_COLOR="green"
 USER_COLOR="yellow"
+if [[ $HOST == "squarez" ]]; then
+    USER_COLOR="cyan"
+fi
 if [[ $USER == "root" ]]; then
     USER_COLOR="red"
     MAIN_PROMT_COLOR="red"
@@ -48,6 +59,11 @@ bindkey '^R' history-incremental-pattern-search-backward
 zmodload zsh/complist #bessere listen
 autoload -Uz compinit; compinit #completioni
 
+### SSH-AGENT ###
+if [ -f $HOME/.config/agent_socket ]; then
+    export SSH_AUTH_SOCK=/tmp/ssh-$(cat $HOME/.config/agent_socket)
+fi
+
 ### UMASK ###
 umask 077
 
@@ -82,6 +98,7 @@ alias gadd="git add"
 if [[ $HOST =~ atlantis* ]]; then
     alias i3lock="i3lock --image=/home/ik15ydit/.config/i3lock/bg.png"
     alias hlock="i3lock --image=/home/ik15ydit/.config/i3lock/bg.png -t"
+    alias -g sq="sheppy@squarez.fauiwg.de"
 else
     alias transparent_xlock="xlock -mode blank -geometry 1x1"
 fi
@@ -96,7 +113,7 @@ if [[ $HOST =~ atlantis* ]]; then
     alias telegram='ssh uni -t "/proj/ciptmp/ik15ydit/Zeug/Telegram/tg/bin/telegram-cli -k tg-server.pub"'
     alias telegram-plain='ssh uni -t "/proj/ciptmp/ik15ydit/Zeug/Telegram/tg/bin/telegram-cli --disable-colors --disable-readline -k tg-server.pub"'
 
-    alias x='startx'
+    alias x='exec startx'
 else
     alias telegram='/proj/ciptmp/ik15ydit/Zeug/Telegram/tg/bin/telegram-cli -k tg-server.pub'
     alias burp=/home/cip/2013/ik15ydit/ciptmp/reps/WebScan/burpsuite/BurpSuiteFree
@@ -156,8 +173,8 @@ if [[ $HOST =~ faui* ]]; then
     alias mpstubs="cd /proj/ciptmp/ik15ydit/reps/mpstubs/"
     alias reps="cd /proj/ciptmp/ik15ydit/reps/"
     alias rudipub='cd /home/cip/2010/he29heri/pub/'
-    alias sudo="echo THIS IS THE CIP NOT YOUT COMPUTER!!!!! >&2"
-    alias su="echo THIS IS THE CIP NOT YOUT COMPUTER!!!!! >&2"
+    alias sudo="echo THIS IS THE CIP NOT YOUR COMPUTER!!!!! >&2"
+    alias su="echo THIS IS THE CIP NOT YOUR COMPUTER!!!!! >&2"
 fi
 ## MOUNTABLE CIP-SHORTCUTS ##
 if [[ $HOST =~ atlantis* ]]; then
@@ -198,12 +215,7 @@ alias l="ls -lh --color=auto"
 
 ## SSH-KEYS ##
 gitssh=~/.ssh/gitrsa
-function key(){
-        if [[ -z $SSH_AUTH_SOCK ]]; then 
-                eval `ssh-agent`
-        fi
-        ssh-add $gitssh
-}
+alias gitkey="ssh-add $gitssh"
 
 ## ROOT ##
 alias udev_reload="udevadm control --reload-rules && udevadm trigger" #reload all udevrules on the fly
