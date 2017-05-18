@@ -126,4 +126,4 @@ def irc():
         else:
                 return ''
 
-print(irc(),guthaben(),battery(),sep='')
+print(guthaben(),battery(),sep='')
