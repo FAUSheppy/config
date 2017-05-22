@@ -76,7 +76,8 @@ def vpn():
         if not hl_utils.is_cip():
                 tmp = -1
                 with open(hl_utils.hlpath("vpn_status.log")) as f:
-                        tmp = float(f.read());
+                        tmp = f.read()
+                        tmp = ' '+tmp
         return tmp;
 
 def battery():
@@ -95,7 +96,7 @@ def battery():
                         
                         if bat.startswith("Charging"):
                                 return color_panel("Charging",GREEN,seper=False) + color_panel(bat.lstrip("Charging ,").strip('\n'),get_color(plain,0,100))
-                        elif bat.startswith("Full"):
+                        elif bat.startswith("Full") or bat.startswith('Unknown'):
                                 return color_panel("On Supply and fully charged",GREEN)
                         elif plain <= 1:
                                 return color_panel(">>>>>>>>>>>>>>>> --------------- WARNING BATTER FAILURE IMMINENT --------------- <<<<<<<<<<<<<",RED)
@@ -132,5 +133,5 @@ def irc():
                         pass
         else:
                 return ''
-
-print(vpn(),guthaben(),battery(),sep='')
+if __name__ == "__main__":
+        print(vpn(),guthaben(),battery(),sep='')

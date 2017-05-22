@@ -3,7 +3,7 @@ import os
 import sys
 import time
 import subprocess
-from hl_panel_content.py import color_panel
+from hl_panel_content import color_panel
 from hl_utils import error, is_cip, shexec, color_remove, hlpath
 
 RED = 0xff0000
@@ -27,12 +27,14 @@ while(True):
                                 ret += 1;
                 print(ret)
                 if ret <= 1:
-                        out_vpn = color_panel("VPN DEACTIVATED",GREEN)
-                if ret == 2:
-                        out_vpn = color_panel("VPN CONNECTED",RED)
-                if ret >= 3:
+                        out_vpn = color_panel("VPN DEACTIVATED",RED)
+                elif ret <= 3:
+                        out_vpn = color_panel("VPN CONNECTED",GREEN)
+                elif ret >= 4:
                         out_vpn = color_panel("multiple VPNs connected",YELLOW)
-                print(out_vpn)
+                else:
+                        out_vpn = color_panel("WTF VPN STATUS BROKEN",RED)
+                #print(out_vpn)
                 with open(vpn_path,'w+') as g:
                         g.write(out_vpn)
                 time.sleep(30)
