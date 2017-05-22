@@ -38,8 +38,8 @@ if [[ "$HOST" == "atlantislaptop" ]]; then
     xautolock -time 15 -locker /home/ik15ydit/.config/i3lock/piclock.sh &
     /usr/bin/dunst & 
     hc keybind $Mod-o spawn /bin/bash -c "/home/ik15ydit/.config/i3lock/piclock.sh & systemctl hibernate"
-    hc keybind $Mod-c spawn /bin/bash -c "sudo /usr/bin/openvpn_cip.sh"
-    hc keybind $Mod-Shift-c spawn /bin/bash -c "sudo stopvpn.sh"
+    hc keybind $Mod-c spawn /bin/bash -c "sudo /usr/bin/openvpn_cip.sh & ~/.config/herbstluftwm/hl_status_deamon.py --refresh"
+    hc keybind $Mod-Shift-c spawn /bin/bash -c "sudo stopvpn.sh && ~/.config/herbstluftwm/hl_status_deamon.py --refresh"
 fi
 
 
