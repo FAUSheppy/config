@@ -25,7 +25,8 @@ if window==-1:
 
 ############ IF URXVT GET PID ###########
 pid = -1
-out = shexec('xprop -id '+hex(window)).split('\n')
+out = subprocess.check_output(['xprop','-id',hex(window)]).decode().split('\n')
+#out = shexec('xprop -id '+hex(window)).split('\n') #not working
 for l in out:
         if l.startswith('WM_CLASS(STRING)') and 'urxvt' in l:
                 break;
