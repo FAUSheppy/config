@@ -118,7 +118,7 @@ hc pad $monitor $panel_height
         echo -n "^bg()^fg() ${windowtitle//^/^^}"
         
         ####################### Interface to python layer #########################
-        right="30. Mai 14 Kobras |$($HOME/.config/herbstluftwm/panel_content.py) $date" 
+        right="30. Mai 14 Kobras |$($HOME/.config/herbstluftwm/hl_panel_content.py) $date" 
 
         right_text_only=$(echo -n "$right" | sed 's.\^[^(]*([^)]*)..g')
         # get width of right aligned text.. and add some space..
