@@ -111,6 +111,7 @@ if [[ $HOST =~ atlantis* ]]; then
     alias telegram-plain='ssh uni -t "/proj/ciptmp/ik15ydit/Zeug/Telegram/tg/bin/telegram-cli --disable-colors --disable-readline -k tg-server.pub"'
 
     alias x='exec startx'
+    alias vpn='sudo /usr/bin/openvpn_cip.sh'
 else
     alias telegram='/proj/ciptmp/ik15ydit/Zeug/Telegram/tg/bin/telegram-cli -k tg-server.pub'
     alias burp=/home/cip/2013/ik15ydit/ciptmp/reps/WebScan/burpsuite/BurpSuiteFree

@@ -38,6 +38,8 @@ if [[ "$HOST" == "atlantislaptop" ]]; then
     xautolock -time 15 -locker /home/ik15ydit/.config/i3lock/piclock.sh &
     /usr/bin/dunst & 
     hc keybind $Mod-o spawn /bin/bash -c "systemctl hibernate"
+    hc keybind $Mod-c spawn /bin/bash -c "sudo /usr/bin/openvpn_cip.sh"
+    hc keybind $Mod-Shift-c spawn /bin/bash -c "sudo stopvpn.sh"
 fi
 
 
@@ -166,7 +168,7 @@ hc mousebind $Mod-Button3 resize
 hc keybind $Mod-BackSpace   cycle_monitor
 hc keybind $Mod-Tab         cycle_all +1
 hc keybind $Mod-Shift-Tab   cycle_all -1
-hc keybind $Mod-c cycle
+#hc keybind $Mod-c cycle
 #hc keybind $Mod-i jumpto urgent
 
 #pulseaudio
