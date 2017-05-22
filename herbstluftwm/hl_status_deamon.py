@@ -11,12 +11,13 @@ GREEN = 0x32CD32
 YELLOW = 0xffff00
 
 #Druckerguthaben
-while(True):
-        if is_cip(): 
+def pr_acct_status()_
+        if is_cip():
                 path = hlpath("pracct.log")
                 out = color_remove(shexec("pr_acct").split("\n")[0]).split(' ')[-1]
                 with open(path,'w+') as f:
                         f.write(out)
+def vpn_status():
         if not is_cip():
                 vpn_path = hlpath("vpn_status.log")
                 out_vpn = subprocess.check_output(["ps","-ef"]).decode().split('\n')
@@ -27,15 +28,19 @@ while(True):
                                 ret += 1;
                 print(ret)
                 if ret <= 1:
-                        out_vpn = color_panel("VPN DEACTIVATED",RED)
+                        out_vpn = color_panel("VPN: Link Down",RED)
                 elif ret <= 3:
-                        out_vpn = color_panel("VPN CONNECTED",GREEN)
+                        out_vpn = color_panel("VPN: In Use",GREEN)
                 elif ret >= 4:
                         out_vpn = color_panel("multiple VPNs connected",YELLOW)
                 else:
-                        out_vpn = color_panel("WTF VPN STATUS BROKEN",RED)
+                        out_vpn = color_panel("VPN: WTF alles kaputt",RED)
                 #print(out_vpn)
                 with open(vpn_path,'w+') as g:
                         g.write(out_vpn)
                 time.sleep(30)
-sys.exit()
+
+if __name__ = '__main__':
+        while(True):
+                vpn_status()
+                pr_acct_status()
