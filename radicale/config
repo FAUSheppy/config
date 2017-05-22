@@ -17,7 +17,8 @@
 # For example: 0.0.0.0:9999, [::]:9999
 # IPv6 adresses are configured to only allow IPv6 connections
 #hosts = 0.0.0.0:5232
-hosts = squarez.fauiwg.de:7000
+hosts = 0.0.0.0:7000, [::]:7000
+#hosts = 127.0.0.1:7000
 
 # Daemon flag
 #daemon = False
@@ -26,13 +27,13 @@ hosts = squarez.fauiwg.de:7000
 #pid =
 
 # SSL flag, enable HTTPS protocol
-ssl = False
+ssl = True
 
 # SSL certificate path
-certificate = /home/sheppy/radicale/ssl/fauiwg_radicale.cert
+certificate = /home/caldav/radicale/ssl/fauiwg_radicale.cert
 
 # SSL private key
-key = /home/sheppy/radicale/ssl/fauiwg_radicale.key
+key = /home/caldav/radicale/ssl/fauiwg_radicale.key
 
 # SSL Protocol used. See python's ssl module for available values
 protocol = TLSv1.2
@@ -81,11 +82,11 @@ type = htpasswd
 #custom_handler =
 
 # Htpasswd filename
-htpasswd_filename = ~/radicale/htpasswd_users
+htpasswd_filename = /home/caldav/radicale/htpasswd_users
 
 # Htpasswd encryption method
 # Value: plain | sha1 | ssha | crypt | bcrypt | md5
-htpasswd_encryption = bcrypt
+htpasswd_encryption = crypt
 
 # LDAP server URL, with protocol and port
 #ldap_url = ldap://localhost:389/
@@ -179,9 +180,9 @@ filesystem_folder = ~/radicale/collections/
 # If no config is given, simple information is printed on the standard output
 # For more information about the syntax of the configuration file, see:
 # http://docs.python.org/library/logging.config.html
-config = ~/radicale/logging
+config = ~/.config/radicale/logging
 # Set the default logging level to debug
-debug = True
+debug = False
 # Store all environment variables (including those set in the shell)
 #full_environment = False
 
