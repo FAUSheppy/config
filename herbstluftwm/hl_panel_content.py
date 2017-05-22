@@ -71,6 +71,13 @@ def guthaben():
                 guthaben = color_panel(guthaben,col)
         return guthaben;
 
+def vpn():
+        vpn = ''
+        if not hl_utils.is_cip():
+                tmp = -1
+                with open(hl_utils.hlpath("vpn_status.log")) as f:
+                        tmp = float(f.read());
+        return tmp;
 
 def battery():
         if hl_utils.is_laptop():
@@ -126,4 +133,4 @@ def irc():
         else:
                 return ''
 
-print(guthaben(),battery(),sep='')
+print(vpn(),guthaben(),battery(),sep='')
