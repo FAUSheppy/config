@@ -10,4 +10,6 @@ cp $CONF_DIR/edurom /etc/wicd/encryption/templates/
 #scripts in path
 cp $CONF_DIR/openvpn_cip.sh /usr/bin/
 cp $CONF_DIR/stopvpn.sh /usr/bin/
-echo "auth.txt expected in /etc/openvpn/"
+
+gpg --output /etc/openvpn/auth.txt -d auth.txt.gpg
+chmod 500 /etc/openvpn/auth.txt
