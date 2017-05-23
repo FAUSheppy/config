@@ -122,6 +122,7 @@ function qfind {
 }
 alias pcolor='for i in {0..255} ; do printf "\x1b[38;5;${i}mcolour${i} "; if [[ $(((($i+3)/6)*6)) -eq $(($i+3)) ]]; then echo; fi; done'
 alias "ipconf"="ip addr show"
+alias 'vpn?'='ps -ef | grep  openvpn | grep -v grep'
 
 ## General ##
 if [[ $HOST =~ atlantis* ]]; then

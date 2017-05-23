@@ -25,6 +25,8 @@ def color_panel(s,hex_code,seper=True):
         return "^fg(#" + hex_code + ") " + s + "^bg()"+sep
 
 def get_color(nr,start,end):
+        if nr == 88:
+                return hex(GREEN)
         if end == start or nr >= end:
                 return hex(GREEN)
         else:
