@@ -114,6 +114,7 @@ if [[ $HOST =~ atlantis* ]]; then
     alias telegram-plain='ssh uni -t "/proj/ciptmp/ik15ydit/Zeug/Telegram/tg/bin/telegram-cli --disable-colors --disable-readline -k tg-server.pub"'
 
     alias x='exec startx'
+    alias vpn='sudo /usr/bin/openvpn_cip.sh'
 else
     alias telegram='/proj/ciptmp/ik15ydit/Zeug/Telegram/tg/bin/telegram-cli -k tg-server.pub'
     alias burp=/home/cip/2013/ik15ydit/ciptmp/reps/WebScan/burpsuite/BurpSuiteFree
@@ -124,6 +125,7 @@ function qfind {
 }
 alias pcolor='for i in {0..255} ; do printf "\x1b[38;5;${i}mcolour${i} "; if [[ $(((($i+3)/6)*6)) -eq $(($i+3)) ]]; then echo; fi; done'
 alias "ipconf"="ip addr show"
+alias 'vpn?'='ps -ef | grep  openvpn | grep -v grep'
 
 ## General ##
 if [[ $HOST =~ atlantis* ]]; then

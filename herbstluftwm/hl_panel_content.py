@@ -25,6 +25,8 @@ def color_panel(s,hex_code,seper=True):
         return "^fg(#" + hex_code + ") " + s + "^bg()"+sep
 
 def get_color(nr,start,end):
+        if nr == 88:
+                return hex(GREEN)
         if end == start or nr >= end:
                 return hex(GREEN)
         else:
@@ -71,6 +73,14 @@ def guthaben():
                 guthaben = color_panel(guthaben,col)
         return guthaben;
 
+def vpn():
+        vpn = ''
+        if not hl_utils.is_cip():
+                tmp = -1
+                with open(hl_utils.hlpath("vpn_status.log")) as f:
+                        tmp = f.read()
+                        tmp = ' '+tmp
+        return tmp;
 
 def battery():
         if hl_utils.is_laptop():
@@ -88,7 +98,7 @@ def battery():
                         
                         if bat.startswith("Charging"):
                                 return color_panel("Charging",GREEN,seper=False) + color_panel(bat.lstrip("Charging ,").strip('\n'),get_color(plain,0,100))
-                        elif bat.startswith("Full"):
+                        elif bat.startswith("Full") or bat.startswith('Unknown'):
                                 return color_panel("On Supply and fully charged",GREEN)
                         elif plain <= 1:
                                 return color_panel(">>>>>>>>>>>>>>>> --------------- WARNING BATTER FAILURE IMMINENT --------------- <<<<<<<<<<<<<",RED)
@@ -125,5 +135,5 @@ def irc():
                         pass
         else:
                 return ''
-
-print(irc(),guthaben(),battery(),sep='')
+if __name__ == "__main__":
+        print(vpn(),guthaben(),battery(),sep='')

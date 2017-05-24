@@ -57,6 +57,7 @@ pulseaudio      ;#sound
 python          ;#python
 python-pdfminer ;#needed for markingbird
 python-pip      ;#install python modules
+python-psutils  ;#needed for hl_start_urxvt_cwd.py (hlconfig)
 qemu-kvm        ;#virtual machine
 rofi            ;#easier find/switch between open windows
 rxvt-unicode-256color ;#terminal-emulator
