@@ -15,11 +15,11 @@ exfat-fuse      ;#mount exfat devices as user
 exfat-utils     ;#more options for exfat
 feh             ;#simple pictureviewer
 findutils       ;#find things
-gcc-4.9-base    ;#C-Compiler
+gcc             ;#C-Compiler
 g++             ;#C++ compiler
 gcp             ;#copy with statusbar
 gedit           ;#graphical texteditor
-geparted        ;#partitionmanagement
+gparted        ;#partitionmanagement
 git             ;#version controll system
 grep            ;#search for keywords
 gzip            ;#compress
@@ -50,7 +50,7 @@ pulseaudio      ;#sound
 python          ;#python
 python-pdfminer ;#needed for markingbird
 python-pip      ;#install python modules
-python-psutils  ;#needed for hl_start_urxvt_cwd.py (hlconfig)
+python-psutil   ;#needed for hl_start_urxvt_cwd.py (hlconfig)
 qemu-kvm        ;#virtual machine
 rofi            ;#easier find/switch between open windows
 rxvt-unicode-256color ;#terminal-emulator
