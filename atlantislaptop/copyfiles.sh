@@ -2,6 +2,7 @@ CONF_DIR=~/.config/atlantislaptop
 
 #system config
 cp $CONF_DIR/openvpn /etc/default/
+cp $CONF_DIR/openfaupn.conf /etc/openvpn/
 cp $CONF_DIR/ssh_config /etc/ssh/
 cp $CONF_DIR/sudoers /etc/
 cp $CONF_DIR/active /etc/wicd/encryption/templates/
