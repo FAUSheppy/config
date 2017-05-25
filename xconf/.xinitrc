@@ -1,3 +1,3 @@
-#!/bin/bash
-xrdb /home/ik15ydit/.Xresources
+xrdb ~/.Xressources
+eval `ssh-agent`
 exec herbstluftwm

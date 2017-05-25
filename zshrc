@@ -157,7 +157,7 @@ fi
 
 ## CONNECT UNI ##
 alias irc="ssh ircbox.cs.fau.de -t 'command; tmux a'"
-alias -g uni="faui06c.cs.fau.de"
+alias -g uni="ik15ydit@faui06c.cs.fau.de"
 alias cipkey="ssh-add ~/.ssh/ciplogin"
 alias cipra="xpra start ssh:ik15ydit@faui00n.cs.fau.de:100 --start-child urxvt"
 alias mountcip="sshfs ik15ydit@faui00n.cs.fau.de:/ -o idmap=user $CIP_MOUNTPOINT"
@@ -180,8 +180,8 @@ if [[ $HOST =~ faui* ]]; then
 fi
 ## MOUNTABLE CIP-SHORTCUTS ##
 if [[ $HOST =~ atlantis* ]]; then
-    alias ciptmp="cd ~/mountpoints/cip_root/proj/ciptmp/ik15ydit/"
-    alias ciphome="cd ~/mountpoints/cip_root/home/cip/2013/ik15ydit/"
+    alias -g ciptmp="~/mountpoints/cip_root/proj/ciptmp/ik15ydit/"
+    alias -g ciphome="~/mountpoints/cip_root/home/cip/2013/ik15ydit/"
 fi
 
 ## DIPLAY CONTROL ##

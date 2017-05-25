@@ -1,0 +1,6 @@
+Host gitlab.cs.fau.de
+    IdentityFile ~/.ssh/gitrsa
+Host *.fauiwg.de
+    IdentityFile ~/.ssh/wg
+Host *.cs.fau.de
+    IdentityFile ~/.ssh/cipkey

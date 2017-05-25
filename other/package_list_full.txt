@@ -1,16 +1,11 @@
 acpi            ;#check battery
-apt             ;#advanced installer
-aptitude        ;#advanced installer
-arping          ;#find all devices in network
 autoconf        ;#used for building LD_PRELOAD
-bison           ;#used for gene (bachelorarbeit)
 build-essential ;#make
 chromium        ;#internet
 colordiff       ;#colored diff
 coreutils       ;#many usefull tools
 cron            ;#execute tasks automaticly at certain times
 cscope          ;#find shit in big repros
-dunst           ;#notification deamon for notify-send
 dzen2           ;#used for herbsluftclient panel
 eclipse         ;#java programming enviroment
 enscript        ;#used for pdf/ps stuff
@@ -20,16 +15,15 @@ exfat-fuse      ;#mount exfat devices as user
 exfat-utils     ;#more options for exfat
 feh             ;#simple pictureviewer
 findutils       ;#find things
-gcc-4.9-base    ;#C-Compiler
+gcc             ;#C-Compiler
 g++             ;#C++ compiler
 gcp             ;#copy with statusbar
 gedit           ;#graphical texteditor
-geparted        ;#partitionmanagement
+gparted        ;#partitionmanagement
 git             ;#version controll system
 grep            ;#search for keywords
 gzip            ;#compress
 herbstluftwm    ;#windowmanager
-hgsubversion    ;#(shitty) version control system needed for aud
 htop            ;#taskmanager
 i3lock          ;#screenlock
 icedove         ;#email client
@@ -41,7 +35,6 @@ iputils-ping    ;#tracerout and ping
 iw              ;#information about network interfaces
 katarakt        ;#simple and performant pdfviewer
 kolourpaint4    ;#simple pictureeditor
-less            ;#simple textview
 libreoffice     ;#documenteditor like open office
 lm-sensors      ;#CPU/GraKa (temperatur) sensors
 nano            ;#very simple to use consol-texteditor
@@ -52,22 +45,20 @@ openssh-client  ;#ssh
 pandoc          ;#used for pdf conversion
 pavucontrol     ;#sound control
 pdf-presenter-console   ;#simple pdfviewer usefull for presentations
-poppler-utils   ;#extract images from pdfs
+poppler-utils   ;#extract images from pdfs (MarkingBird)
 pulseaudio      ;#sound
 python          ;#python
 python-pdfminer ;#needed for markingbird
 python-pip      ;#install python modules
-python-psutils  ;#needed for hl_start_urxvt_cwd.py (hlconfig)
+python-psutil   ;#needed for hl_start_urxvt_cwd.py (hlconfig)
 qemu-kvm        ;#virtual machine
 rofi            ;#easier find/switch between open windows
 rxvt-unicode-256color ;#terminal-emulator
 sed             ;#regex stream manipulation (used for hl-panel)
-sleuthkit       ;#forensik utilities
 sshfs           ;#mount harddrives over ssh
 strace          ;#track behaviour or processes
 sudo            ;#execute as root
 tar             ;#compressing/unpacking
-tesseract-ocr   ;#optical character/text recognition
 texlive-full    ;#tex (Achtung groß)
 texmaker        ;#tex gui
 tig             ;#git history
@@ -81,6 +72,4 @@ whois           ;#lookup ips etc of DNS adresses
 wicd-curses     ;#good simple networkmanager
 wine            ;#windows emuator
 winetricks      ;#windows emulator utilities
-xorg            ;#needed for nearly all windowmangers
 xpra            ;#open graphical window on remote pc
-zsh             ;#much better shell than bash
