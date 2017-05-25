@@ -1,5 +1,5 @@
 Host gitlab.cs.fau.de
-    IdentityFile ~/.gitrsa
+    IdentityFile ~/.ssh/gitrsa
 Host *.fauiwg.de
     IdentityFile ~/.ssh/wg
 Host *.cs.fau.de

@@ -12,7 +12,7 @@ xsetroot -solid '#5A8E3A'
 
 # reset
 hc keyunbind --all
-pkill dunst
+#pkill dunst
 pkill xautolock
 pkill -s 15 hl_pracct   #send SIGTERM for correct termination during write
 
@@ -23,8 +23,10 @@ Mod=Mod4     # Use the super key as the main modifier
 ### All Machines ####
 ### Atlantis PC-specific setup ###
 if [[ "$HOST" == "atlantispc" ]]; then
+    /usr/bin/xrandr --output DVI-D-1 --left-of HDMI-1
     hc detect_monitors
-    /usr/bin/xrandr --output DVI-I-2 --right-of DVI-I-1
+    hc set swap_monitors_to_get_tag 0
+    #hc set_monitors 3840x1080+0+0
     xautolock -time 15 -locker /home/ik15ydit/.config/i3lock/piclock.sh &
 fi
 ### Atlantislaptop specific setup ###
@@ -32,7 +34,7 @@ if [[ "$HOST" == "atlantislaptop" ]]; then
     hc keybind XF86MonBrightnessUp spawn /bin/bash -c 'tee /sys/class/backlight/intel_backlight/brightness <<< "$(expr $(cat /sys/class/backlight/intel_backlight/brightness) + 5)"' 
     hc keybind XF86MonBrightnessDown spawn /bin/bash -c 'tee /sys/class/backlight/intel_backlight/brightness <<< "$(expr $(cat /sys/class/backlight/intel_backlight/brightness) - 5)"'
     xautolock -time 15 -locker /home/ik15ydit/.config/i3lock/piclock.sh &
-    /usr/bin/dunst & 
+    #/usr/bin/dunst & 
     hc keybind $Mod-o spawn /bin/bash -c "/home/ik15ydit/.config/i3lock/piclock.sh & systemctl hibernate"
     hc keybind $Mod-c spawn /bin/bash -c "sudo /usr/bin/openvpn_cip.sh & ~/.config/herbstluftwm/hl_status_deamon.py --refresh"
     hc keybind $Mod-Shift-c spawn /bin/bash -c "sudo stopvpn.sh && ~/.config/herbstluftwm/hl_status_deamon.py --refresh"
@@ -217,7 +219,7 @@ hc rule focus=on # normally focus new clients
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on
 hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
-hc rule --instance=chromium-browser --ewmhrequests=off
+hc rule --instance=chromium --ewmhrequests=off
 
 # unlock, just to be sure
 hc unlock
