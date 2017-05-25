@@ -1,0 +1,13 @@
+chromium        ;#internet
+dzen2           ;#used for herbsluftclient panel
+herbstluftwm    ;#windowmanager
+htop            ;#taskmanager
+i3lock          ;#screenlock
+katarakt        ;#simple and performant pdfviewer
+pulseaudio      ;#sound
+rxvt-unicode-256color ;#terminal-emulator
+sudo            ;#execute as root
+tmux            ;#terminal multiplexer (multiple terminals within one)
+usbutils        ;#usefullshit for usbdevices
+vim-nox         ;#good consol texeditor with script support
+zsh             ;#much better shell than bash
