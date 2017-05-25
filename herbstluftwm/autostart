@@ -15,16 +15,12 @@ hc keyunbind --all
 pkill dunst
 pkill xautolock
 pkill -s 15 hl_pracct   #send SIGTERM for correct termination during write
-pkill ssh-agent         #correctly terminate the current agent
 
 #variables
 Mod=Mod4     # Use the super key as the main modifier
 
 ######### MACHINE SPECIFIC SETUP #########
 ### All Machines ####
-if [ -f $HOME/.config/agent_socket ]; then
-    eval `ssh-agent -a /tmp/ssh-$(cat $HOME/.config/agent_socket)`
-fi
 ### Atlantis PC-specific setup ###
 if [[ "$HOST" == "atlantispc" ]]; then
     hc detect_monitors
