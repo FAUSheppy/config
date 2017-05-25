@@ -11,3 +11,5 @@ tmux            ;#terminal multiplexer (multiple terminals within one)
 usbutils        ;#usefullshit for usbdevices
 vim-nox         ;#good consol texeditor with script support
 zsh             ;#much better shell than bash
+x11-xserver-utils ;#xrandr
+xinit           ;#startx
