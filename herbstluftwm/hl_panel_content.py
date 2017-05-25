@@ -75,12 +75,14 @@ def guthaben():
 
 def vpn():
         vpn = ''
-        if not hl_utils.is_cip():
+        if hl_utils.is_cip():
+                return ''
+        else:
                 tmp = -1
                 with open(hl_utils.hlpath("vpn_status.log")) as f:
                         tmp = f.read()
                         tmp = ' '+tmp
-        return tmp;
+                return tmp;
 
 def battery():
         if hl_utils.is_laptop():
