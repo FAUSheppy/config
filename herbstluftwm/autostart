@@ -41,7 +41,7 @@ fi
 
 ######### GENERAL SETUP #########
 ### Start Pythonscripts  ###
-~/.config/herbstluftwm/hl_pracct_deamon.py &
+~/.config/herbstluftwm/hl_status_deamon.py &
 
 # keybindings
 #client handling
