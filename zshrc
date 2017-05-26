@@ -55,7 +55,7 @@ setopt nolistambiguous # sofort alle Möglichkeiten anzeigen
 setopt completeinword # in Wörtern completen, braucht der _prefix completer
 
 ### GENERAL ###
-bindkey '^R' history-incremental-pattern-search-backward
+#bindkey '^R' history-incremental-pattern-search-backward
 zmodload zsh/complist #bessere listen
 autoload -Uz compinit; compinit #completioni
 
@@ -226,3 +226,21 @@ alias udev_reload="udevadm control --reload-rules && udevadm trigger" #reload al
 if [[ $HOST =~ faui* ]]; then
     mesg n
 fi
+
+### Experimental ###
+alias hs='eval $(cat .config/zshhistory.log | peco)'
+alias cfind='print -z $(cat .config/zshhistory.log | peco)'
+hhs(){print -z $(cat .config/zshhistory.log | peco)}
+zle -N hhstest hhs
+bindkey ^R hhstest
+source ~/.config/other/zsh-history-substring-search.zsh
+
+bindkey '^[[5~' history-substring-search-up
+bindkey '^[[6~' history-substring-search-down
+
+# === cool-peco init ===
+FPATH="$FPATH:/home/sheppy/reps/cool-peco"
+autoload -Uz cool-peco
+cool-peco
+#bindkey '^R' cool-peco-history
+# ======================
