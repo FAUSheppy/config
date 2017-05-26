@@ -228,9 +228,9 @@ if [[ $HOST =~ faui* ]]; then
 fi
 
 ### Experimental ###
-alias hs='eval $(cat .config/zshhistory.log | peco)'
-alias cfind='print -z $(cat .config/zshhistory.log | peco)'
-hhs(){print -z $(cat .config/zshhistory.log | peco)}
+alias hs='eval $(cat ~/.config/zshhistory.log | peco)'
+alias cfind='print -z $(cat ~/.config/zshhistory.log | peco)'
+hhs(){print -z $(cat ~/.config/zshhistory.log | peco)}
 zle -N hhstest hhs
 bindkey ^R hhstest
 source ~/.config/other/zsh-history-substring-search.zsh
