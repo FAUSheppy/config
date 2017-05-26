@@ -1,4 +1,5 @@
 acpi            ;#check battery
+apcalc          :abitrary percision calculator
 autoconf        ;#used for building LD_PRELOAD
 build-essential ;#make
 chromium        ;#internet
