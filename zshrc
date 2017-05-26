@@ -241,10 +241,3 @@ source ~/.config/other/zsh-history-substring-search.zsh
 
 bindkey '^[[5~' history-substring-search-up
 bindkey '^[[6~' history-substring-search-down
-
-# === cool-peco init ===
-FPATH="$FPATH:/home/sheppy/reps/cool-peco"
-autoload -Uz cool-peco
-cool-peco
-#bindkey '^R' cool-peco-history
-# ======================
