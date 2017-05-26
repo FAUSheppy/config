@@ -6,8 +6,8 @@ fi
 
 #### ZSH-INTERNAL ####
 ### HISTORY ###
-STSIZE=2000
-SAVEHIST=2000
+STSIZE=20000
+SAVEHIST=20000
 HISTFILE=~/.config/zshhistory.log
 
 ### COLOR STDERR ###
@@ -32,6 +32,10 @@ setopt promptsubst
 CMD_START=$'%F{$MAIN_PROMT_COLOR}--->%f '
 PS1=$'%F{$USER_COLOR}%m%f%F{red}:%f%F{cyan}%~%f\n'$CMD_START #promt
 PS1=%F{$MAIN_PROMT_COLOR}$'${(r:$COLUMNS::\u2500:)}'%f$PS1
+
+if [[ ( $USER != 'sheppy') && ( $USER != 'ik15ydit') && ( $USER != 'root' ) ]]; then
+    PS1='%n'$PS1
+fi
 
 ### STYLE ###
 zstyle ':completion:*:default' list-prompt '%p'
