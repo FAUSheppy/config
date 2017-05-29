@@ -232,6 +232,13 @@ if [[ $HOST =~ faui* ]]; then
 fi
 
 ### Experimental ###
+alias unfuck="printf '\033]708;black\007'"
+ssh_func(){
+    printf '\033]708;red\007';
+    ssh $@;
+    printf '\033]708;black\007'
+}
+alias -g ssh="ssh_func"
 alias hs='eval $(cat ~/.config/zshhistory.log | peco)'
 alias cfind='print -z $(cat ~/.config/zshhistory.log | peco)'
 hhs(){print -z "$(cat ~/.config/zshhistory.log | peco)"}

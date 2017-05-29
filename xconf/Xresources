@@ -4,3 +4,9 @@ URxvt.*.scrollBar: off
 URxvt.print-pipe: true
 
 URxvt.perl-ext-common: selection-to-clipboard
+
+!experimental
+!URxvt*externalBorder:   3
+!URxvt*borderLess:       false
+!URxvt*internalBorder:   5
+!URxvt*borderColor:      red
