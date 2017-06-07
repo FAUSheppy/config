@@ -3,6 +3,7 @@ Host atlantismedion
 Host gitlab.cs.fau.de
     IdentityFile ~/.ssh/gitrsa
 Host *.fauiwg.de
+    User sheppy
     IdentityFile ~/.ssh/wg
 Host *.cs.fau.de
     IdentityFile ~/.ssh/cipkey

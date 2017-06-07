@@ -164,7 +164,7 @@ alias irc="ssh ircbox.cs.fau.de -t 'command; tmux a'"
 alias -g uni="ik15ydit@faui06c.cs.fau.de"
 alias cipkey="ssh-add ~/.ssh/ciplogin"
 alias cipra="xpra start ssh:ik15ydit@faui00n.cs.fau.de:100 --start-child urxvt"
-alias mountcip="sshfs ik15ydit@faui00n.cs.fau.de:/ -o idmap=user $CIP_MOUNTPOINT"
+alias mountcip="sshfs ik15ydit@faui00n.cs.fau.de:/ -o reconnect,idmap=user $CIP_MOUNTPOINT"
 alias umountcip="fusermount -u $CIP_MOUNTPOINT"
 
 ## DIRECT TO CONFIG ##
