@@ -12,9 +12,9 @@ xsetroot -solid '#5A8E3A'
 
 # reset
 hc keyunbind --all
-#pkill dunst
 pkill xautolock
 # WONT WORK --> cause process has other name no idea which though pkill -s 15 hl_status_deamon   #send SIGTERM for correct termination during write
+pkill hl_status_deamo
 
 #variables
 Mod=Mod4     # Use the super key as the main modifier
@@ -36,7 +36,7 @@ if [[ "$HOST" == "atlantislaptop" ]]; then
     xautolock -time 15 -locker /home/ik15ydit/.config/i3lock/piclock.sh &
     #/usr/bin/dunst & 
     hc keybind $Mod-o spawn /bin/bash -c "/home/ik15ydit/.config/i3lock/piclock.sh & systemctl hibernate"
-    hc keybind $Mod-c spawn /bin/bash -c "sudo stopvpn.sh && sudo /usr/bin/openvpn_cip.sh & ~/.config/herbstluftwm/hl_status_deamon.py --refresh"
+    hc keybind $Mod-c spawn /bin/bash -c "sudo stopvpn.sh; sudo /usr/bin/openvpn_cip.sh & ~/.config/herbstluftwm/hl_status_deamon.py --refresh"
     hc keybind $Mod-Shift-c spawn /bin/bash -c "sudo stopvpn.sh && ~/.config/herbstluftwm/hl_status_deamon.py --refresh"
 fi
 
@@ -47,7 +47,7 @@ hc spawn ~/.config/herbstluftwm/hl_status_deamon.py
 
 # keybindings
 #client handling
-hc keybind $Mod-Shift-q quit
+hc keybind $Mod-Shift-q spawn /bin/bash -c "pkill hl_status_deamo & pkill ssh-agent & herbstclient quit"
 if [[ $HOST =~ atlantis* ]]; then
     hc keybind $Mod-Shift-p spawn sudo /sbin/poweroff
 fi
