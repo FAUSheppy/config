@@ -68,6 +68,7 @@ traceroute      ;#tracert/check route to host
 tree            ;#show filesystemtree
 usbutils        ;#usefullshit for usbdevices
 vim-nox         ;#good consol texeditor with script support
+vim-python-jedi ;#python autocompletion
 wget            ;#download urls
 whois           ;#lookup ips etc of DNS adresses
 wicd-curses     ;#good simple networkmanager

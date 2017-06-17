@@ -153,3 +153,8 @@ endif
 
 " use x11 primary selection for yanking (yes, "unnamed" is the key for that..)
 set clipboard=unnamed 
+
+
+" python-jedi config
+"let g:jedi#popup_on_dot = 0
+autocmd FileType python setlocal completeopt-=preview
