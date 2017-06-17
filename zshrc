@@ -31,11 +31,12 @@ fi
 setopt promptsubst
 CMD_START=$'%F{$MAIN_PROMT_COLOR}--->%f '
 PS1=$'%F{$USER_COLOR}%m%f%F{red}:%f%F{cyan}%~%f\n'$CMD_START #promt
-PS1=%F{$MAIN_PROMT_COLOR}$'${(r:$COLUMNS::\u2500:)}'%f$PS1
 
 if [[ ( $USER != 'sheppy') && ( $USER != 'ik15ydit') && ( $USER != 'root' ) ]]; then
-    PS1='%n'$PS1
+    PS1='%F{cyan}%n%f%F{red}@%f'$PS1
 fi
+
+PS1=%F{$MAIN_PROMT_COLOR}$'${(r:$COLUMNS::\u2500:)}'%f$PS1
 
 ### STYLE ###
 zstyle ':completion:*:default' list-prompt '%p'
@@ -164,8 +165,12 @@ alias irc="ssh ircbox.cs.fau.de -t 'command; tmux a'"
 alias -g uni="ik15ydit@faui06c.cs.fau.de"
 alias cipkey="ssh-add ~/.ssh/ciplogin"
 alias cipra="xpra start ssh:ik15ydit@faui00n.cs.fau.de:100 --start-child urxvt"
-alias mountcip="sshfs ik15ydit@faui00n.cs.fau.de:/ -o idmap=user $CIP_MOUNTPOINT"
+alias mountcip="sshfs ik15ydit@faui00n.cs.fau.de:/ -o reconnect,idmap=user $CIP_MOUNTPOINT"
 alias umountcip="fusermount -u $CIP_MOUNTPOINT"
+
+## CONNECT Locally ##
+alias -g atlantislaptop = "ik15ydit@atlantislaptop.local"
+alias -g atlantismedion = "ik15ydit@atlantismedion.local"
 
 ## DIRECT TO CONFIG ##
 alias hlconf="vim ~/.config/herbstluftwm/autostart"
