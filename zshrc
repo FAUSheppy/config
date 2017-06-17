@@ -169,8 +169,8 @@ alias mountcip="sshfs ik15ydit@faui00n.cs.fau.de:/ -o reconnect,idmap=user $CIP_
 alias umountcip="fusermount -u $CIP_MOUNTPOINT"
 
 ## CONNECT Locally ##
-alias -g atlantislaptop = "ik15ydit@atlantislaptop.local"
-alias -g atlantismedion = "ik15ydit@atlantismedion.local"
+alias -g atlantislaptop="ik15ydit@atlantislaptop.local"
+alias -g atlantismedion="ik15ydit@atlantismedion.local"
 
 ## DIRECT TO CONFIG ##
 alias hlconf="vim ~/.config/herbstluftwm/autostart"
