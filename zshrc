@@ -232,7 +232,7 @@ if [[ $HOST =~ faui* ]]; then
     mesg n
 fi
 
-### Experimental ###
+### COLOR SSH ###
 alias unfuck="printf '\033]708;black\007'"
 ssh_func(){
     printf '\033]708;red\007';
@@ -240,12 +240,21 @@ ssh_func(){
     printf '\033]708;black\007'
 }
 alias -g ssh="ssh_func"
-alias hs='eval $(cat ~/.config/zshhistory.log | peco)'
-alias cfind='print -z $(cat ~/.config/zshhistory.log | peco)'
-hhs(){print -z "$(cat ~/.config/zshhistory.log | peco)"}
+
+
+### REVERSE SEARCH ###
+if ! [ -x "$(command -v peco)" ]; then
+    PECO=~/.config/bin/
+else
+    PECO=/usr/bin/
+fi
+
+alias cfind='print -z $(cat ~/.config/zshhistory.log | $PECO/peco)'
+hhs(){print -z "$(cat ~/.config/zshhistory.log | $PECO/peco)"}
 zle -N hhstest hhs
 bindkey ^R hhstest
-source ~/.config/other/zsh-history-substring-search.zsh
 
+### Experimental ###
+source ~/.config/other/zsh-history-substring-search.zsh
 bindkey '^[[5~' history-substring-search-up
 bindkey '^[[6~' history-substring-search-down
