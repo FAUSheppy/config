@@ -27,8 +27,10 @@ def color_panel(s,hex_code,seper=True):
 def get_color(nr,start,end):
         if nr == 88:
                 return hex(GREEN)
-        if end == start or nr >= end:
+        elif end == start or nr >= end:
                 return hex(GREEN)
+        elif nr <= 0:
+                return hex(RED)
         else:
                 r,g,b = 0,0,0
                 interval = 256 + 256
