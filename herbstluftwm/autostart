@@ -27,15 +27,18 @@ if [[ "$HOST" == "atlantispc" ]]; then
     #hc detect_monitors
     hc set swap_monitors_to_get_tag 0
     hc set_monitors 3840x1080+0+0
-    xautolock -time 15 -locker /home/ik15ydit/.config/i3lock/piclock.sh &
 fi
 ### Atlantislaptop specific setup ###
 if [[ "$HOST" == "atlantislaptop" ]]; then
     hc keybind XF86MonBrightnessUp spawn /bin/bash -c 'tee /sys/class/backlight/intel_backlight/brightness <<< "$(expr $(cat /sys/class/backlight/intel_backlight/brightness) + 5)"' 
     hc keybind XF86MonBrightnessDown spawn /bin/bash -c 'tee /sys/class/backlight/intel_backlight/brightness <<< "$(expr $(cat /sys/class/backlight/intel_backlight/brightness) - 5)"'
-    xautolock -time 15 -locker /home/ik15ydit/.config/i3lock/piclock.sh &
     #/usr/bin/dunst & 
     hc keybind $Mod-o spawn /bin/bash -c "/home/ik15ydit/.config/i3lock/piclock.sh & systemctl hibernate"
+fi
+
+### Atlantis general
+if [[ ( "$HOST" == "atlantispc" ) || ( "$HOST" == "atlantislaptop" ) ]]; then
+    xautolock -time 15 -locker /home/ik15ydit/.config/i3lock/piclock.sh &
     hc keybind $Mod-c spawn /bin/bash -c "sudo stopvpn.sh; sudo /usr/bin/openvpn_cip.sh & ~/.config/herbstluftwm/hl_status_deamon.py --refresh"
     hc keybind $Mod-Shift-c spawn /bin/bash -c "sudo stopvpn.sh && ~/.config/herbstluftwm/hl_status_deamon.py --refresh"
 fi
