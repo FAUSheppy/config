@@ -67,11 +67,11 @@ def get_color(nr,start,end):
 def guthaben():
         guthaben = ''
         if hl_utils.is_cip():
-                tmp = -1
+                raw = ""
                 with open(hl_utils.hlpath("pracct.log")) as f:
-                        tmp = float(f.read());
-                guthaben = "Druckerguthaben: " + str(tmp) + " Euro"
-                col = get_color(tmp,0,COLOR_BORDER)
+                        raw = f.read();
+                guthaben = "Druckerguthaben: " + raw + " Euro"
+                col = get_color(float(raw),0,COLOR_BORDER)
                 guthaben = color_panel(guthaben,col)
         return guthaben;
 
