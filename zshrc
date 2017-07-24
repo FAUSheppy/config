@@ -169,8 +169,8 @@ alias mountcip="sshfs ik15ydit@faui00n.cs.fau.de:/ -o reconnect,idmap=user $CIP_
 alias umountcip="fusermount -u $CIP_MOUNTPOINT"
 
 ## CONNECT Locally ##
-alias -g atlantislaptop="ik15ydit@atlantislaptop.local"
-alias -g atlantismedion="ik15ydit@atlantismedion.local"
+#alias -g atlantislaptop="ik15ydit@atlantislaptop.local"
+#alias -g atlantismedion="ik15ydit@atlantismedion.local"
 
 ## DIRECT TO CONFIG ##
 alias hlconf="vim ~/.config/herbstluftwm/autostart"
@@ -197,6 +197,7 @@ fi
 if [[ $HOST =~ atlantis* ]]; then
     alias dual="xrandr --output DVI-I-2 --right-of DVI-I-1"
     alias shutown="/sbin/poweroff"
+    alias s2disk="sudo /usr/sbin/s2disk"
 fi
 if [[ $HOST == "atlantislaptop" ]]; then
     alias backlightctl="tee /sys/class/backlight/intel_backlight/brightness <<< $1"
@@ -253,7 +254,7 @@ else
     PECO=/usr/bin/
 fi
 
-alias cfind='print -z $(cat ~/.config/zshhistory.log | $PECO/peco)'
+alias cfind='print -z $(g/zshhistory.log | $PECO/peco)'
 hhs(){print -z "$(cat ~/.config/zshhistory.log | $PECO/peco)"}
 zle -N hhstest hhs
 bindkey ^R hhstest
