@@ -264,3 +264,10 @@ source ~/.config/other/zsh-history-substring-search.zsh
 bindkey '^[[5~' history-substring-search-up
 bindkey '^[[6~' history-substring-search-down
 alias genserverkey='openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 100000'
+if [[ $FIRST_RUN == "FALSE" ]]; then
+    ;
+else
+    FIRST_RUN="FALSE"
+    export FIRST_RUN
+    exec zsh
+fi

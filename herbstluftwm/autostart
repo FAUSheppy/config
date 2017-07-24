@@ -129,6 +129,7 @@ hc add "6"
 hc add "7"
 hc add "8"
 hc add "9"
+hc add "0"
 hc keybind $Mod-1               use_index 0
 hc keybind $Mod-Shift-1         move_index 0
 hc keybind $Mod-2               use_index 1
@@ -147,6 +148,8 @@ hc keybind $Mod-8               use_index 7
 hc keybind $Mod-Shift-8         move_index 7
 hc keybind $Mod-9               use_index 8
 hc keybind $Mod-Shift-9         move_index 8
+hc keybind $Mod-0               use_index 9
+hc keybind $Mod-Shift-0         move_index 9
 
 
 # cycle through tags
