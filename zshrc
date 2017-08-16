@@ -1,7 +1,20 @@
-#### SET CONDITIONALS ####
+### COLOR STDERR ###
 NO_LDPRELOAD=false
 if [[ $HOST == "squarez" ]]; then
     NO_LDPRELOAD=true
+fi
+if [[ $NO_LDPRELOAD == false ]]; then
+    LD_PRELOAD="$HOME/.config/libcoloredstderr.so"
+    COLORED_STDERR_FDS=2,
+    export LD_PRELOAD COLORED_STDERR_FDS
+fi
+
+if [[ $FIRST_RUN == "FALSE" ]]; then
+    ;
+else
+    FIRST_RUN="FALSE"
+    export FIRST_RUN
+    exec zsh
 fi
 
 #### ZSH-INTERNAL ####
@@ -10,13 +23,7 @@ STSIZE=20000
 SAVEHIST=20000
 HISTFILE=~/.config/zshhistory.log
 
-### COLOR STDERR ###
-#legacy, this causes problems in output odering exec 2>>( while IFS='' read X; do print "\e[91m${X}\e[0m" > /dev/tty; done & )
-if [[ $NO_LDPRELOAD == false ]]; then
-    LD_PRELOAD="$HOME/.config/libcoloredstderr.so"
-    COLORED_STDERR_FDS=2,
-    export LD_PRELOAD COLORED_STDERR_FDS
-fi
+
 
 ### PROMT ###
 MAIN_PROMT_COLOR="green"
@@ -258,11 +265,7 @@ hhs(){print -z "$(cat ~/.config/zshhistory.log | $PECO/peco)"}
 zle -N hhstest hhs
 bindkey ^R hhstest
 
-### Experimental ###
-source ~/.config/other/zsh-history-substring-search.zsh
-bindkey '^[[5~' history-substring-search-up
-bindkey '^[[6~' history-substring-search-down
-alias genserverkey='openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 100000'
+### LD PRELOAD FOR ZSH ###
 if [[ $FIRST_RUN == "FALSE" ]]; then
     ;
 else
@@ -270,3 +273,10 @@ else
     export FIRST_RUN
     exec zsh
 fi
+
+### Experimental ###
+source ~/.config/other/zsh-history-substring-search.zsh
+bindkey '^[[5~' history-substring-search-up
+bindkey '^[[6~' history-substring-search-down
+alias genserverkey='openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 100000'
+
