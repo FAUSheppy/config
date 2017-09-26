@@ -276,3 +276,9 @@ else
 fi
 
 alias hgrep="cat ~/.config/zshhistory.log | grep"
+
+## APT ##
+whateverprovides(){
+    apt-file search --regexp "bin/$1""$"
+}
+export whateverprovide
