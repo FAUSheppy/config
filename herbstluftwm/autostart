@@ -74,7 +74,7 @@ hc keybind $Mod-p spawn pavucontrol
 hc keybind $Mod-Shift-l spawn libreoffice
 hc keybind $Mod-t spawn /bin/bash -c "LC_ALL=en_DK.utf8 && export LC_ALL && thunderbird"
 hc keybind $Mod-Shift-i spawn urxvt -e ssh ik15ydit@ircbox.cs.fau.de -t 'tmux a -d'
-hc keybind $Mod-Shift-t spawn urxvt -e ssh ik15ydit@faui06c.cs.fau.de -t "/proj/ciptmp/ik15ydit/Zeug/Telegram/tg/bin/telegram-cli -k tg-server.pub"
+hc keybind $Mod-Shift-t spawn urxvt -e ssh telegram-sheppy@atlantishq.de -t "/home/telegram-sheppy/tg/bin/telegram-cli"
 hc keybind $Mod-j spawn /bin/bash -c "rm $HOME/.config/herbstluftwm/irc.log && herbstclient spawn urxvt -e 'exit'"
 hc keybind $Mod-e spawn rofi -combi-mode window,run -show combi -modi combi
 hc keybind $Mod-Shift-e spawn rofi -show run

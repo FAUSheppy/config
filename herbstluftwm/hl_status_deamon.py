@@ -64,8 +64,8 @@ def battery():
                             return color_panel("Discharging",RED,seper=False) + color_panel(bat.lstrip("Discharging ,").strip('\n'),get_color(plain,0,100))
                     else:
                             return color_panel(bat.strip('\n'),get_color(plain,0,100))
-                except ValueError as e:
-                        return color_panel(str(e),RED)
+            except ValueError as e:
+                    return color_panel(str(e),RED)
 
 def battery_status():
         if is_laptop:

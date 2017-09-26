@@ -104,6 +104,7 @@ if [[ $HOST =~ atlantis* ]]; then
     alias i3lock="i3lock --image=/home/ik15ydit/.config/i3lock/bg.png"
     alias hlock="i3lock --image=/home/ik15ydit/.config/i3lock/bg.png -t"
     alias -g sq="sheppy@squarez.fauiwg.de"
+    alias -g pine="sheppy@sheppy.chickenkiller.com"
 else
     alias transparent_xlock="xlock -mode blank -geometry 1x1"
 fi
@@ -115,13 +116,12 @@ alias psearch="apt-cache search"
 if [[ $HOST =~ atlantis* ]]; then
     #alias gedit="gedit 2&>/dev/null &"
     alias kpaint="kolourpaint 2&>/dev/null &"
-    alias telegram='ssh uni -t "/proj/ciptmp/ik15ydit/Zeug/Telegram/tg/bin/telegram-cli -k tg-server.pub"'
+    alias telegram='ssh telegram-sheppy@atlantishq.de -t "~/tg/bin/telegram-cli"'
     alias telegram-plain='ssh uni -t "/proj/ciptmp/ik15ydit/Zeug/Telegram/tg/bin/telegram-cli --disable-colors --disable-readline -k tg-server.pub"'
 
     alias x='exec startx'
     alias vpn='sudo /usr/bin/openvpn_cip.sh'
 else
-    alias telegram='/proj/ciptmp/ik15ydit/Zeug/Telegram/tg/bin/telegram-cli -k tg-server.pub'
     alias burp=/home/cip/2013/ik15ydit/ciptmp/reps/WebScan/burpsuite/BurpSuiteFree
 fi
 alias rehash="source ~/.config/zshrc"
@@ -244,7 +244,7 @@ ssh_func(){
     ssh $@;
     printf '\033]708;black\007'
 }
-alias -g ssh="ssh_func"
+alias ssh="ssh_func"
 
 
 ### REVERSE SEARCH ###
@@ -271,3 +271,5 @@ else
     export FIRST_RUN
     exec zsh
 fi
+
+alias hgrep="cat ~/.config/zshhistory.log | grep"
