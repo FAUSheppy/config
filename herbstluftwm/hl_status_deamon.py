@@ -4,12 +4,15 @@ import sys
 import time
 import sys
 import subprocess
-from hl_panel_content import color_panel
+from hl_panel_content import color_panel, get_color
 from hl_utils import error, is_cip, shexec, color_remove, hlpath, is_laptop
+import re
 
 RED = 0xff0000
 GREEN = 0x32CD32
 YELLOW = 0xffff00
+BAT_COLOR_OFFSET = 10 
+
 
 #Druckerguthaben
 def pr_acct_status():
@@ -43,7 +46,7 @@ def vpn_status():
 
 def battery():
             try:
-                    bat = hl_utils.shexec("acpi -b")
+                    bat = shexec("acpi -b")
                     if bat == '':
                             return color_panel("BATTERY FAILURE",RED)
                     bat = re.compile(r'Battery [0-9]+: ').sub('',bat)
@@ -69,21 +72,28 @@ def battery():
 
 def battery_status():
         if is_laptop:
-                with open(hlpatch("battery.log")) as g:
+                with open(hlpath("battery.log"),'w') as g:
                         g.write(battery())
+
+def ip_status():
+    with open(hlpath("ip.log"),'w') as g:
+            p="Public IP: "
+            try:
+                tmp=color_panel(p+shexec("wget --timeout=3 -O- --quiet https://atlantishq.de/ipcheck"),GREEN)
+            except:
+                tmp=color_panel("Offline",RED)
+            g.write(tmp)
 
 
 if __name__ == '__main__':
         #print('"'+sys.argv[-1]+'"')
-        if sys.argv[-1]=='--refresh':
-                vpn_status()
-                pr_acct_status()
-                battery()
-                sys.exit()
         while(True):
                 vpn_status()
                 pr_acct_status()
                 battery_status()
+                ip_status()
+                if sys.argv[-1]=='--refresh':
+                        break
                 time.sleep(30)
 
 

@@ -13,7 +13,7 @@ def color_remove(s):
         return re.compile(r'(\x9B|\x1B\[)[0-?]*[ -\/]*[@-~]').sub('',s)
 
 def shexec(s):
-        return subprocess.check_output(shlex.split(s),shell=True).decode()
+        return subprocess.check_output(shlex.split(s),shell=False).decode()
 
 def is_cip():
         u = os.uname()
