@@ -88,7 +88,6 @@ alias -g L='2>&1 | less'
 alias -g G='| grep'
 alias -g S='| sort'
 alias -g ...='../..'
-alias -g D='| dot -Tpng >'
 alias mv='mv -i'
 alias cp='cp -i'
 alias ..='cd ..'
@@ -247,7 +246,7 @@ fi
 alias unfuck="printf '\033]708;black\007'"
 ssh_func(){
     printf '\033]708;red\007';
-    ssh $@;
+    /usr/bin/ssh $@;
     printf '\033]708;black\007'
 }
 alias -g ssh="ssh_func"
@@ -280,3 +279,5 @@ bindkey '^[[5~' history-substring-search-up
 bindkey '^[[6~' history-substring-search-down
 alias genserverkey='openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 100000'
 
+alias hq="ssh -4 root@atlantishq.de"
+alias sync-atlantishq="rsync -avz -r -P root@atlantishq.de:/home/home_backup/ /home/sheppy/archive"

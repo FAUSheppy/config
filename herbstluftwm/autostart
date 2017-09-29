@@ -26,7 +26,7 @@ if [[ "$HOST" == "atlantispc" ]]; then
     /usr/bin/xrandr --output DVI-D-1 --left-of HDMI-1
     #hc detect_monitors
     hc set swap_monitors_to_get_tag 0
-    hc set_monitors 3840x1080+0+0
+#    hc set_monitors 3840x1080+0+0
     hc keybind $Mod-o spawn /bin/bash -c "/home/sheppy/.config/i3lock/piclock.sh && sudo s2disk"
 fi
 ### Atlantislaptop specific setup ###
