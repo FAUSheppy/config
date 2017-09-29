@@ -36,6 +36,7 @@ herbstluftwm/restartpanels.sh
 htop/
 inkscape/
 libfm/
+spectaclerc
 libvirt/
 libreoffice
 mc/
@@ -43,6 +44,7 @@ menus/
 mimeapps.list
 nautilus/
 pulse/
+unity3d/
 pavucontrol.ini
 pcmanfm/
 ristretto/
@@ -65,6 +67,7 @@ eventviewsrc
 herbstluftwm/__pycache__/
 korgacrc
 korganizerrc
+kolourpaintrc
 nohup.out
 specialmailcollectionsrc
 unity3d/tubus/

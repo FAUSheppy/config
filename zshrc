@@ -110,6 +110,7 @@ if [[ $HOST =~ atlantis* ]]; then
     alias i3lock="i3lock --image=/home/ik15ydit/.config/i3lock/bg.png"
     alias hlock="i3lock --image=/home/ik15ydit/.config/i3lock/bg.png -t"
     alias -g sq="sheppy@squarez.fauiwg.de"
+    alias -g pine="sheppy@sheppy.chickenkiller.com"
 else
     alias transparent_xlock="xlock -mode blank -geometry 1x1"
 fi
@@ -121,13 +122,12 @@ alias psearch="apt-cache search"
 if [[ $HOST =~ atlantis* ]]; then
     #alias gedit="gedit 2&>/dev/null &"
     alias kpaint="kolourpaint 2&>/dev/null &"
-    alias telegram='ssh uni -t "/proj/ciptmp/ik15ydit/Zeug/Telegram/tg/bin/telegram-cli -k tg-server.pub"'
+    alias telegram='ssh telegram-sheppy@atlantishq.de -t "~/tg/bin/telegram-cli"'
     alias telegram-plain='ssh uni -t "/proj/ciptmp/ik15ydit/Zeug/Telegram/tg/bin/telegram-cli --disable-colors --disable-readline -k tg-server.pub"'
 
     alias x='exec startx'
     alias vpn='sudo /usr/bin/openvpn_cip.sh'
 else
-    alias telegram='/proj/ciptmp/ik15ydit/Zeug/Telegram/tg/bin/telegram-cli -k tg-server.pub'
     alias burp=/home/cip/2013/ik15ydit/ciptmp/reps/WebScan/burpsuite/BurpSuiteFree
 fi
 alias rehash="source ~/.config/zshrc"
@@ -175,8 +175,8 @@ alias mountcip="sshfs ik15ydit@faui00n.cs.fau.de:/ -o reconnect,idmap=user $CIP_
 alias umountcip="fusermount -u $CIP_MOUNTPOINT"
 
 ## CONNECT Locally ##
-alias -g atlantislaptop="ik15ydit@atlantislaptop.local"
-alias -g atlantismedion="ik15ydit@atlantismedion.local"
+#alias -g atlantislaptop="ik15ydit@atlantislaptop.local"
+#alias -g atlantismedion="ik15ydit@atlantismedion.local"
 
 ## DIRECT TO CONFIG ##
 alias hlconf="vim ~/.config/herbstluftwm/autostart"
@@ -203,6 +203,7 @@ fi
 if [[ $HOST =~ atlantis* ]]; then
     alias dual="xrandr --output DVI-I-2 --right-of DVI-I-1"
     alias shutown="/sbin/poweroff"
+    alias s2disk="sudo /usr/sbin/s2disk"
 fi
 if [[ $HOST == "atlantislaptop" ]]; then
     alias backlightctl="tee /sys/class/backlight/intel_backlight/brightness <<< $1"
@@ -249,7 +250,7 @@ ssh_func(){
     /usr/bin/ssh $@;
     printf '\033]708;black\007'
 }
-alias -g ssh="ssh_func"
+alias ssh="ssh_func"
 
 
 ### REVERSE SEARCH ###
@@ -259,7 +260,7 @@ else
     PECO=/usr/bin/
 fi
 
-alias cfind='print -z $(cat ~/.config/zshhistory.log | $PECO/peco)'
+alias cfind='print -z $(g/zshhistory.log | $PECO/peco)'
 hhs(){print -z "$(cat ~/.config/zshhistory.log | $PECO/peco)"}
 zle -N hhstest hhs
 bindkey ^R hhstest
@@ -273,11 +274,12 @@ else
     exec zsh
 fi
 
-### Experimental ###
-source ~/.config/other/zsh-history-substring-search.zsh
-bindkey '^[[5~' history-substring-search-up
-bindkey '^[[6~' history-substring-search-down
-alias genserverkey='openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 100000'
-
+alias hgrep="cat ~/.config/zshhistory.log | grep"
 alias hq="ssh -4 root@atlantishq.de"
 alias sync-atlantishq="rsync -avz -r -P root@atlantishq.de:/home/home_backup/ /home/sheppy/archive"
+
+## APT ##
+whateverprovides(){
+    apt-file search --regexp "bin/$1""$"
+}
+export whateverprovide

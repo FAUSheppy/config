@@ -86,6 +86,12 @@ def vpn():
                         tmp = ' '+tmp
                 return tmp;
 
+def ip():
+    with open(hl_utils.hlpath("ip.log")) as f:
+        tmp = f.read()
+        tmp = ' '+tmp
+        return tmp;
+
 def battery():
         if hl_utils.is_laptop():
                 try:
@@ -114,30 +120,7 @@ def battery():
                         return color_panel(str(e),RED)
         else:
                 return ""
+        
 
-def irc():
-        if hl_utils.is_cip():
-                ret_string = "IRC ERROR"
-                try:
-                        fname = hl_utils.hlpath("irc.log")
-                        tmp = []
-                        with open(fname) as f:
-                                for l in f:
-                                        tmp+=[l]
-                        if len(tmp) == 0:
-                                return ""
-                        msg =  " ".join(tmp[-1].split(" ")[2:])[:50]
-                        user = tmp[-1].split(" ")[1][:15]
-                        if not "%push" in msg:
-                                return ""
-                        pattern = re.compile("\^+[fb]g[(]+#[0-9]+[)]+")
-                        msg = re.sub(pattern,"",msg)
-                        user = re.sub(pattern,"",user)
-                        ret_string = "MSG FROM: "+user+"-> "+msg.rstrip('\n')+" -  [ "+str(len(tmp))+" total ]"
-                        return color_panel(ret_string,RED)
-                except(IOError):
-                        pass
-        else:
-                return ''
 if __name__ == "__main__":
-        print(vpn(),guthaben(),battery(),sep='')
+        print(ip(),vpn(),guthaben(),battery(),sep='')
