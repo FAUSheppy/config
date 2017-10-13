@@ -278,7 +278,7 @@ alias -g public_ip='wget --timeout=3 -O- --quiet https://atlantishq.de/ipcheck'
 alias gitkey="ssh-add ~/.ssh/gitrsa"
 alias pcolor='for i in {0..255} ; do printf "\x1b[38;5;${i}mcolour${i} "; if [[ $(((($i+3)/6)*6)) -eq $(($i+3)) ]]; then echo; fi; done'
 alias 'vpn?'='ps -ef | grep  openvpn | grep -v grep'
-alias telegram='\ssh telegram-sheppy@atlantishq.de -t "~/tg/bin/telegram-cli"'
+alias telegram='\ssh telegram-sheppy@atlantishq.de -i ~/.ssh/telegram -t "~/tg/bin/telegram-cli"'
 alias x='exec startx'
 whateverprovides(){
     apt-file search --regexp "bin/$1""$"
