@@ -302,3 +302,4 @@ genocide(){
 }
 export genocide
 alias insurgency_status="ssh insurgency@atlantishq.de -t /usr/local/bin/insurgency_rcon status"
+setopt autocd
