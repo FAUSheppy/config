@@ -79,7 +79,6 @@ hc keybind $Mod-Shift-t spawn urxvt -e ssh telegram-sheppy@atlantishq.de -i ~/.s
 hc keybind $Mod-j spawn /bin/bash -c "rm $HOME/.config/herbstluftwm/irc.log && herbstclient spawn urxvt -e 'exit'"
 hc keybind $Mod-e spawn rofi -combi-mode window,run -show combi -modi combi
 hc keybind $Mod-Shift-e spawn rofi -show run
-hc keybind $Mod-b spawn /home/cip/2013/ik15ydit/ciptmp/reps/WebScan/burpsuite/BurpSuiteFree
 
 # basic movement
 # focusing clients
