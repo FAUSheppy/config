@@ -6,4 +6,5 @@ Host *.fauiwg.de
     User sheppy
     IdentityFile ~/.ssh/wg
 Host *.cs.fau.de
+    User ik15ydit
     IdentityFile ~/.ssh/cipkey
