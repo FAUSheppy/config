@@ -144,6 +144,9 @@ setopt nolistambiguous
 ## allow in word completion 
 setopt completeinword
 
+## allow ommition of cd to change directory, use with caution ##
+setopt autocd
+
 ## i forgot what this does but completion doesnt work without it
 autoload -Uz compinit; compinit #completioni
 
@@ -295,11 +298,14 @@ ssh_func(){
 alias ssh="ssh_func"
 
 ### EXPERIMENTAL ###
+## kill all cip sessions except this pc ##
 genocide(){
     while IFS='' read -r line || [[ -n "$line" ]]; do
-            $(ssh $line)
-    done < "$HOME/.config/logins"
+            if [[ $line != $HOST ]]; then
+                ssh -q $line -t "pkill -u ik15ydit"
+            fi
+    done < "$HOME/.config/cip_logins"
+    #truncate -s 0 ~/.config/cip_logins
 }
 export genocide
 alias insurgency_status="ssh insurgency@atlantishq.de -t /usr/local/bin/insurgency_rcon status"
-setopt autocd

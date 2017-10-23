@@ -245,3 +245,6 @@ for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
     # start it on each monitor
     "$panel" $monitor &
 done
+
+touch ~/.config/cip_logins
+echo $HOST >> ~/.config/cip_logins
