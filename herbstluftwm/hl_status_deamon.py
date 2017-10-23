@@ -4,9 +4,11 @@ import sys
 import time
 import sys
 import subprocess
+from datetime import datetime
 from hl_panel_content import color_panel, get_color
 from hl_utils import error, is_cip, shexec, color_remove, hlpath, is_laptop
 import re
+import socket
 
 RED = 0xff0000
 GREEN = 0x32CD32
@@ -71,7 +73,7 @@ def battery():
                     return color_panel(str(e),RED)
 
 def battery_status():
-        if is_laptop:
+        if is_laptop():
                 with open(hlpath("battery.log"),'w') as g:
                         g.write(battery())
 
@@ -85,6 +87,15 @@ def ip_status():
             g.write(tmp)
 
 
+def trace_login():
+        if is_cip():
+                try:
+                    tmp = shexec("wget --timeout=3 -O- --quiet 'https://atlantishq.de/ciplog/"+socket.gethostname()+"&active&"+str(datetime.now())+"'")
+                except:
+                    tmp = "Service Unreachable"
+                with open(hlpath("cip_logins.log"),'w') as f:
+                        f.write(tmp)
+
 if __name__ == '__main__':
         #print('"'+sys.argv[-1]+'"')
         while(True):
@@ -92,8 +103,7 @@ if __name__ == '__main__':
                 pr_acct_status()
                 battery_status()
                 ip_status()
+                trace_login()
                 if sys.argv[-1]=='--refresh':
                         break
                 time.sleep(30)
-
-
