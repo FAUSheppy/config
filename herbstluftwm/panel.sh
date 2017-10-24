@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 hc() { "${herbstclient_command[@]:-herbstclient}" "$@" ;}
 monitor=${1:-0}
@@ -68,6 +68,12 @@ hc pad $monitor $panel_height
         date +$'date\t^fg(#efefef)%H:%M^fg(#909090), %Y-%m-^fg(#efefef)%d'
         sleep 1 || break
     done > >(uniq_linebuffered) &
+    
+    while true ; do 
+        printf 'pystat\t%s\n' "$($HOME/.config/herbstluftwm/hl_panel_content.py)"
+        sleep 1 || break
+    done > >(uniq_linebuffered) &
+
     childpid=$!
     hc --idle
     kill $childpid
@@ -75,6 +81,7 @@ hc pad $monitor $panel_height
     IFS=$'\t' read -ra tags <<< "$(hc tag_status $monitor)"
     visible=true
     date=""
+    pystat=
     windowtitle=""
     while true ; do
 
@@ -118,13 +125,13 @@ hc pad $monitor $panel_height
         echo -n "^bg()^fg() ${windowtitle//^/^^}"
         
         ####################### Interface to python layer #########################
-        right="$($HOME/.config/herbstluftwm/hl_panel_content.py) $date" 
-
+                #right="$($HOME/.config/herbstluftwm/hl_panel_content.py) $date" 
+        
+        right="${pystat}${date}"
         right_text_only=$(echo -n "$right" | sed 's.\^[^(]*([^)]*)..g')
         # get width of right aligned text.. and add some space..
         width=$($textwidth "$font" "$right_text_only    ")
         len=$(expr $(echo -n "$right" | wc -c) / 3)
-        35
         echo -n "^pa($(($panel_width - $width - $len + 10)))$right"
         echo
 
@@ -140,13 +147,15 @@ hc pad $monitor $panel_height
         IFS=$'\t' read -ra cmd || break
         # find out event origin
         case "${cmd[0]}" in
-                
             tag*)
                 #echo "resetting tags" >&2
                 IFS=$'\t' read -ra tags <<< "$(hc tag_status $monitor)"
                 ;;
+            pystat)
+                pystat="${cmd[@]:1}"
+                ;;
             date)
-                #echo "resetting date" >&2
+                echo "resetting date" >&2
                 date="${cmd[@]:1}"
                 ;;
             quit_panel)
