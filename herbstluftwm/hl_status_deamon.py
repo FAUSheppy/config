@@ -50,7 +50,9 @@ def cip_logins(ignore=""):
             elif len(l) <= 1:
                     ret = ""
             else:
-                color = hl_utils.get_color(len(l),MAX_LOGINS,0)
+                #color = hl_utils.get_color(len(l),0,MAX_LOGINS+3)
+                #color = color[0:2]+color[4:6]+color[2:4]+color[6:8]
+
                 ret=''
                 l=sorted(l)
                 for line in l:
@@ -58,7 +60,7 @@ def cip_logins(ignore=""):
                             continue
                     ret = ret + line + ", "
                 ret = ret[:-len(", ")]
-                ret = hl_utils.color_panel("Logins: "+ret,color)
+                ret = hl_utils.color_panel("Logins: "+ret,GREEN)
             with open(hl_utils.hlpath(LOGINS_LOG),'w') as f:
                 f.write(ret)
 
