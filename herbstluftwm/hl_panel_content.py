@@ -11,8 +11,8 @@ def guthaben():
                 with open(hl_utils.hlpath(PRINT_LOG)) as f:
                         raw = f.read();
                 guthaben = "Druckerguthaben: " + raw + " Euro"
-                col = get_color(float(raw),0,COLOR_BORDER)
-                guthaben = color_panel(guthaben,col)
+                col = hl_utils.get_color(float(raw),0,COLOR_BORDER)
+                guthaben = hl_utils.color_panel(guthaben,col)
         return guthaben;
 
 def vpn():
@@ -46,5 +46,9 @@ def battery():
 def date():
         return hl_utils.shexec("date +' ^fg(#efefef)%H:%M^fg(#909090), %Y-%m-^fg(#efefef)%d'")
 
+def logins():
+        with open(LOGINS_LOG,'r') as f:
+                return f.read()
+
 if __name__ == "__main__":
-        print(ip(),vpn(),guthaben(),battery(),date(),sep='',end='')
+        print(logins(),ip(),vpn(),guthaben(),battery(),date(),sep='',end='')

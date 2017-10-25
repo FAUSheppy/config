@@ -7,7 +7,9 @@ import subprocess
 import re
 import hl_utils
 import signal
+import socket
 from hl_constants import *
+from datetime import datetime
 
 battery_average=[]
 bat_prev = -1
@@ -17,10 +19,34 @@ def sigusr1_handler(signum, frame):
             
 
 def cip_logins():
-            l=hl_utils.shexec("wget -q -O- --user cip --password $(cat $HOME/.config/password.cip) 'https://atlantishq.de/cipactive/active_logins'")
-            if len(l) > 5:
-                    return hl_utils.color_panel("CIP Logins: "+str(len(l)),RED)
-            color = hl_utils.get_color(
+            MAX_LOGINS=5
+            pw="NOPE"
+            try:
+                with open(hl_utils.hlpath("password.cip")) as f:
+                    pw=f.read().strip("\n")
+            except:
+                return ""
+            cmd="wget -q -O- --user cip --password "+pw+" 'https://atlantishq.de/cipactive/active_logins'"
+            try:
+                l=hl_utils.shexec(cmd).split("\n")
+            except:
+                return ""
+
+            if len(l) > MAX_LOGINS:
+                    ret = hl_utils.color_panel("CIP Logins: "+str(len(l)),RED)
+            elif len(l) <= 1:
+                    ret = ""
+            else:
+                color = hl_utils.get_color(len(l),MAX_LOGINS,0)
+                ret = str(l)
+                for line in l:
+                    if line =='':
+                            continue
+                    ret = ret + line + ", "
+                ret = ret[:-len(", ")]
+                ret = hl_utils.color_panel("CIP Logins: "+ret,color)
+            with open(hl_utils.hlpath(LOGINS_LOG),'w') as f:
+                f.write(ret)
 
 def battery():
             try:
@@ -98,8 +124,8 @@ def battery():
 
 def pr_acct_status():
         if hl_utils.is_cip():
-                out = hl_utils.color_remove(hl_utils.shexec(PRINT_LOG).split("\n")[0]).split(' ')[-1]
-                with open(hl_utils.hlpath(PRINT_LOG),'w+') as f:
+                out = hl_utils.color_remove(hl_utils.shexec("pr_acct").split("\n")[0]).split(' ')[-1]
+                with open(hl_utils.hlpath(PRINT_LOG),'w') as f:
                         f.write(out)
 
 def vpn_status():
@@ -127,13 +153,19 @@ def battery_status():
                 with open(hl_utils.hlpath(BATTERY_LOG),'w') as g:
                         g.write(battery())
 
+last_ip="LOL"
 def ip_status():
+    global last_ip
+    try:
+        ip="Public IP: "+ hl_utils.shexec("wget --timeout=3 -O- --quiet https://atlantishq.de/ipcheck")
+        if last_ip == ip:
+                return
+        else:
+                last_ip = ip
+        tmp = hl_utils.color_panel(ip,GREEN)
+    except:
+        tmp = hl_utils.color_panel("Offline",RED)
     with open(hl_utils.hlpath(IP_LOG),'w') as g:
-            p="Public IP: "
-            try:
-                tmp = hl_utils.color_panel(p+hl_utils.shexec("wget --timeout=3 -O- --quiet https://atlantishq.de/ipcheck"),GREEN)
-            except:
-                tmp = hl_utils.color_panel("Offline",RED)
             g.write(tmp)
 
 def save():
@@ -141,14 +173,16 @@ def save():
             pr_acct_status()
             battery_status()
             ip_status()
+            cip_logins()
+            trace_login()
 
 def trace_login():
-        if is_cip():
+        if hl_utils.is_cip():
                 try:
-                    tmp = shexec("wget --timeout=3 -O- --quiet 'https://atlantishq.de/ciplog/"+socket.gethostname()+"&active&"+str(datetime.now())+"'")
+                    tmp = hl_utils.shexec("wget --timeout=3 -O- --quiet 'https://atlantishq.de/ciplog/"+socket.gethostname()+"&active&"+str(datetime.now())+"'")
                 except:
                     tmp = "Service Unreachable"
-                with open(hlpath("cip_logins.log"),'w') as f:
+                with open(hl_utils.hlpath("cip_logins.log"),'w') as f:
                         f.write(tmp)
 
 if __name__ == '__main__':

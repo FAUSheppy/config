@@ -12,6 +12,7 @@ PRINT_LOG   = "pracct.log"
 VPN_LOG     = "vpn_status.log"
 BATTERY_LOG = "battery.log"
 IP_LOG      = "ip.log"
+LOGINS_LOG  = "logins.log"
 
 BATTERY_CRITICAL = 2 # in %
 BAT_WARNING_STR  = ">>>>>>>>>>>>>>>> ------------ WARNING BATTER FAILURE IMMINENT ------------ <<<<<<<<<<<<<"

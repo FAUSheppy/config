@@ -120,7 +120,7 @@ hc keybind $Mod-Control-Up      resize up +$resizestep
 hc keybind $Mod-Control-Right   resize right +$resizestep
 
 # tags
-#hc rename default "1" || true
+hc rename default "1" || true
 hc add "2"
 hc add "3"
 hc add "4"
