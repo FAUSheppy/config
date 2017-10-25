@@ -38,7 +38,7 @@ def cip_logins():
                     ret = ""
             else:
                 color = hl_utils.get_color(len(l),MAX_LOGINS,0)
-                ret = str(l)
+                ret=''
                 for line in l:
                     if line =='':
                             continue

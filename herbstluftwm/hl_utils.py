@@ -6,10 +6,14 @@ import os
 import subprocess
 import shlex
 import re
+import socket
 from hl_constants import *
 
-def hlpath(addition=""):
-        return os.path.join(os.path.expanduser("~"),".config/herbstluftwm/"+addition)
+def hlpath(addition="",use_hostname=True):
+        host=""
+        if use_hostname:
+                host=socket.gethostname()+"_" 
+        return os.path.join(os.path.expanduser("~"),".config/herbstluftwm/"+host+addition)
 
 def color_remove(s):
         '''removes colorcodes from inputstring'''
