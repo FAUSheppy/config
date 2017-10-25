@@ -120,7 +120,7 @@ hc keybind $Mod-Control-Up      resize up +$resizestep
 hc keybind $Mod-Control-Right   resize right +$resizestep
 
 # tags
-hc rename default "1" || true
+#hc rename default "1" || true
 hc add "2"
 hc add "3"
 hc add "4"
@@ -239,7 +239,9 @@ herbstclient set tree_style '╾│ ├└╼─┐'
 # hc detect_monitors
 
 # find the panel
-panel=~/.config/herbstluftwm/panel.sh
+hlpath="${HOME}/.config/herbstluftwm"
+pkill -f herbstluftwm/panel.sh
+panel=$hlpath/panel.sh
 [ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
 for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
     # start it on each monitor
