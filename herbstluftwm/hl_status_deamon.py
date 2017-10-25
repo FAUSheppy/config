@@ -58,7 +58,7 @@ def cip_logins(ignore=""):
                             continue
                     ret = ret + line + ", "
                 ret = ret[:-len(", ")]
-                ret = hl_utils.color_panel("CIP Logins: "+ret,color)
+                ret = hl_utils.color_panel("Logins: "+ret,color)
             with open(hl_utils.hlpath(LOGINS_LOG),'w') as f:
                 f.write(ret)
 
