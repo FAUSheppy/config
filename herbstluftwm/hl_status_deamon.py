@@ -181,7 +181,7 @@ def save():
 def trace_login():
         if hl_utils.is_cip() or True:
                 try:
-                    tmp = hl_utils.shexec("wget --timeout=3 -O- --user cip --password "+pw()+"--quiet 'https://atlantishq.de/ciplog/"+socket.gethostname()+"&active&"+str(datetime.now())+"'")
+                    tmp = hl_utils.shexec("wget --timeout=3 -O- --user cip --password "+pw()+" --quiet 'https://atlantishq.de/ciplog/"+socket.gethostname()+"&active&"+str(datetime.now())+"'")
                 except:
                     tmp = "Service Unreachable"
                 with open(hl_utils.hlpath("cip_logins.log"),'w') as f:
