@@ -46,6 +46,12 @@ def vpn_status():
                 with open(vpn_path,'w+') as g:
                         g.write(out_vpn)
 
+def cip_logins():
+            l=hl_utils.shexec("wget -q -O- --user cip --password $(cat $HOME/.config/password.cip) 'https://atlantishq.de/cipactive/active_logins'")
+            if len(l) > 5:
+                    return hl_utils.color_panel("CIP Logins: "+str(len(l)),RED)
+            color = hl_utils.get_color(
+
 def battery():
             try:
                     bat = shexec("acpi -b")
@@ -97,7 +103,6 @@ def trace_login():
                         f.write(tmp)
 
 if __name__ == '__main__':
-        #print('"'+sys.argv[-1]+'"')
         while(True):
                 vpn_status()
                 pr_acct_status()
