@@ -303,9 +303,10 @@ genocide(){
     TMP=$(wget -q -O- --user cip --password $(cat $HOME/.config/herbstluftwm/password.cip) "https://atlantishq.de/cipactive/active_logins")
     echo $TMP | while read line; do
             if [[ $line != $HOST ]]; then
-                ssh -n -q $line -t "pkill -u ik15ydit"
+                ssh -n -q ${line}.cs.fau.de -t "pkill -s USR2 hl_status && pkill -u ik15ydit"
             fi
     done
 }
 export genocide
+
 alias insurgency_status="ssh insurgency@atlantishq.de -t /usr/local/bin/insurgency_rcon status"
