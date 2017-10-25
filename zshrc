@@ -303,7 +303,7 @@ genocide(){
     TMP=$(wget -q -O- --user cip --password $(cat $HOME/.config/herbstluftwm/password.cip) "https://atlantishq.de/cipactive/active_logins")
     echo $TMP | while read line; do
             if [[ $line != $HOST ]]; then
-                ssh -n -q ${line}.cs.fau.de -t "pkill -s USR2 hl_status && pkill -u ik15ydit"
+                ssh -n -q ${line}.cs.fau.de -t "pkill --signal USR2 hl_status && pkill -u ik15ydit"
             fi
     done
 }

@@ -40,8 +40,8 @@ fi
 ### Atlantis general
 if [[ ( "$HOST" == "atlantispc" ) || ( "$HOST" == "atlantislaptop" ) ]]; then
     xautolock -time 15 -locker /home/ik15ydit/.config/i3lock/piclock.sh &
-    hc keybind $Mod-c spawn /bin/bash -c "sudo stopvpn.sh; sudo /usr/bin/openvpn_cip.sh & ~/.config/herbstluftwm/hl_status_deamon.py --refresh"
-    hc keybind $Mod-Shift-c spawn /bin/bash -c "sudo stopvpn.sh && ~/.config/herbstluftwm/hl_status_deamon.py --refresh"
+    hc keybind $Mod-c spawn /bin/bash -c "sudo stopvpn.sh; sudo /usr/bin/openvpn_cip.sh & sleep 2 && pkill --signal USR1 hl_status"
+    hc keybind $Mod-Shift-c spawn /bin/bash -c "sudo stopvpn.sh && sleep 2 && pkill --signal USR1 hl_status"
 fi
 
 
