@@ -136,6 +136,15 @@ def save():
             battery_status()
             ip_status()
 
+def trace_login():
+        if is_cip():
+                try:
+                    tmp = shexec("wget --timeout=3 -O- --quiet 'https://atlantishq.de/ciplog/"+socket.gethostname()+"&active&"+str(datetime.now())+"'")
+                except:
+                    tmp = "Service Unreachable"
+                with open(hlpath("cip_logins.log"),'w') as f:
+                        f.write(tmp)
+
 if __name__ == '__main__':
         signal.signal(signal.SIGUSR1,sigusr1_handler)
         signal.siginterrupt(signal.SIGUSR1, True)

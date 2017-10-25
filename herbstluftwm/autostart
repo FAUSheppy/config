@@ -67,7 +67,7 @@ hc keybind $Mod-i spawn urxvt -e nohup zsh -c "chromium &" #need to reliably use
 if [[ $HOST =~ atlantis* ]]; then
     hc keybind $Mod-l spawn i3lock -i ~/.config/i3lock/bg.png -t
 else
-    hc keybind $Mod-l spawn xlock
+    hc keybind $Mod-l spawn xlock -fg green
     hc keybind $Mod-Shift-x spawn xlock -mode blank -geometry 1x1
     hc keybind $Mod-x spawn xlock -mode blank -geometry 1x1
 fi
@@ -75,11 +75,10 @@ hc keybind $Mod-p spawn pavucontrol
 hc keybind $Mod-Shift-l spawn libreoffice
 hc keybind $Mod-t spawn /bin/bash -c "LC_ALL=en_DK.utf8 && export LC_ALL && thunderbird"
 hc keybind $Mod-Shift-i spawn urxvt -e ssh ik15ydit@ircbox.cs.fau.de -t 'tmux a -d'
-hc keybind $Mod-Shift-t spawn urxvt -e ssh telegram-sheppy@atlantishq.de -t "/home/telegram-sheppy/tg/bin/telegram-cli"
+hc keybind $Mod-Shift-t spawn urxvt -e ssh telegram-sheppy@atlantishq.de -i ~/.ssh/telegram -t "/home/telegram-sheppy/tg/bin/telegram-cli"
 hc keybind $Mod-j spawn /bin/bash -c "rm $HOME/.config/herbstluftwm/irc.log && herbstclient spawn urxvt -e 'exit'"
 hc keybind $Mod-e spawn rofi -combi-mode window,run -show combi -modi combi
 hc keybind $Mod-Shift-e spawn rofi -show run
-hc keybind $Mod-b spawn /home/cip/2013/ik15ydit/ciptmp/reps/WebScan/burpsuite/BurpSuiteFree
 
 # basic movement
 # focusing clients
