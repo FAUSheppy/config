@@ -47,7 +47,7 @@ def date():
         return hl_utils.shexec("date +' ^fg(#efefef)%H:%M^fg(#909090), %Y-%m-^fg(#efefef)%d'")
 
 def logins():
-        with open(LOGINS_LOG,'r') as f:
+        with open(hl_utils.hlpath(LOGINS_LOG),'r') as f:
                 return f.read()
 
 if __name__ == "__main__":

@@ -22,7 +22,7 @@ def cip_logins():
             MAX_LOGINS=5
             pw="NOPE"
             try:
-                with open(hl_utils.hlpath("password.cip")) as f:
+                with open(hl_utils.hlpath("password.cip",False)) as f:
                     pw=f.read().strip("\n")
             except:
                 return ""

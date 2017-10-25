@@ -300,7 +300,7 @@ alias ssh="ssh_func"
 ### EXPERIMENTAL ###
 ## kill all cip sessions except this pc ##
 genocide(){
-    TMP=$(wget -q -O- --user cip --password $(cat $HOME/.config/password.cip) "https://atlantishq.de/cipactive/active_logins")
+    TMP=$(wget -q -O- --user cip --password $(cat $HOME/.config/herbstluftwm/password.cip) "https://atlantishq.de/cipactive/active_logins")
     echo $TMP | while read line; do
             if [[ $line != $HOST ]]; then
                 ssh -n -q $line -t "pkill -u ik15ydit"
