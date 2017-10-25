@@ -17,6 +17,17 @@ bat_prev = -1
 def sigusr1_handler(signum, frame):
         save()
 
+def sigusr2_handler(signum, frame):
+        cmd="wget --timeout=3 -O- --user cip --password "+pw()+" --quiet 'https://atlantishq.de/ciplog/"+socket.gethostname()+"&inactive&"+"none'"
+        try:
+            hl_utils.shexec(cmd)
+        except:
+            pass
+        cip_logins(socket.gethostname())
+        sys.exit(0)
+
+        
+
 def pw():
             pw="NOPE"
             try:
@@ -26,7 +37,7 @@ def pw():
                 return ""
             
 
-def cip_logins():
+def cip_logins(ignore=""):
             MAX_LOGINS=5
             cmd="wget -q -O- --user cip --password "+pw()+" 'https://atlantishq.de/cipactive/active_logins'"
             try:
@@ -35,14 +46,15 @@ def cip_logins():
                 return ""
 
             if len(l) > MAX_LOGINS:
-                    ret = hl_utils.color_panel("CIP Logins: "+str(len(l)),RED)
+                    ret = hl_utils.color_panel("Logins: "+str(len(l)),RED)
             elif len(l) <= 1:
                     ret = ""
             else:
                 color = hl_utils.get_color(len(l),MAX_LOGINS,0)
                 ret=''
+                l=sorted(l)
                 for line in l:
-                    if line =='':
+                    if line =='' or line==ignore:
                             continue
                     ret = ret + line + ", "
                 ret = ret[:-len(", ")]
@@ -189,6 +201,7 @@ def trace_login():
 
 if __name__ == '__main__':
         signal.signal(signal.SIGUSR1,sigusr1_handler)
+        signal.signal(signal.SIGUSR2,sigusr2_handler)
         signal.siginterrupt(signal.SIGUSR1, True)
         while(True):
                 if sys.argv[-1] in ['--refresh','-r']:
