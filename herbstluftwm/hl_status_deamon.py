@@ -16,17 +16,19 @@ bat_prev = -1
 
 def sigusr1_handler(signum, frame):
         save()
+
+def pw():
+            pw="NOPE"
+            try:
+                with open(hl_utils.hlpath("password.cip",False)) as f:
+                    return f.read().strip("\n")
+            except:
+                return ""
             
 
 def cip_logins():
             MAX_LOGINS=5
-            pw="NOPE"
-            try:
-                with open(hl_utils.hlpath("password.cip",False)) as f:
-                    pw=f.read().strip("\n")
-            except:
-                return ""
-            cmd="wget -q -O- --user cip --password "+pw+" 'https://atlantishq.de/cipactive/active_logins'"
+            cmd="wget -q -O- --user cip --password "+pw()+" 'https://atlantishq.de/cipactive/active_logins'"
             try:
                 l=hl_utils.shexec(cmd).split("\n")
             except:
@@ -177,9 +179,9 @@ def save():
             trace_login()
 
 def trace_login():
-        if hl_utils.is_cip():
+        if hl_utils.is_cip() or True:
                 try:
-                    tmp = hl_utils.shexec("wget --timeout=3 -O- --quiet 'https://atlantishq.de/ciplog/"+socket.gethostname()+"&active&"+str(datetime.now())+"'")
+                    tmp = hl_utils.shexec("wget --timeout=3 -O- --user cip --password "+pw()+"--quiet 'https://atlantishq.de/ciplog/"+socket.gethostname()+"&active&"+str(datetime.now())+"'")
                 except:
                     tmp = "Service Unreachable"
                 with open(hl_utils.hlpath("cip_logins.log"),'w') as f:

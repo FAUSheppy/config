@@ -51,7 +51,7 @@ hc spawn ~/.config/herbstluftwm/hl_status_deamon.py
 
 # keybindings
 #client handling
-hc keybind $Mod-Shift-q spawn /bin/bash -c "pkill hl_status_deamo & pkill ssh-agent & herbstclient quit"
+hc keybind $Mod-Shift-q spawn /bin/bash -c "pkill hl_status_deamo & pkill ssh-agent & ~/.config/other/notify_logout.sh  &herbstclient quit"
 if [[ $HOST =~ atlantis* ]]; then
     hc keybind $Mod-Shift-p spawn sudo /sbin/poweroff
 fi
