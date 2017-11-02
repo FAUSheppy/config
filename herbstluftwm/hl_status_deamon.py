@@ -74,7 +74,7 @@ def battery():
                     plain = int(bat.split('%')[0][-3:].rstrip('%').lstrip(','))
                     
                     ## imediatelly return if full and on supply ##
-                    if bat.startswith("Full") or bat.startswith('Unknown'):
+                    if bat.startswith("Full") or bat.startswith('Unknown') or "Charging, 100%" in bat:
                             return hl_utils.color_panel("On Supply and fully charged",GREEN)
                         
                     ## calculate average time remaining ##
@@ -180,6 +180,7 @@ def ip_status():
                 last_ip = ip
         tmp = hl_utils.color_panel(ip,GREEN)
     except:
+        last_ip = ""
         tmp = hl_utils.color_panel("Offline",RED)
     with open(hl_utils.hlpath(IP_LOG),'w') as g:
             g.write(tmp)
