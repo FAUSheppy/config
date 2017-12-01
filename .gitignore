@@ -4,6 +4,7 @@
 .nfs*
 *.log
 *.swp
+*.cip
 
 tubus/
 Florian_Hackenberger/

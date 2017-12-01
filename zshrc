@@ -1,3 +1,4 @@
+#!/bin/zsh
 ########################################################################################################
 ########################################### COLOR STDERR################################################
 ########################################################################################################
@@ -31,7 +32,6 @@ fi
 
 ## colors ##
 SEPERATOR_LINE_COLOR="green"
-MAIN_PROMT_COLOR="green"
 USER_COLOR="yellow"
 USER_HOST_SEPERATOR_COLOR="red"
 HOST_COLOR="yellow"
@@ -42,7 +42,8 @@ PATH_INPUT_SEPERATOR_COLOR="green"
 ## different color for root ##
 if [[ $USER == "root" ]]; then
     USER_COLOR="red"
-    MAIN_PROMT_COLOR="red"
+    HOST_COLOR="red"
+    SEPERATOR_LINE_COLOR="red"
 fi
 
 ## different color for certain hosts ##
