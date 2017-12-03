@@ -194,7 +194,7 @@ def save():
             trace_login()
 
 def trace_login():
-        if hl_utils.is_cip() or True:
+        if hl_utils.is_cip():
                 try:
                     tmp = hl_utils.shexec("wget --timeout=3 -O- --user cip --password "+pw()+" --quiet 'https://atlantishq.de/ciplog/"+socket.gethostname()+"&active&"+str(datetime.now())+"'")
                 except:
