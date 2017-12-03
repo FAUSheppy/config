@@ -241,7 +241,7 @@ fi
 ## CONNECT UNI ##
 alias -g uni="ik15ydit@faui06c.cs.fau.de"
 alias cipkey="ssh-add ~/.ssh/ciplogin"
-alias cipra="xpra start ssh:ik15ydit@faui00n.cs.fau.de:100 --start-child urxvt"
+alias cipra="xpra start ssh:ik15ydit@faui0sr0.cs.fau.de:100 --start-child urxvt"
 alias mountcip="sshfs ik15ydit@faui00n.cs.fau.de:/ -o reconnect,idmap=user $CIP_MOUNTPOINT"
 alias umountcip="fusermount -u $CIP_MOUNTPOINT"
 
@@ -310,3 +310,6 @@ genocide(){
 export genocide
 
 alias insurgency_status="ssh insurgency@atlantishq.de -t /usr/local/bin/insurgency_rcon status"
+alias clear_swap="echo 'This can take serveral minutes if swap was full' &&sudo swapoff -a && sudo swapon -a"
+alias mark_green="printf '\033]708;green\007';"
+alias mark_blue="printf '\033]708;blue\007';"

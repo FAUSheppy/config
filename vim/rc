@@ -30,11 +30,6 @@ set lazyredraw
 "move by visual line
 "gg will go to start of file, GG to end of file and M will actually jump to mid of screen
 
-"modifier keys
-let mapleader=","
-nnoremap l  $
-"l is no the selector for line
-
 "general use
 inoremap jk <esc>
 nnoremap <F8> :nohlsearch<CR>

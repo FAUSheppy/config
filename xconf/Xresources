@@ -5,6 +5,8 @@ URxvt.print-pipe: true
 
 URxvt.perl-ext-common: selection-to-clipboard
 
+URxvt.iso14755          :false
+
 !experimental
 !URxvt*externalBorder:   3
 !URxvt*borderLess:       false
