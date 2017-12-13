@@ -284,13 +284,13 @@ alias pcolor='for i in {0..255} ; do printf "\x1b[38;5;${i}mcolour${i} "; if [[ 
 alias 'vpn?'='ps -ef | grep  openvpn | grep -v grep'
 alias telegram='\ssh telegram-sheppy@atlantishq.de -i ~/.ssh/telegram -t "~/tg/bin/telegram-cli"'
 alias x='exec startx'
+alias clear_swap="echo 'This can take serveral minutes if swap was full' &&sudo swapoff -a && sudo swapon -a"
 whateverprovides(){
     apt-file search --regexp "bin/$1""$"
 }
-export whateverprovide
+export whateverprovides
 
 ### COLOR SSH ###
-alias unfuck="printf '\033]708;black\007'"
 ssh_func(){
     printf '\033]708;red\007';
     /usr/bin/ssh $@;
@@ -298,9 +298,13 @@ ssh_func(){
 }
 alias ssh="ssh_func"
 
-### EXPERIMENTAL ###
+### Terminal Border-Colors ###
+alias mark_green="printf '\033]708;green\007';"
+alias mark_blue="printf '\033]708;blue\007';"
+alias mark_none="printf '\033]708;black\007'"
+
 ## kill all cip sessions except this pc ##
-genocide(){
+logout_all(){
     TMP=$(wget -q -O- --user cip --password $(cat $HOME/.config/herbstluftwm/password.cip) "https://atlantishq.de/cipactive/active_logins")
     echo $TMP | while read line; do
             if [[ $line != $HOST ]]; then
@@ -308,9 +312,7 @@ genocide(){
             fi
     done
 }
-export genocide
+export logout_all
 
+### EXPERIMENTAL ###
 alias insurgency_status="ssh insurgency@atlantishq.de -t /usr/local/bin/insurgency_rcon status"
-alias clear_swap="echo 'This can take serveral minutes if swap was full' &&sudo swapoff -a && sudo swapon -a"
-alias mark_green="printf '\033]708;green\007';"
-alias mark_blue="printf '\033]708;blue\007';"

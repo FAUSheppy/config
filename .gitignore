@@ -1,10 +1,14 @@
 *.so
 .pyc
 *_old
-.nfs*
+*.pyc
+*.nfs*
 *.log
 *.swp
 *.cip
+panel_pid_*
+
+tor/
 
 tubus/
 Florian_Hackenberger/
