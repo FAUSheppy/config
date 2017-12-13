@@ -11,6 +11,7 @@ hc emit_hook reload
 xsetroot -solid '#5A8E3A'
 
 # reset
+rm ~/.config/herbstluftwm/*.log
 hc keyunbind --all
 pkill xautolock
 # WONT WORK --> cause process has other name no idea which though pkill -s 15 hl_status_deamon   #send SIGTERM for correct termination during write

@@ -14,6 +14,6 @@ BATTERY_LOG = "battery.log"
 IP_LOG      = "ip.log"
 LOGINS_LOG  = "logins.log"
 
-BATTERY_CRITICAL = 2 # in %
+BATTERY_CRITICAL = 3 # in %
 BAT_WARNING_STR  = ">>>>>>>>>>>>>>>> ------------ WARNING BATTER FAILURE IMMINENT ------------ <<<<<<<<<<<<<"
 VALUES_KEPT = 10

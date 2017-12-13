@@ -47,8 +47,11 @@ def date():
         return hl_utils.shexec("date +' ^fg(#efefef)%H:%M^fg(#909090), %Y-%m-^fg(#efefef)%d'")
 
 def logins():
-        with open(hl_utils.hlpath(LOGINS_LOG),'r') as f:
-                return f.read()
+        try:
+            with open(hl_utils.hlpath(LOGINS_LOG),'r') as f:
+                    return f.read()
+        except:
+                return ""
 
 if __name__ == "__main__":
         print(logins(),ip(),vpn(),guthaben(),battery(),date(),sep='',end='')
