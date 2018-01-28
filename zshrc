@@ -316,3 +316,5 @@ export logout_all
 
 ### EXPERIMENTAL ###
 alias insurgency_status="ssh insurgency@atlantishq.de -t /usr/local/bin/insurgency_rcon status"
+alias gfc='git commit . -m "[git fast commit] $(date +"%d. %h %Y - %H:%M:%S")" && git push'
+alias python=python3
