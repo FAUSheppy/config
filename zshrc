@@ -316,3 +316,5 @@ export logout_all
 
 ### EXPERIMENTAL ###
 alias insurgency_status="ssh insurgency@atlantishq.de -t /usr/local/bin/insurgency_rcon status"
+alias python=python3
+alias dirc="ssh sheppy@atlantishq.de -t 'command;tmux a -d'"

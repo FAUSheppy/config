@@ -28,7 +28,7 @@ if [[ "$HOST" == "atlantispc" ]]; then
     #hc detect_monitors
     hc set swap_monitors_to_get_tag 0
 #    hc set_monitors 3840x1080+0+0
-    hc keybind $Mod-o spawn /bin/bash -c "/home/sheppy/.config/i3lock/piclock.sh && sudo s2disk"
+#    hc keybind $Mod-o spawn /bin/bash -c "/home/sheppy/.config/i3lock/piclock.sh && sudo s2disk"
 fi
 ### Atlantislaptop specific setup ###
 if [[ "$HOST" == "atlantislaptop" ]]; then
@@ -41,6 +41,7 @@ fi
 ### Atlantis general
 if [[ ( "$HOST" == "atlantispc" ) || ( "$HOST" == "atlantislaptop" ) ]]; then
     xautolock -time 15 -locker /home/ik15ydit/.config/i3lock/piclock.sh &
+    xautolock -unlocknow # fixes anoying bug that causes lockscreen to start after autologon
     hc keybind $Mod-c spawn /bin/bash -c "sudo stopvpn.sh; sudo /usr/bin/openvpn_cip.sh & sleep 2 && pkill --signal USR1 hl_status"
     hc keybind $Mod-Shift-c spawn /bin/bash -c "sudo stopvpn.sh && sleep 2 && pkill --signal USR1 hl_status"
 fi
@@ -111,10 +112,11 @@ hc keybind $Mod-v       split   right   0.5
 
 # resizing frames
 resizestep=0.05
-hc keybind $Mod-Control-a       resize left +$resizestep
-hc keybind $Mod-Control-s       resize down +$resizestep
-hc keybind $Mod-Control-w       resize up +$resizestep
-hc keybind $Mod-Control-d       resize right +$resizestep
+small_resize=0.001
+hc keybind $Mod-Control-a       resize left +$small_resize
+hc keybind $Mod-Control-s       resize down +$small_resize
+hc keybind $Mod-Control-w       resize up +$small_resize
+hc keybind $Mod-Control-d       resize right +$small_resize
 hc keybind $Mod-Control-Left    resize left +$resizestep
 hc keybind $Mod-Control-Down    resize down +$resizestep
 hc keybind $Mod-Control-Up      resize up +$resizestep
@@ -248,3 +250,4 @@ for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
     # start it on each monitor
     "$panel" $monitor &
 done
+

@@ -3,7 +3,18 @@ URxvt.*.foreground: #EEEEEE
 URxvt.*.scrollBar: off
 URxvt.print-pipe: true
 
-URxvt.perl-ext-common: selection-to-clipboard
+URxvt.perl-ext-common: default,tabbed,matcher,resize-font,-tabbed,selection-to-clipboard
+
+
+URxvt.font:     xft:bitstream vera sans mono:size=10:antialias=true
+
+URxvt.keysym.C-minus:     resize-font:smaller
+URxvt.keysym.C-plus:      resize-font:bigger
+URxvt.keysym.C-equal:     resize-font:reset
+URxvt.keysym.C-question:  resize-font:show
+
+
+
 
 URxvt.iso14755          :false
 
