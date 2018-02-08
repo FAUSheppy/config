@@ -146,21 +146,11 @@ def pr_acct_status():
 
 def vpn_status():
         if not hl_utils.is_cip():
-                out_vpn = hl_utils.shexec("ps -ef").split("\n")
-                
-                ret = 0 
-                for l in out_vpn:
-                        if 'openvpn' in l and not 'sudo' in l and not 'grep' in l and not 'cip.sh' in l:
-                                ret += 1;
-                if ret == 0:
-                        out_vpn = hl_utils.color_panel("VPN: Link Down",RED)
-                elif ret == 1:
+                out_vpn = hl_utils.shexec("ip r g 8.8.8.8").split("\n")[0]
+                if "dev tun0" in out_vpn:
                         out_vpn = hl_utils.color_panel("VPN: In Use",GREEN)
-                elif ret > 1:
-                        out_vpn = hl_utils.color_panel("multiple VPNs connected",YELLOW)
                 else:
-                        out_vpn = hl_utils.color_panel("VPN: STATUS UNKOWN ??",RED)
-
+                        out_vpn = hl_utils.color_panel("VPN: Link Down",RED)
                 with open(hl_utils.hlpath(VPN_LOG),'w+') as g:
                         g.write(out_vpn)
 
@@ -181,7 +171,11 @@ def ip_status():
         tmp = hl_utils.color_panel(ip,GREEN)
     except:
         last_ip = ""
-        tmp = hl_utils.color_panel("Offline",RED)
+        try:
+            hl_utils.shexec("wget --timeout=2 -O- --quiet https://wwwcip.cs.fau.de/")
+            tmp = hl_utils.color_panel("AtlantisHQ Unreachable",RED)
+        except:
+            tmp = hl_utils.color_panel("No Internet Connection",RED)
     with open(hl_utils.hlpath(IP_LOG),'w') as g:
             g.write(tmp)
 
