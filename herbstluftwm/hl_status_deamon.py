@@ -39,7 +39,7 @@ def pw():
 
 def cip_logins(ignore=""):
             MAX_LOGINS=5
-            cmd="wget -q -O- --user cip --password "+pw()+" 'https://atlantishq.de/cipactive/active_logins'"
+            cmd="wget -q -O- --user cip --password "+pw()+" 'https://atlantishq.de:/cipactive/active_logins'"
             try:
                 l=hl_utils.shexec(cmd).split("\n")
             except:
@@ -163,7 +163,7 @@ last_ip="LOL"
 def ip_status():
     global last_ip
     try:
-        ip="Public IP: "+ hl_utils.shexec("wget --timeout=3 -O- --quiet https://atlantishq.de/ipcheck")
+        ip="Public IP: "+ hl_utils.shexec("wget --no-proxy --timeout=3 -O- --quiet https://atlantishq.de:8002/ipcheck")
         if last_ip == ip:
                 return
         else:
