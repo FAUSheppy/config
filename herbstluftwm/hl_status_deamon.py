@@ -147,7 +147,7 @@ def pr_acct_status():
 def vpn_status():
         if not hl_utils.is_cip():
                 out_vpn = hl_utils.shexec("ip r g 8.8.8.8").split("\n")[0]
-                if "dev tun0" in out_vpn:
+                if "dev cip_tun" in out_vpn:
                         out_vpn = hl_utils.color_panel("VPN: In Use",GREEN)
                 else:
                         out_vpn = hl_utils.color_panel("VPN: Link Down",RED)
