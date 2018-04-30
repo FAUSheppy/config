@@ -3,6 +3,7 @@ import hl_utils
 from hl_constants import *
 import string
 import re
+from datetime import datetime
 
 def guthaben():
         guthaben = ''
@@ -53,5 +54,15 @@ def logins():
         except:
                 return ""
 
+def countdown():
+        delta = datetime(year=2018,month=7,day=22,hour=20) - datetime.now()
+        if delta.days > 1:
+            tmp = "{} von 180 Tagen bis Abgabe verbleibend".format(delta.days)
+        else:
+            tmp = "{}h bis BC Abgabe".format(delta.hours)
+        tmp = hl_utils.color_panel(tmp,YELLOW)
+        return tmp
+
+
 if __name__ == "__main__":
-        print(logins(),ip(),vpn(),guthaben(),battery(),date(),sep='',end='')
+        print(countdown(),logins(),ip(),vpn(),guthaben(),battery(),date(),sep='',end='')
