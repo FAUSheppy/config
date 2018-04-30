@@ -101,3 +101,4 @@ set clipboard=unnamed
 "let g:jedi#popup_on_dot = 0
 autocmd FileType python setlocal completeopt-=preview
 autocmd BufNewFile,BufRead *.sp   set syntax=cpp
+autocmd BufNewFile,BufRead *.sm   set syntax=cpp

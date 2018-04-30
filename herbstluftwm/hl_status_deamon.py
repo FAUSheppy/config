@@ -64,7 +64,7 @@ def pw():
 
 def cip_logins(ignore=""):
             MAX_LOGINS=5
-            cmd="wget -q -O- --user cip --password "+pw()+" 'https://atlantishq.de/cipactive/active_logins'"
+            cmd="wget -q -O- --user cip --password "+pw()+" 'https://atlantishq.de:/cipactive/active_logins'"
             try:
                 l=hl_utils.shexec(cmd).split("\n")
             except:
@@ -172,7 +172,7 @@ def pr_acct_status():
 def vpn_status():
         if not hl_utils.is_cip():
                 out_vpn = hl_utils.shexec("ip r g 8.8.8.8").split("\n")[0]
-                if "dev tun0" in out_vpn:
+                if "dev cip_tun" in out_vpn:
                         out_vpn = hl_utils.color_panel("VPN: In Use",GREEN)
                 else:
                         out_vpn = hl_utils.color_panel("VPN: Link Down",RED)
@@ -188,7 +188,7 @@ last_ip="LOL"
 def ip_status():
     global last_ip
     try:
-        ip="Public IP: "+ hl_utils.shexec("wget -4 --timeout=3 -O- --quiet https://atlantishq.de/ipcheck")
+        ip="Public IP: "+ hl_utils.shexec("wget -4 --no-proxy --timeout=3 -O- --quiet https://atlantishq.de:8002/ipcheck")
         if last_ip == ip:
                 return
         else:

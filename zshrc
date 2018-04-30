@@ -193,6 +193,7 @@ fi
 
 ## Connect to ircbox and attach tmux
 alias irc="ssh ircbox.cs.fau.de -t 'command; tmux a'"
+alias dirc="ssh sheppy@atlantishq.de -t 'command; tmux a'"
 
 ## lock screen but still let people read it
 alias transparent_xlock="xlock -mode blank -geometry 1x1"
@@ -294,7 +295,7 @@ export whateverprovides
 ssh_func(){
     printf '\033]708;red\007';
     /usr/bin/ssh $@;
-    printf '\033]708;black\007'
+    printf '\033]708;black\007';
 }
 alias ssh="ssh_func"
 
@@ -321,3 +322,5 @@ alias dirc="ssh sheppy@atlantishq.de -t 'command;tmux a -d'"
 alias gfc='git commit . -m "[git fast commit] $(date +"%d. %h %Y - %H:%M:%S")" && git push'
 alias bc="cd /proj/cipdata/ik15ydit"
 export PYTHONPATH=/home/cip/2013/ik15ydit/python-local
+alias -g atip="echo 93.104.211.59"
+alias atp="~/.config/playercount.py"
