@@ -15,6 +15,14 @@ def guthaben():
                 guthaben = hl_utils.color_panel(guthaben,col)
         return guthaben;
 
+def quota():
+        q = ''
+        if not hl_utils.is_cip():
+                return ''
+        else:
+                with open(hl_utils.hlpath("quota.cip")) as f:
+                    return f.read()
+
 def vpn():
         vpn = ''
         if hl_utils.is_cip():
@@ -28,6 +36,8 @@ def vpn():
 def ip():
     with open(hl_utils.hlpath(IP_LOG)) as f:
         tmp = f.read()
+        if len(tmp) > 20:
+            tmp = hl_utils.color_panel("Public IP: IP6 ",GREEN)
         tmp = ' '+tmp
         return tmp;
 

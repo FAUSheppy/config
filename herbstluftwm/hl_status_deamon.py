@@ -27,6 +27,31 @@ def sigusr2_handler(signum, frame):
         sys.exit(0)
 
         
+def quota():
+        if hl_utils.is_cip():
+            q=hl_utils.shexec("cip-quota")
+            ciptmp="WTF"
+            home="WTF"
+            test = []
+            print(q)
+            for l in q:
+                test += [l]
+
+            try:
+                    #if l.endswith("ciptmp\n"):
+                    ciptmp = test[2].split("(")[1].split(")")[0]
+                #elif l.endswith("ik15ydit\n"):
+                    home = test[1].split("(")[1].split(")")[0]
+                    #break
+            except Exception:
+                return
+
+            tmp = "Quota: "+home+"/"+ciptmp
+            with open(hl_utils.hlpath("quota.cip"),"w") as f:
+                print(tmp)
+                f.write(tmp)
+
+            
 
 def pw():
             pw="NOPE"
@@ -163,7 +188,7 @@ last_ip="LOL"
 def ip_status():
     global last_ip
     try:
-        ip="Public IP: "+ hl_utils.shexec("wget --timeout=3 -O- --quiet https://atlantishq.de/ipcheck")
+        ip="Public IP: "+ hl_utils.shexec("wget -4 --timeout=3 -O- --quiet https://atlantishq.de/ipcheck")
         if last_ip == ip:
                 return
         else:
@@ -180,6 +205,7 @@ def ip_status():
             g.write(tmp)
 
 def save():
+            quota()
             vpn_status()
             pr_acct_status()
             battery_status()
@@ -201,7 +227,7 @@ if __name__ == '__main__':
         signal.signal(signal.SIGUSR2,sigusr2_handler)
         signal.siginterrupt(signal.SIGUSR1, True)
         while(True):
+                save()
                 if sys.argv[-1] in ['--refresh','-r']:
                         break
-                save()
                 time.sleep(10)
