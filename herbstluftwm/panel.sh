@@ -118,7 +118,7 @@ hc pad $monitor $panel_height
 
         right="${pystat}"
         right_text_only=$(echo -n "$right" | sed 's.\^[^(]*([^)]*)..g')
-        width=$($textwidth "$font" "$right_text_only    ")
+        width=$($textwidth "$font" "$right_text_only         ")
         echo -n "^pa($(($panel_width - $width)))$right"
         echo
 
