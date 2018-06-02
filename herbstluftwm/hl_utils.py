@@ -48,7 +48,7 @@ def color_panel(s,hex_code,seper=True):
 def get_color(nr,start,end):
         if end == start or nr >= end:
                 return hex(GREEN)
-        elif nr <= 0:
+        elif nr <= 0 or nr < start:
                 return hex(RED)
         else:
                 r,g,b = 0,0,0
