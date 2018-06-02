@@ -57,7 +57,7 @@ def logins():
 def countdown():
         delta = datetime(year=2018,month=7,day=22,hour=20) - datetime.now()
         if delta.days > 1:
-            tmp = "{} von 180 Tagen bis Abgabe verbleibend".format(delta.days)
+            tmp = "{} von 150 Tagen bis Abgabe verbleibend".format(delta.days)
         else:
             tmp = "{}h bis BC Abgabe".format(delta.hours)
         tmp = hl_utils.color_panel(tmp,YELLOW)
