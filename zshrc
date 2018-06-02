@@ -322,3 +322,4 @@ alias dirc="ssh sheppy@atlantishq.de -t 'command;tmux a -d'"
 alias gfc='git commit . -m "[git fast commit] $(date +"%d. %h %Y - %H:%M:%S")" && git push'
 alias -g atip="echo 93.104.211.59"
 alias atp="~/.config/playercount.py"
+alias players='~/trash/test/test.py'
