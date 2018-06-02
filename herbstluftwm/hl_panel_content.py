@@ -70,7 +70,7 @@ def countdown():
             tmp = "{} von 180 Tagen bis Abgabe verbleibend".format(delta.days)
         else:
             tmp = "{}h bis BC Abgabe".format(delta.hours)
-        tmp = hl_utils.color_panel(tmp,YELLOW)
+        tmp = hl_utils.color_panel(tmp,hl_utils.get_color(delta.days,0,180))
         return tmp
 
 
