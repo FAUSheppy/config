@@ -219,7 +219,7 @@ def save():
             pr_acct_status()
             battery_status()
             ip_status()
-            cip_logins()
+            #cip_logins()
             trace_login()
             bc_words()
 
