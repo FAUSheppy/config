@@ -324,3 +324,4 @@ alias bc="cd /proj/cipdata/ik15ydit"
 export PYTHONPATH=/home/cip/2013/ik15ydit/python-local
 alias -g atip="echo 93.104.211.59"
 alias atp="~/.config/playercount.py"
+alias mongo="LD_PRELOAD=/home/cip/2013/ik15ydit/libyaml-cpp.so.0.5 ~/mongo github"

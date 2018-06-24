@@ -64,6 +64,16 @@ def logins():
         except:
                 return ""
 
+def bcw():
+        try:
+            with open(hl_utils.hlpath(BC_WORD_LOG),'r') as f:
+                    tmp = int(f.read())
+                    string = "{} of 6000 words".format(tmp)
+                    return hl_utils.color_panel(string,hl_utils.get_color(tmp,0,8000,reverse=False))
+        except:
+                return ""
+
+
 def countdown():
         delta = datetime(year=2018,month=7,day=22,hour=20) - datetime.now()
         if delta.days > 1:
@@ -75,4 +85,4 @@ def countdown():
 
 
 if __name__ == "__main__":
-        print(countdown(),logins(),ip(),vpn(),guthaben(),battery(),date(),sep='',end='')
+        print(bcw(),countdown(),logins(),ip(),vpn(),guthaben(),battery(),date(),sep='',end='')

@@ -28,6 +28,8 @@ def sigusr2_handler(signum, frame):
 
         
 def quota():
+        if True:
+            return
         if hl_utils.is_cip():
             q=hl_utils.shexec("cip-quota")
             ciptmp="WTF"
@@ -169,6 +171,13 @@ def pr_acct_status():
                 with open(hl_utils.hlpath(PRINT_LOG),'w') as f:
                         f.write(out)
 
+def bc_words():
+        if hl_utils.is_cip():
+            with open(hl_utils.hlpath(BC_WORD_LOG),'w') as g:
+                        tmp = hl_utils.shexec("wc -w /proj/cipdata/ik15ydit/license-confusion-bc/other_shit/lel.md")
+                        tmp = tmp.split()[0]
+                        g.write(tmp)
+
 def vpn_status():
         if not hl_utils.is_cip():
                 out_vpn = hl_utils.shexec("ip r g 8.8.8.8").split("\n")[0]
@@ -176,7 +185,7 @@ def vpn_status():
                         out_vpn = hl_utils.color_panel("VPN: In Use",GREEN)
                 else:
                         out_vpn = hl_utils.color_panel("VPN: Link Down",RED)
-                with open(hl_utils.hlpath(VPN_LOG),'w+') as g:
+                with open(hl_utils.hlpath(VPN_LOG),'w') as g:
                         g.write(out_vpn)
 
 def battery_status():
@@ -212,6 +221,7 @@ def save():
             ip_status()
             cip_logins()
             trace_login()
+            bc_words()
 
 def trace_login():
         if hl_utils.is_cip():

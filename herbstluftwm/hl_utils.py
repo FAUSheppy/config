@@ -45,7 +45,7 @@ def color_panel(s,hex_code,seper=True):
                 sep = ""
         return "^fg(#" + hex_code + ") " + s + "^bg()"+sep
 
-def get_color(nr,start,end):
+def get_color(nr,start,end,reverse=False):
         if end == start or nr >= end:
                 return hex(GREEN)
         elif nr <= 0 or nr < start:
@@ -75,8 +75,14 @@ def get_color(nr,start,end):
                 else:
                         error("Negative interval value???")
                         return(WHITE)
-                r = r << 16
-                g = g << 8
+
+                if not reverse:
+                    r = r << 16
+                    g = g << 8
+                else:
+                    r = r << 8
+                    g = g << 16
+
                 tmp_col = r + g + b 
                 if tmp_col > 0xFFFF00:
                         error("color value too high")
