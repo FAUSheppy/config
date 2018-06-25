@@ -127,3 +127,14 @@ startupconfigfiles
 startupconfigkeys
 test
 trashrc
+
+
+calibre/
+configstore/
+herbstluftwm/.bcpdf
+herbstluftwm/.bctext
+herbstluftwm/test.pdf
+khal/
+kolourpaint.kmessagebox
+torbrowser/
+
