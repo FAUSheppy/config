@@ -172,11 +172,30 @@ def pr_acct_status():
                         f.write(out)
 
 def bc_words():
-        if hl_utils.is_cip():
             with open(hl_utils.hlpath(BC_WORD_LOG),'w') as g:
-                        tmp = hl_utils.shexec("wc -w /proj/cipdata/ik15ydit/license-confusion-bc/other_shit/lel.md")
+                        tmp = hl_utils.shexec("wc -w {}".format(hl_utils.hlpath(".bctext",use_hostname=False)))
                         tmp = tmp.split()[0]
                         g.write(tmp)
+def bc_pages():
+    hl_utils.shexec("pandoc {} -o {}".format(\
+                    hl_utils.hlpath(".bctext",use_hostname=False),\
+                    hl_utils.hlpath("test.pdf",use_hostname=False)))
+    arr = hl_utils.shexec("pdftk {} dump_data".format(\
+                    hl_utils.hlpath("test.pdf",use_hostname=False)))
+    arr = arr.split("\n")
+    lol = "lolcannon"
+    for el in arr:
+        if "NumberOfPages" in el:
+            try:
+                with open(hl_utils.hlpath(BC_PAGE_LOG),'r') as f:
+                    if int(f.read()) == int(el):
+                        break
+            except:
+                pass
+            lol = el
+            break
+    with open(hl_utils.hlpath(BC_PAGE_LOG),"w") as g:
+                   g.write(el.split()[1])
 
 def vpn_status():
         if not hl_utils.is_cip():
@@ -222,6 +241,7 @@ def save():
             #cip_logins()
             trace_login()
             bc_words()
+            bc_pages()
 
 def trace_login():
         if hl_utils.is_cip():

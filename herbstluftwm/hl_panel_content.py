@@ -72,6 +72,12 @@ def bcw():
                     return hl_utils.color_panel(string,hl_utils.get_color(tmp,0,8000,reverse=False))
         except:
                 return ""
+def bwp():
+        try:
+            with open(hl_utils.hlpath(BC_PAGE_LOG),'r') as f:
+                return hl_utils.color_panel("{} pages".format(f.read().strip()),RED)
+        except:
+                return "lolwtf"
 
 
 def countdown():
@@ -85,4 +91,4 @@ def countdown():
 
 
 if __name__ == "__main__":
-        print(bcw(),countdown(),logins(),ip(),vpn(),guthaben(),battery(),date(),sep='',end='')
+        print(bwp(),bcw(),countdown(),logins(),ip(),vpn(),guthaben(),battery(),date(),sep='',end='')
