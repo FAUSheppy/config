@@ -69,15 +69,17 @@ def bcw():
             with open(hl_utils.hlpath(BC_WORD_LOG),'r') as f:
                     tmp = int(f.read())
                     string = "{} of 6000 words".format(tmp)
-                    return hl_utils.color_panel(string,hl_utils.get_color(tmp,0,8000,reverse=False))
+                    return hl_utils.color_panel(string,hl_utils.get_color(tmp,0,6000,reverse=False))
         except:
                 return ""
 def bwp():
+        tmp = ""
         try:
             with open(hl_utils.hlpath(BC_PAGE_LOG),'r') as f:
-                return hl_utils.color_panel("{} pages".format(f.read().strip()),RED)
+                tmp = "{} pages".format(f.read().strip())
         except:
-                return "lolwtf"
+                tmp = "21 pages"
+        return hl_utils.color_panel(tmp,RED)
 
 
 def countdown():
