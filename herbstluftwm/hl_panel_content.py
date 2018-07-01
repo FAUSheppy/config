@@ -74,13 +74,13 @@ def bcw():
                 return ""
 def bwp():
         tmp = ""
-        cur = 21
+        cur = 29
         try:
             with open(hl_utils.hlpath(BC_PAGE_LOG),'r') as f:
                 tmp = "{} pages".format(f.read().strip())
         except:
                 tmp = "{} pages".format(cur)
-        tmp = hl_utils.color_panel(tmp,hl_utils.get_color(cur,0,50))
+        tmp = hl_utils.color_panel(tmp,hl_utils.get_color(cur,0,60))
         return tmp
 
 
