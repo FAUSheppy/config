@@ -74,16 +74,18 @@ def bcw():
                 return ""
 def bwp():
         tmp = ""
+        cur = 21
         try:
             with open(hl_utils.hlpath(BC_PAGE_LOG),'r') as f:
                 tmp = "{} pages".format(f.read().strip())
         except:
-                tmp = "21 pages"
-        return hl_utils.color_panel(tmp,RED)
+                tmp = "{} pages".format(cur)
+        tmp = hl_utils.color_panel(tmp,hl_utils.get_color(cur,0,50))
+        return tmp
 
 
 def countdown():
-        delta = datetime(year=2018,month=7,day=22,hour=20) - datetime.now()
+        delta = datetime(year=2018,month=7,day=23,hour=8) - datetime.now()
         if delta.days > 1:
             tmp = "{} von 150 Tagen bis Abgabe verbleibend".format(delta.days)
         else:
