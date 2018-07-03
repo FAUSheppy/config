@@ -35,12 +35,15 @@ def vpn():
                         return tmp;
 
 def ip():
-    with open(hl_utils.hlpath(IP_LOG)) as f:
-        tmp = f.read()
-        if len(tmp) > 20:
-            tmp = hl_utils.color_panel("Public IP: IP6 ",GREEN)
-        tmp = ' '+tmp
-        return tmp;
+    try:
+        with open(hl_utils.hlpath(IP_LOG)) as f:
+            tmp = f.read()
+            if "[" in tmp:
+                tmp = hl_utils.color_panel("Public IP: IP6 ",GREEN)
+            tmp = ' '+tmp
+            return tmp;
+    except Exception:
+        return hl_utils.color_panel("Public IP: No Data",YELLOW)
 
 def battery():
         if hl_utils.is_laptop():
@@ -68,8 +71,8 @@ def bcw():
         try:
             with open(hl_utils.hlpath(BC_WORD_LOG),'r') as f:
                     tmp = int(f.read())
-                    string = "{} of 6000 words".format(tmp)
-                    return hl_utils.color_panel(string,hl_utils.get_color(tmp,0,6000,reverse=False))
+                    string = "{} words".format(tmp)
+                    return hl_utils.color_panel(string,hl_utils.get_color(tmp,0,12000,reverse=False))
         except:
                 return ""
 def bwp():
