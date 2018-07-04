@@ -173,9 +173,9 @@ def pr_acct_status():
 
 def bc_words():
         try:
+            tmp = len(hl_utils.shexec("pdftotext {} -".format(\
+                        hl_utils.hlpath(".bcpdf",use_hostname=False))).split(" "))
             with open(hl_utils.hlpath(BC_WORD_LOG),'w') as g:
-                tmp = len(hl_utils.shexec("pdftotext {} -".format(\
-                            hl_utils.hlpath(".bcpdf",use_hostname=False))).split(" "))
                 g.write(str(tmp))
         except subprocess.CalledProcessError:
             pass
@@ -213,8 +213,9 @@ def vpn_status():
 
 def battery_status():
         if hl_utils.is_laptop():
+                stat = battery()
                 with open(hl_utils.hlpath(BATTERY_LOG),'w') as g:
-                        g.write(battery())
+                        g.write(stat)
 
 last_ip="LOL"
 def ip_status():
