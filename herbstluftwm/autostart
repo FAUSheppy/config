@@ -24,7 +24,7 @@ Mod=Mod4     # Use the super key as the main modifier
 ### All Machines ####
 ### Atlantis PC-specific setup ###
 if [[ "$HOST" == "atlantispc" ]]; then
-    /usr/bin/xrandr --output DVI-D-1 --left-of HDMI-1
+    /usr/bin/xrandr --output DVI-D-1 --right-of HDMI-1
     #hc detect_monitors
     hc set swap_monitors_to_get_tag 0
 #    hc set_monitors 3840x1080+0+0

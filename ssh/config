@@ -8,3 +8,6 @@ Host *.fauiwg.de
 Host *.cs.fau.de
     User ik15ydit
     IdentityFile ~/.ssh/cipkey
+Host atlantishq.de
+    User root
+    IdentityFile ~/.ssh/atlantis
