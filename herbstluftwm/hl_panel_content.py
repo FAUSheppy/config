@@ -72,7 +72,7 @@ def bcw():
             with open(hl_utils.hlpath(BC_WORD_LOG),'r') as f:
                     tmp = int(f.read())
                     string = "{} words".format(tmp)
-                    return hl_utils.color_panel(string,hl_utils.get_color(tmp,0,12000,reverse=False))
+                    return hl_utils.color_panel(string,hl_utils.get_color(tmp,0,9000,reverse=False))
         except:
                 return ""
 def bwp():
@@ -83,7 +83,7 @@ def bwp():
                 tmp = "{} pages".format(f.read().strip())
         except:
                 tmp = "{} pages".format(cur)
-        tmp = hl_utils.color_panel(tmp,hl_utils.get_color(cur,0,60))
+        tmp = hl_utils.color_panel(tmp,hl_utils.get_color(cur,0,45))
         return tmp
 
 
