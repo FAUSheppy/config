@@ -89,10 +89,7 @@ def bwp():
 
 def countdown():
         delta = datetime(year=2018,month=7,day=23,hour=12) - datetime.now()
-        if delta.days > 1:
-            tmp = "{} days {} hours remaining".format(delta.days,int(delta.seconds/60/60))
-        else:
-            tmp = "{}h bis BC Abgabe".format(delta.hours)
+        tmp = "{} days {} hours remaining".format(delta.days,int(delta.seconds/60/60))
         tmp = hl_utils.color_panel(tmp,hl_utils.get_color(delta.days,0,180))
         return tmp
 
