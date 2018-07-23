@@ -89,6 +89,8 @@ def bwp():
 
 def countdown():
         delta = datetime(year=2018,month=7,day=23,hour=12) - datetime.now()
+        if delta.total_seconds() < 0:
+            return hl_utils.color_panel('Have a nice life without me fuckers.',RED)
         tmp = "{} days {} hours remaining".format(delta.days,int(delta.seconds/60/60))
         tmp = hl_utils.color_panel(tmp,hl_utils.get_color(delta.days,0,180))
         return tmp
