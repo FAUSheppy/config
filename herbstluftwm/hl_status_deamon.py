@@ -202,6 +202,7 @@ def bc_pages():
          pass
 
 def vpn_status():
+    try:
         if not hl_utils.is_cip():
                 out_vpn = hl_utils.shexec("ip r g 8.8.8.8").split("\n")[0]
                 if "dev cip_tun" in out_vpn:
@@ -210,6 +211,8 @@ def vpn_status():
                         out_vpn = hl_utils.color_panel("VPN: Link Down",RED)
                 with open(hl_utils.hlpath(VPN_LOG),'w') as g:
                         g.write(out_vpn)
+    except Exception:
+        pass
 
 def battery_status():
         if hl_utils.is_laptop():
