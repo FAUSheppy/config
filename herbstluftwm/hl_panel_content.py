@@ -29,10 +29,14 @@ def vpn():
         if hl_utils.is_cip():
                 return ''
         else:
+            try:
                 with open(hl_utils.hlpath(VPN_LOG)) as f:
                         tmp = f.read()
                         tmp = ' '+tmp
                         return tmp;
+            except FileNotFoundError:
+                return hl_utils.color_panel("NO VPN INFORMATION",YELLOW)
+
 
 def ip():
     try:
@@ -52,8 +56,8 @@ def battery():
                     tmp = f.read()
                     tmp = ' '+tmp
                     return tmp;
-            except Exception as e:
-                return color_panel(str(e),RED)
+            except FileNotFoundError as e:
+                return hl_utils.color_panel(str(e),RED)
         else:
                 return ""
         
