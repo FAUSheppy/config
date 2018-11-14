@@ -327,3 +327,4 @@ alias atp="~/.config/playercount.py"
 alias mongo="LD_PRELOAD=/home/cip/2013/ik15ydit/libyaml-cpp.so.0.5 ~/mongo github"
 alias players='~/trash/test/test.py'
 alias cleanhistory="awk '{if (a[$0] < NR || a[$0] == 0){a[$0]=NR}}END{for (i in a){print a[i] " " i}}' file | sort -n | cut 1"
+alias ths="ssh root@ths.atlantishq.de"
