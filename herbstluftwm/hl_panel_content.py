@@ -101,4 +101,4 @@ def countdown():
 
 
 if __name__ == "__main__":
-        print(bwp(),bcw(),countdown(),logins(),ip(),vpn(),guthaben(),battery(),date(),sep='',end='')
+        print(logins(),ip(),vpn(),guthaben(),battery(),date(),sep='',end='')
