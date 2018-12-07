@@ -1,5 +1,7 @@
 Host atlantismedion
     IdentityFile ~/.ssh/atlantismedion
+Host gitlab.com
+    IdentityFile ~/.ssh/gitrsa
 Host gitlab.cs.fau.de
     IdentityFile ~/.ssh/gitrsa
 Host *.fauiwg.de
