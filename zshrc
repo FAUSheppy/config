@@ -129,8 +129,8 @@ setopt noclobber
 setopt appendhistory; setopt incappendhistory
 
 ## max size and location of history-savefile
-STSIZE=20000
-SAVEHIST=20000
+STSIZE=2000000
+SAVEHIST=200000
 HISTFILE=~/.config/zshhistory.log
 
 ## no duplicated commands
