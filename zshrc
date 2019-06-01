@@ -30,6 +30,23 @@ fi
 ############################################## PROMT ###################################################
 ########################################################################################################
 
+## git ##
+setopt prompt_subst
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' actionformats '%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
+zstyle ':vcs_info:*' formats '%F{5}[%F{2}%b%F{5}]%f '
+zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
+zstyle ':vcs_info:*' enable git cvs svn
+
+# or use pre_cmd, see man zshcontrib
+vcs_info_wrapper() {
+  vcs_info
+  if [ -n "$vcs_info_msg_0_" ]; then
+    echo "%{$fg[grey]%}${vcs_info_msg_0_}%{$reset_color%}$del"
+  fi
+}
+VERSION_CONTROL_PROMT=$'$(vcs_info_wrapper)'
+
 ## colors ##
 SEPERATOR_LINE_COLOR="green"
 USER_COLOR="yellow"
@@ -77,7 +94,7 @@ if [[ $USER == 'sheppy' || $USER == 'ik15ydit' || $USER == 'root' ]]; then
 fi
 
 ## build the complete promt ##
-PS1="${SEPERATOR_LINE}${USER_NAME}${USER_HOST_SEPERATOR}${HOSTNAME}${HOST_PATH_SEPERATOR}${PATH_STR}${PATH_INPUT_SEPERATOR}"
+PS1="${SEPERATOR_LINE}${USER_NAME}${USER_HOST_SEPERATOR}${HOSTNAME}${HOST_PATH_SEPERATOR}${PATH_STR}${VERSION_CONTROL_PROMT}${PATH_INPUT_SEPERATOR}"
 
 ## replace the magic values, i.e. %m with hostname ##
 setopt promptsubst #enable the promt
