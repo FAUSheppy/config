@@ -65,7 +65,8 @@ hc keybind $Mod-q close
 hc keybind $Mod-Return spawn urxvt 
 hc keybind $Mod-y spawn urxvt #easier to press with one hand
 hc keybind $Mod-Shift-Return spawn ~/.config/herbstluftwm/hl_start_urxvt_cwd.py
-hc keybind $Mod-i spawn urxvt -e nohup zsh -c "chromium &" #need to reliably use the zshconf chromium
+hc keybind $Mod-i spawn "/usr/bin/chromium"
+
 if [[ $HOST =~ atlantis* ]]; then
     hc keybind $Mod-l spawn i3lock -i ~/.config/i3lock/bg.png -t
 else
