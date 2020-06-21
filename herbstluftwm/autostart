@@ -39,12 +39,12 @@ if [[ "$HOST" == "atlantislaptop" ]]; then
 fi
 
 ### Atlantis general
-if [[ ( "$HOST" == "atlantispc" ) || ( "$HOST" == "atlantislaptop" ) ]]; then
-    xautolock -time 15 -locker /home/ik15ydit/.config/i3lock/piclock.sh &
-    xautolock -unlocknow # fixes anoying bug that causes lockscreen to start after autologon
-    hc keybind $Mod-c spawn /bin/bash -c "sudo stopvpn.sh; sudo /usr/bin/openvpn_cip.sh & sleep 2 && pkill --signal USR1 hl_status"
-    hc keybind $Mod-Shift-c spawn /bin/bash -c "sudo stopvpn.sh && sleep 2 && pkill --signal USR1 hl_status"
-fi
+#if [[ ( "$HOST" == "atlantispc" ) || ( "$HOST" == "atlantislaptop" ) ]]; then
+#    xautolock -time 15 -locker /home/ik15ydit/.config/i3lock/piclock.sh &
+#    xautolock -unlocknow # fixes anoying bug that causes lockscreen to start after autologon
+#    hc keybind $Mod-c spawn /bin/bash -c "sudo stopvpn.sh; sudo /usr/bin/openvpn_cip.sh & sleep 2 && pkill --signal USR1 hl_status"
+#    hc keybind $Mod-Shift-c spawn /bin/bash -c "sudo stopvpn.sh && sleep 2 && pkill --signal USR1 hl_status"
+#fi
 
 
 ######### GENERAL SETUP #########
@@ -77,8 +77,8 @@ hc keybind $Mod-p spawn pavucontrol
 hc keybind $Mod-Shift-l spawn libreoffice
 hc keybind $Mod-t spawn /bin/bash -c "LC_ALL=en_DK.utf8 && export LC_ALL && thunderbird"
 hc keybind $Mod-Shift-i spawn urxvt -e ssh ik15ydit@ircbox.cs.fau.de -t 'tmux a -d'
-hc keybind $Mod-Shift-j spawn urxvt -e ssh sheppy@atlantishq.de -t 'tmux a -d'
-hc keybind $Mod-Shift-t spawn urxvt -e ssh telegram-sheppy@atlantishq.de -i ~/.ssh/telegram -t "/home/telegram-sheppy/tg/bin/telegram-cli"
+hc keybind $Mod-Shift-j spawn urxvt -e ssh sheppy-irc@athq.de -t 'tmux a -d'
+#hc keybind $Mod-Shift-t spawn urxvt -e ssh telegram-sheppy@atlantishq.de -i ~/.ssh/telegram -t "/home/telegram-sheppy/tg/bin/telegram-cli"
 hc keybind $Mod-e spawn rofi -combi-mode window,run -show combi -modi combi
 hc keybind $Mod-Shift-e spawn rofi -show run
 
@@ -239,7 +239,7 @@ herbstclient set tree_style '╾│ ├└╼─┐'
 # do multi monitor setup here, e.g.:
 # hc set_monitors 1280x1024+0+0 1280x1024+1280+0
 # or simply:
-# hc detect_monitors
+hc detect_monitors
 
 # find the panel
 hlpath="${HOME}/.config/herbstluftwm"

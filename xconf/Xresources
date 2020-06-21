@@ -13,24 +13,4 @@ URxvt.keysym.C-plus:      resize-font:bigger
 URxvt.keysym.C-equal:     resize-font:reset
 URxvt.keysym.C-question:  resize-font:show
 
-
-
-
 URxvt.iso14755          :false
-
-!experimental
-!URxvt*externalBorder:   3
-!URxvt*borderLess:       false
-!URxvt*internalBorder:   5
-!URxvt*borderColor:      red
-
-XLock*mode: image
-XLock*image.bitmap: ~/.xlock.xpm
-XLock*image.count: 1
-XLock*image.erasedelay: 0
-XLock*erasedelay: 0
-XLock*icongeometry: 180x180
-XLock*background: Black
-XLock*foreground: White
-XLock*description: off
-XLock*info:
