@@ -208,10 +208,6 @@ if [[ $HOST =~ faui* || $HOST =~ ircbox ]]; then
     mesg n
 fi
 
-## Connect to ircbox and attach tmux
-alias irc="ssh ircbox.cs.fau.de -t 'command; tmux a'"
-alias dirc="ssh sheppy@atlantishq.de -t 'command; tmux a'"
-
 ## lock screen but still let people read it
 alias transparent_xlock="xlock -mode blank -geometry 1x1"
 
@@ -237,7 +233,6 @@ alias gadd="git add"
 
 ## REMOTE HOSTS ##
 alias -g sq="sheppy@squarez.fauiwg.de"
-alias -g pine="sheppy@sheppy.chickenkiller.com"
 
 ## PACKAGE MANAGEMENT ##
 alias psearch="apt-cache search"
@@ -341,7 +336,10 @@ alias bc="cd /proj/cipdata/ik15ydit/license-confusion-bc"
 export PYTHONPATH=/home/cip/2013/ik15ydit/python-local
 alias -g atip="echo 93.104.211.59"
 alias atp="~/.config/playercount.py"
-alias mongo="LD_PRELOAD=/home/cip/2013/ik15ydit/libyaml-cpp.so.0.5 ~/mongo github"
 alias players='~/trash/test/test.py'
 alias cleanhistory="awk '{if (a[$0] < NR || a[$0] == 0){a[$0]=NR}}END{for (i in a){print a[i] " " i}}' file | sort -n | cut 1"
 alias ths="ssh root@ths.atlantishq.de"
+
+# insurgency debugging
+alias balance="curl localhost:5000/getbalancedteams\?players=Shepppy,OrhunReiz,Bluejalapeno4,RandomItaliano\&names=true"
+alias quality="curl localhost:5000/quality\?playerswithteams=Shepppy,OrhunReiz\|Bluejalapeno4,RandomItaliano\&names=true"

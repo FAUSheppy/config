@@ -205,7 +205,7 @@ def vpn_status():
     try:
         if not hl_utils.is_cip():
                 out_vpn = hl_utils.shexec("ip r g 8.8.8.8").split("\n")[0]
-                if "dev cip_tun" in out_vpn:
+                if "dev athq_tun" in out_vpn:
                         out_vpn = hl_utils.color_panel("VPN: In Use",GREEN)
                 else:
                         out_vpn = hl_utils.color_panel("VPN: Link Down",RED)
@@ -224,7 +224,7 @@ last_ip="LOL"
 def ip_status():
     global last_ip
     try:
-        ip="Public IP: "+ hl_utils.shexec("wget -4 --no-proxy --timeout=3 -O- --quiet https://atlantishq.de:8002/ipcheck")
+        ip="Public IP: "+ hl_utils.shexec("wget -4 --no-proxy --timeout=3 -O- --quiet ipcheck.atlantishq.de")
         if last_ip == ip:
                 return
         else:
