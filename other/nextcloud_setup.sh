@@ -1,6 +1,6 @@
 apt install vim
 apt install nginx
-apt install php-fpm php-pgsql php-gd php-mbstring php-zip php-soap
+apt install php-fpm php-pgsql php-gd php-mbstring php-zip php-soap php-dom php-curl
 apt install postgresql
 apt install certbot
 
