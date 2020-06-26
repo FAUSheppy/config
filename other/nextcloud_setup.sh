@@ -1,6 +1,7 @@
 apt install vim
 apt install nginx
 apt install php-fpm php-pgsql php-gd php-mbstring php-zip php-soap php-dom php-curl
+apt install php-bcmath php-gmp # (performance only)
 apt install postgresql
 apt install certbot
 
@@ -34,4 +35,7 @@ unzip nextcloud-19.0.0.zip
 chown -R www-data nextcloud
 # head to https://docs.nextcloud.com/server/15/admin_manual/installation/nginx.html and add the relevant nginx config, dont foget to fix 301->302 and servernames etc
 # correctly set the php handler (i.e. unix:/run/php/php7.3-fpm.sock;)
+# increase memory_limit in /etc/php... php.ini to 512MB
 systemctl restart nginx
+
+# head to browser and complete setup, ignore the gateway timeout and give it some ~5in or so
