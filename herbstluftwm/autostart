@@ -14,14 +14,11 @@ xsetroot -solid '#5A8E3A'
 rm ~/.config/herbstluftwm/*.log
 hc keyunbind --all
 pkill xautolock
-# WONT WORK --> cause process has other name no idea which though pkill -s 15 hl_status_deamon   #send SIGTERM for correct termination during write
-pkill hl_status_deamo
 
 #variables
 Mod=Mod4     # Use the super key as the main modifier
 
 ######### MACHINE SPECIFIC SETUP #########
-### All Machines ####
 ### Atlantis PC-specific setup ###
 if [[ "$HOST" == "atlantispc" ]]; then
     /usr/bin/xrandr --output DVI-D-1 --right-of HDMI-1
@@ -30,36 +27,24 @@ if [[ "$HOST" == "atlantispc" ]]; then
 #    hc set_monitors 3840x1080+0+0
 #    hc keybind $Mod-o spawn /bin/bash -c "/home/sheppy/.config/i3lock/piclock.sh && sudo s2disk"
 fi
+
 ### Atlantislaptop specific setup ###
 if [[ "$HOST" == "atlantislaptop" ]]; then
     hc keybind XF86MonBrightnessUp spawn /bin/bash -c 'tee /sys/class/backlight/intel_backlight/brightness <<< "$(expr $(cat /sys/class/backlight/intel_backlight/brightness) + 5)"' 
     hc keybind XF86MonBrightnessDown spawn /bin/bash -c 'tee /sys/class/backlight/intel_backlight/brightness <<< "$(expr $(cat /sys/class/backlight/intel_backlight/brightness) - 5)"'
-    #/usr/bin/dunst & 
-    hc keybind $Mod-Shift-o spawn /bin/bash -c "sudo s2ram"
 fi
-
-### Atlantis general
-#if [[ ( "$HOST" == "atlantispc" ) || ( "$HOST" == "atlantislaptop" ) ]]; then
-#    xautolock -time 15 -locker /home/ik15ydit/.config/i3lock/piclock.sh &
-#    xautolock -unlocknow # fixes anoying bug that causes lockscreen to start after autologon
-#    hc keybind $Mod-c spawn /bin/bash -c "sudo stopvpn.sh; sudo /usr/bin/openvpn_cip.sh & sleep 2 && pkill --signal USR1 hl_status"
-#    hc keybind $Mod-Shift-c spawn /bin/bash -c "sudo stopvpn.sh && sleep 2 && pkill --signal USR1 hl_status"
-#fi
 
 
 ######### GENERAL SETUP #########
-### Start Pythonscripts  ###
 hc spawn ~/.config/herbstluftwm/hl_status_deamon.py
 
 # keybindings
-#client handling
 hc keybind $Mod-Shift-q spawn /bin/bash -c "pkill hl_status_deamo & pkill ssh-agent & ~/.config/other/notify_logout.sh  &herbstclient quit"
 if [[ $HOST =~ atlantis* ]]; then
     hc keybind $Mod-Shift-p spawn sudo /sbin/poweroff
 fi
 hc keybind $Mod-Shift-r reload
 hc keybind $Mod-q close
-
 
 #spawn shit
 hc keybind $Mod-Return spawn urxvt 
@@ -68,23 +53,21 @@ hc keybind $Mod-Shift-Return spawn ~/.config/herbstluftwm/hl_start_urxvt_cwd.py
 hc keybind $Mod-i spawn "/usr/bin/chromium"
 
 if [[ $HOST =~ atlantis* ]]; then
-    hc keybind $Mod-l spawn i3lock -i ~/.config/i3lock/bg.png -t
+    hc keybind $Mod-l spawn i3lock -i ~/.config/i3lock/bg_new.png -t
 else
     hc keybind $Mod-l spawn xlock -fg green
     hc keybind $Mod-Shift-x spawn xlock -mode blank -geometry 1x1
     hc keybind $Mod-x spawn xlock -mode blank -geometry 1x1
 fi
+
 hc keybind $Mod-p spawn pavucontrol
 hc keybind $Mod-Shift-l spawn libreoffice
 hc keybind $Mod-t spawn /bin/bash -c "LC_ALL=en_DK.utf8 && export LC_ALL && thunderbird"
-hc keybind $Mod-Shift-i spawn urxvt -e ssh ik15ydit@ircbox.cs.fau.de -t 'tmux a -d'
-hc keybind $Mod-Shift-j spawn urxvt -e ssh sheppy-irc@athq.de -t 'tmux a -d'
-#hc keybind $Mod-Shift-t spawn urxvt -e ssh telegram-sheppy@atlantishq.de -i ~/.ssh/telegram -t "/home/telegram-sheppy/tg/bin/telegram-cli"
+hc keybind $Mod-Shift-j spawn urxvt -e ssh -p 7022 sheppy@atlantishq.de -t 'tmux a -d'
 hc keybind $Mod-e spawn rofi -combi-mode window,run -show combi -modi combi
 hc keybind $Mod-Shift-e spawn rofi -show run
+hc keybind $Mod-u     /usr/bin/pulseaudio -k
 
-# basic movement
-# focusing clients
 hc keybind $Mod-Left  focus left
 hc keybind $Mod-Down  focus down
 hc keybind $Mod-Up    focus up
@@ -94,7 +77,6 @@ hc keybind $Mod-s     focus down
 hc keybind $Mod-w     focus up
 hc keybind $Mod-d     focus right
 
-# moving clients
 hc keybind $Mod-Shift-Left  shift left
 hc keybind $Mod-Shift-Down  shift down
 hc keybind $Mod-Shift-Up    shift up
@@ -104,12 +86,8 @@ hc keybind $Mod-Shift-s     shift down
 hc keybind $Mod-Shift-w     shift up
 hc keybind $Mod-Shift-d     shift right
 
-# splitting frames
-# create an empty frame at the specified direction
 hc keybind $Mod-h       split   bottom  0.5
 hc keybind $Mod-v       split   right   0.5
-# let the current frame explode into subframes
-# hc keybind $Mod-Control-space split explode
 
 # resizing frames
 resizestep=0.05
