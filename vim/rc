@@ -1,104 +1,21 @@
-"tabs & spaces
 set tabstop=4
 set softtabstop=4
 set expandtab
 
-"GUI
 set number
 set showcmd
 set cursorline
 set wildmenu
-nnoremap li `[v`]
-"select last inserted
 
-"highlighting
 filetype indent on
 set showmatch
 "colorscheme solarized
 syntax enable
 colorscheme evening
 
-"optimazation
 set lazyredraw
 
-"append & insert
-"Enter will go to next line, shift enter will break current line and create new one
-"O will insert line above and place curser there, o will do same below
-"Shift-i will start inserting at the begin of the line, i will start before curser
-"Shift-t end of line or t just behind curser (tail)
-"f does exactly the same but closer to shift, easier to use maybe
-"move by visual line
-"gg will go to start of file, GG to end of file and M will actually jump to mid of screen
-
-"general use
 inoremap jk <esc>
 nnoremap <F8> :nohlsearch<CR>
-"u is normal undo
 
-"inoremap <esc> <nop>  
-
-"open specific files
-"nnoremap <leader>vrc :vsp $MYVIMRC<CR>
-
-"session management
-nnoremap <leader>s :mksession<CR> 
-"save session, resume with vim -S
-
-"highlighting for .dia
-if @% =~ ".*.dia"
-    syntax match nodeID "N.*:"
-    syntax match leaveID "[A-MO-Z]\+.*:"
-
-    syntax match annotation "[%@].*"
-
-    syntax match badcode "\\.*"
-    syntax match regie "\*[^"]*\*"
-    syntax match text "\"[^*]*\""
-
-    hi def link nodeID Structure
-    hi def link leaveID Tag
-    hi def link annotation Function
-    hi def link regie Operator
-    hi def link text String
-    hi def link badcode ErrorMsg
-    hi def link branch TODO
-    
-    "highlight branch in .dia <C-O> is go back to insertmode
-    inoremap <F5> <C-O>ma<C-O>:execute HL_branch()<CR><C-O>:set hlsearch<CR><C-O>`a
-    nnoremap <F5> ma :execute HL_branch()<CR>:set hlsearch<CR>`a
-    nnoremap w g<Up>ma :execute HL_branch()<CR>:set hlsearch<CR> `a
-    nnoremap s g<Down>ma :execute HL_branch()<CR>:set hlsearch<CR> `a
-
-    "function for highlighting
-    function HL_branch()
-        let line=getline('.')
-        "backslash muss escaped werden um + zu escapen in func
-        if line =~ "\[A-Z]\\+.*:"
-python3 << endpython
-import vim
-l = vim.current.line
-llist = l.split(":")
-i = 0
-for tmp in llist[0]:
-    if tmp <= 'Z' and tmp >= 'A':
-        i += 1
-    else:
-        break
-l = llist[0][i:]
-#escaped \ for py AND vim
-vim.command("let @/='[A-Z]\+%s.*:'"% l)
-endpython
-        endif
-        return "echo ''"
-    endfunction
-endif
-
-" use x11 primary selection for yanking (yes, "unnamed" is the key for that..)
 set clipboard=unnamed 
-
-
-" python-jedi config
-"let g:jedi#popup_on_dot = 0
-autocmd FileType python setlocal completeopt-=preview
-autocmd BufNewFile,BufRead *.sp   set syntax=cpp
-autocmd BufNewFile,BufRead *.sm   set syntax=cpp
