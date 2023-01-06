@@ -28,7 +28,7 @@ def is_cip():
 
 def is_laptop():
         u = os.uname()
-        return "laptop" in u.nodename or "atlantismedion" in u.nodename
+        return "laptop" in u.nodename or "atlantismedion" in u.nodename or "atlantispad" in u.nodename
 
 def error(s):
         with open(hlpath("herbstlog"),'a') as f:

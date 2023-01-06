@@ -101,8 +101,8 @@ def battery():
                     plain = int(bat.split('%')[0][-3:].rstrip('%').lstrip(','))
                     
                     ## imediatelly return if full and on supply ##
-                    if bat.startswith("Full") or bat.startswith('Unknown') or "Charging, 100%" in bat:
-                            return hl_utils.color_panel("On Supply and fully charged",GREEN)
+                    if bat.startswith("Full") or bat.startswith('Unknown') or "100%" in bat or "99%" in bat:
+                            return hl_utils.color_panel("On Supply and fully charged", GREEN)
                         
                     ## calculate average time remaining ##
                     sph = 60*60
@@ -180,26 +180,6 @@ def bc_words():
         except subprocess.CalledProcessError:
             pass
 
-def bc_pages():
-    try:
-         arr = hl_utils.shexec("pdftk {} dump_data".format(\
-                         hl_utils.hlpath(".bcpdf",use_hostname=False)))
-         arr = arr.split("\n")
-         lol = "lolcannon"
-         for el in arr:
-             if "NumberOfPages" in el:
-                 try:
-                     with open(hl_utils.hlpath(BC_PAGE_LOG),'r') as f:
-                         if int(f.read()) == int(el):
-                             break
-                 except:
-                     pass
-                 lol = el
-                 break
-         with open(hl_utils.hlpath(BC_PAGE_LOG),"w") as g:
-                        g.write(el.split()[1])
-    except subprocess.CalledProcessError:
-         pass
 
 def vpn_status():
     try:
@@ -234,7 +214,7 @@ def ip_status():
         last_ip = ""
         try:
             hl_utils.shexec("wget --timeout=2 -O- --quiet https://wwwcip.cs.fau.de/")
-            tmp = hl_utils.color_panel("AtlantisHQ Unreachable",RED)
+            tmp = hl_utils.color_panel("Online (ipcheck unreachable)",GREEN)
         except:
             tmp = hl_utils.color_panel("No Internet Connection",RED)
     with open(hl_utils.hlpath(IP_LOG),'w') as g:
@@ -248,8 +228,6 @@ def save():
             ip_status()
             #cip_logins()
             trace_login()
-            bc_words()
-            bc_pages()
 
 def trace_login():
         if hl_utils.is_cip():

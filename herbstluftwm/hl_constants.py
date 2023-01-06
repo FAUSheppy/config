@@ -16,6 +16,6 @@ LOGINS_LOG  = "logins.log"
 BC_WORD_LOG = "bc.log"
 BC_PAGE_LOG = "bcp.log"
 
-BATTERY_CRITICAL = 3 # in %
+BATTERY_CRITICAL = 10 # in %
 BAT_WARNING_STR  = ">>>>>>>>>>>>>>>> ------------ WARNING BATTER FAILURE IMMINENT ------------ <<<<<<<<<<<<<"
 VALUES_KEPT = 10

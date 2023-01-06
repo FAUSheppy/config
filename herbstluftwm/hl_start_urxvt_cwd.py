@@ -43,6 +43,13 @@ if pid==-1:
 process = psutil.Process(pid)
 for p in process.children(): #recursive=false
     if p.name() in ['zsh','bash']:
+
+        # check for ssh #
+        for sp in p.children(recursive=True):
+            print(sp.name())
+            if sp.name() == 'ssh':
+                print(sp)
+
         subprocess.Popen(shlex.split('urxvt -cd ' + p.cwd()))
         break
 sys.exit()
