@@ -151,3 +151,7 @@ i3lock/bg_new.png
 ssh/
 tracefile
 wireshark
+
+*.jpeg
+*.jpg
+*.png
