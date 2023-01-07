@@ -50,7 +50,7 @@ PATH_COLOR="cyan"
 PATH_INPUT_SEPERATOR_COLOR="green"
 
 ## different color for root ##
-if [[ $USER == "root" ]]; then
+if [[ $(whoami) == "root" ]]; then
     USER_COLOR="red"
     HOST_COLOR="red"
     SEPERATOR_LINE_COLOR="red"
