@@ -180,6 +180,7 @@ else
 
     if [[ "$TERM_PROGRAM" == "tmux" ]] || [[ -n $TMUX ]]; then
         export TERMINFO="xterm-256color" # peco issue 554
+        export TERM="xterm-256color"
     fi
 fi
 
