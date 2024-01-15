@@ -177,6 +177,10 @@ else
     zle -N rs_peco reverse_search
     bindkey ^R rs_peco
     PECO=/usr/bin/
+
+    if [[ "$TERM_PROGRAM" == "tmux" ]] || [[ -n $TMUX ]]; then
+        export TERMINFO="xterm-256color" # peco issue 554
+    fi
 fi
 
 ## Start thunderbird with correct time-format ##
