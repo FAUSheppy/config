@@ -84,6 +84,8 @@ fi
 ## build the complete promt ##
 PS1="${SEPERATOR_LINE}${USER_NAME}${USER_HOST_SEPERATOR}${HOSTNAME}${HOST_PATH_SEPERATOR}${PATH_STR}${VERSION_CONTROL_PROMT}${PATH_INPUT_SEPERATOR}"
 
+export GPG_TTY=$(tty)
+
 ## replace the magic values, i.e. %m with hostname ##
 setopt promptsubst #enable the promt
 
