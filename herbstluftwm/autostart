@@ -63,7 +63,7 @@ fi
 hc keybind $Mod-p spawn pavucontrol
 hc keybind $Mod-Shift-l spawn libreoffice
 hc keybind $Mod-t spawn /bin/bash -c "LC_ALL=en_DK.utf8 && export LC_ALL && thunderbird"
-hc keybind $Mod-Shift-j spawn urxvt -e ssh -p 7022 sheppy@atlantishq.de -t 'tmux a -d'
+hc keybind $Mod-Shift-j spawn urxvt -e ssh sheppy@irc-new.atlantishq.de -t 'tmux a -d'
 hc keybind $Mod-e spawn rofi -combi-mode window,run -show combi -modi combi
 hc keybind $Mod-Shift-e spawn rofi -show run
 hc keybind $Mod-u       spawn /usr/bin/pulseaudio -k

@@ -111,7 +111,11 @@ def battery():
                     spm = 60
 
                     cur_time = bat.split('%, ')[1].split(' ')[0].split(':')
-                    cur = int(cur_time[0]) * sph + int(cur_time[1]) * spm + int(cur_time[2])
+                    cur = 0
+                    try:
+                        cur = int(cur_time[0]) * sph + int(cur_time[1]) * spm + int(cur_time[2])
+                    except ValueError:
+                        pass
                     
                     global battery_average
                     global bat_prev
@@ -120,6 +124,9 @@ def battery():
                             bat_avg = "unkown"
                     else:
                             bat_avg=int(sum(battery_average) / float(len(battery_average)))
+
+                    if len(battery_average) > 100:
+                        battery_average = battery_average[:-100]
                     
                     ## keep max 10 items in queue ##
                     if len(battery_average) > VALUES_KEPT:
