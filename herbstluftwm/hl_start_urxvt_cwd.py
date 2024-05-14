@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import subprocess
 import datetime
 import sys
@@ -15,10 +17,8 @@ def get_focused_window():
     xdpyinfo = subprocess.check_output('xdpyinfo', universal_newlines=True)
 
     for line in xdpyinfo.split(NEWLINE):
-        print(line)
-        if line.startswith("focus:"):
-            print("focus")
 
+        if line.startswith("focus:"):
             # this line will look something like 'focus:  window 0x2200009, revert to PointerRoot' #
             window_id = 0
             for field in line.split(WHITESPACE):
@@ -39,7 +39,7 @@ def get_window_console_pid(window_id):
     '''Retrive the PID for a given window_id if the windows contains a console'''
 
     x_properties = subprocess.check_output(['xprop','-id', hex(window_id)], universal_newlines=True)
-    
+
     selected = None
     pid = -1
 
