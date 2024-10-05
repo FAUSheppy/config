@@ -213,7 +213,7 @@ last_ip="LOL"
 def ip_status():
     global last_ip
     try:
-        ip="Public IP: "+ hl_utils.shexec("wget -4 --no-proxy --timeout=3 -O- --quiet ipcheck.atlantishq.de")
+        ip="Public IP: "+ hl_utils.shexec("wget -4 --no-proxy --timeout=3 -O- --quiet https://ipcheck.atlantishq.de:10443")
         if last_ip == ip:
                 return
         else:
