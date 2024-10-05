@@ -28,6 +28,10 @@ if [[ "$HOST" == "atlantispc" ]]; then
 #    hc keybind $Mod-o spawn /bin/bash -c "/home/sheppy/.config/i3lock/piclock.sh && sudo s2disk"
 fi
 
+if [[ "$HOST" == "atlantisV2" ]]; then
+    /usr/bin/xrandr --output DP-1 --right-of HDMI-0
+fi
+
 ### Atlantislaptop specific setup ###
 if [[ "$HOST" == "atlantislaptop" ]]; then
     hc keybind XF86MonBrightnessUp spawn /bin/bash -c 'tee /sys/class/backlight/intel_backlight/brightness <<< "$(expr $(cat /sys/class/backlight/intel_backlight/brightness) + 5)"' 
