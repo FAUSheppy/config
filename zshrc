@@ -197,6 +197,7 @@ alias sshconf="vim ~/.ssh/config"
 
 ## /dev/zsh/random ##
 alias hq="ssh -4 root@atlantishq.de"
+alias hqk="ssh -4 root@katzencluster.atlantishq.de"
 alias ths="ssh root@ths.atlantishq.de"
 
 alias pcolor='for i in {0..255} ; do printf "\x1b[38;5;${i}mcolour${i} "; if [[ $(((($i+3)/6)*6)) -eq $(($i+3)) ]]; then echo; fi; done'
@@ -227,3 +228,4 @@ alias connect_synology="ssh -f -o ExitOnForwardFailure=yes -i ~/.ssh/sheppy-mast
 #alias tcpdump_http=stdbuf -oL -eL /usr/bin/tcpdump -A -s 10240 "tcp port 8000 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)" | egrep -a --line-buffered ".+(GET |HTTP\/|POST )|^[A-Za-z0-9-]+: " | perl -nle 'BEGIN{$|=1} { s/.*?(GET |HTTP\/[0-9.]* |POST )/\n$1/g; print }'
 ths_ssh="ssh -f -o ExitOnForwardFailure=yes -i .ssh/sheppy-master -L 8000:host.docker.internal:22 root@172.16.1.4 sleep 3600 && ssh cheffe@localhost -p 8000"
 #trap ctrl_c INT; function ctrl_c() {};
+alias sss='ssh root@192.168.1.89 -t "systemctl suspend; exit"'
