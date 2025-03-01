@@ -198,6 +198,7 @@ alias sshconf="vim ~/.ssh/config"
 ## /dev/zsh/random ##
 alias hq="ssh -4 root@atlantishq.de"
 alias hqk="ssh -4 root@katzencluster.atlantishq.de"
+alias hqh="ssh -4 root@atlantis-helsinki.atlantishq.de"
 alias ths="ssh root@ths.atlantishq.de"
 
 alias pcolor='for i in {0..255} ; do printf "\x1b[38;5;${i}mcolour${i} "; if [[ $(((($i+3)/6)*6)) -eq $(($i+3)) ]]; then echo; fi; done'
