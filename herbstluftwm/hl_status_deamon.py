@@ -101,10 +101,10 @@ def battery():
                     plain = int(bat.split('%')[0][-3:].rstrip('%').lstrip(','))
                     
                     ## imediatelly return if full and on supply ##
+                    if bat.startswith("Full") or bat.startswith('Unknown') or plain > 98:
+                            return hl_utils.color_panel("On Supply and fully charged", GREEN)
                     if "not charging" in bat.lower():
                             return hl_utils.color_panel(bat, GREEN)
-                    if bat.startswith("Full") or bat.startswith('Unknown') or "100%" in bat or "99%" in bat:
-                            return hl_utils.color_panel("On Supply and fully charged", GREEN)
                         
                     ## calculate average time remaining ##
                     sph = 60*60
