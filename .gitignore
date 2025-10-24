@@ -161,3 +161,16 @@ wireshark
 *.jpeg
 *.jpg
 *.png
+
+LosslessCut/
+Code/
+KDE/
+draw.io/
+helm/
+k9s/
+kde.org/
+kwritemetainfos
+openstack/
+pypoetry/
+quodlibet/
+rustdesk/
