@@ -16,3 +16,4 @@ URxvt.keysym.C-equal:     font-size:reset
 URxvt.keysym.C-question:  font-size:show
 
 URxvt.iso14755          :false
+URxvt.geometry: 400x400
