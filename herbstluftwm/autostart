@@ -29,7 +29,7 @@ if [[ "$HOST" == "atlantispc" ]]; then
 fi
 
 if [[ "$HOST" == "atlantisV2" ]]; then
-    /usr/bin/xrandr --output DP-1 --right-of HDMI-0
+    /usr/bin/xrandr --output DP-5 --right-of HDMI-0
 fi
 
 ### Atlantislaptop specific setup ###
