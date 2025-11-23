@@ -167,6 +167,10 @@ hc keybind XF86AudioMute spawn amixer set Master toggle
 hc keybind XF86AudioRaiseVolume spawn amixer set Master 10%+
 hc keybind XF86AudioLowerVolume spawn amixer set Master 10%-
 
+# bluethooth
+hc keybind $Mod-b spawn ~/.config/herbstluftwm/bluethooth_connect.sh c
+hc keybind $Mod-n spawn ~/.config/herbstluftwm/bluethooth_connect.sh d
+
 # theme
 hc attr theme.tiling.reset 1
 hc attr theme.floating.reset 1
