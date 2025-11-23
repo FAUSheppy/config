@@ -1,4 +1,9 @@
-You are free to use any of this for yourself, most of my config i learned or took from http://ruderich.org/simon/#config
+This is my personal config for:
 
-Herbstluftwm can be found here:
-https://herbstluftwm.org/index.html
+- git
+- ssh
+- zsh
+- vim
+- herbstluft
+
+..and some additional helper scripts and standard packages.
