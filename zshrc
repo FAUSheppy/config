@@ -231,6 +231,8 @@ ths_ssh="ssh -f -o ExitOnForwardFailure=yes -i .ssh/sheppy-master -L 8000:host.d
 #trap ctrl_c INT; function ctrl_c() {};
 alias sss='ssh root@192.168.1.48 -t "systemctl suspend; exit"'
 
+alias json_to_yaml="jq . $@ | yq -y"
+
 cat() {
 
   # no args
