@@ -230,3 +230,34 @@ alias connect_synology="ssh -f -o ExitOnForwardFailure=yes -i ~/.ssh/sheppy-mast
 ths_ssh="ssh -f -o ExitOnForwardFailure=yes -i .ssh/sheppy-master -L 8000:host.docker.internal:22 root@172.16.1.4 sleep 3600 && ssh cheffe@localhost -p 8000"
 #trap ctrl_c INT; function ctrl_c() {};
 alias sss='ssh root@192.168.1.48 -t "systemctl suspend; exit"'
+
+cat() {
+
+  # no args
+  if [[ $# -eq 0 ]]; then
+    command cat
+    return
+  fi
+
+  for file in "$@"; do
+
+    # Skip non-regular files (pipes, etc.)
+    if [[ ! -f "$file" ]]; then
+      command cat "$file"
+      continue
+    fi
+
+    ~/.config/binary_checker.py "$file"
+    if [[ $? -ne 0 ]] then
+      echo -n "'$file' looks a bit binary, you sure you wanna cat that? [y/N] "
+      read reply
+
+      if [[ ! "$reply" =~ ^[Yy]$ ]]; then
+        echo "Skipping '$file'"
+        continue
+      fi
+    fi
+
+    command cat "$file"
+  done
+}
