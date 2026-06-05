@@ -263,3 +263,5 @@ cat() {
     command cat "$file"
   done
 }
+
+alias sr="~/.config/search_and_replace.py"
