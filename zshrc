@@ -265,3 +265,6 @@ cat() {
 }
 
 alias sr="~/.config/search_and_replace.py"
+b64() {
+  printf '%s' "$1" | base64 --decode
+}
